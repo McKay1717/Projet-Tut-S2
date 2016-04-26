@@ -6,6 +6,8 @@ package gui;
 // Start of user code (user defined imports)
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+
+import engine.GrilleJeux;
 // End of user code
 
 /**
@@ -26,6 +28,9 @@ public class GrilleDeJeuJPanel extends JPanel
 	public CaseJButton[][] grille;		//Grille de JButton.
 	public JLabel[] intitule_ligne;		//Intitulé des lignes.
 	public JLabel[] intitule_colonne;	//Intitulé des colonnes.
+	public CaseListener control_button;	//Contrôleur de bouton.
+
+	public GrilleJeux grille_jeu;		//Grille de jeux — moteur.
 	// End of user code
 
 	/**
@@ -34,8 +39,9 @@ public class GrilleDeJeuJPanel extends JPanel
 	public GrilleDeJeuJPanel()
 	{
 		// Start of user code constructor for GrilleDeJeuJPanel)
-		initAttribut();		//Initialisation des attributs.
-		creerWidget();		//Initialisation de la fenêtre.
+		control_button = new CaseListener(this);	//Initialisation du contrôleur de bouton.
+		initAttribut();								//Initialisation des attributs.
+		creerWidget();								//Initialisation de la fenêtre.
 		// End of user code
 	}
 
@@ -46,12 +52,13 @@ public class GrilleDeJeuJPanel extends JPanel
 	 */
 	public void initAttribut()
 	{
+		grille_jeu = new GrilleJeux();								//Initialisation de la grille.
 		grille = new CaseJButton[TAILLE_GRILLE][TAILLE_GRILLE];		//Initialisation du tableau de CaseJButton.
 
 		//Parcours de la grille pour initialiser chaque case.
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
-				grille[i][j] = new CaseJButton();
+				grille[i][j] = new CaseJButton(grille_jeu, i, j);
 
 		//Initialisation de l'intitulé des lignes.
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
