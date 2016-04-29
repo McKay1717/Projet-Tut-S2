@@ -29,8 +29,6 @@ public class GrilleDeJeuJPanel extends JPanel
 	public JLabel[] intitule_ligne;		//Intitulé des lignes.
 	public JLabel[] intitule_colonne;	//Intitulé des colonnes.
 	public CaseListener control_button;	//Contrôleur de bouton.
-
-	public GrilleJeux grille_jeu;		//Grille de jeux — moteur.
 	// End of user code
 
 	/**
@@ -52,7 +50,6 @@ public class GrilleDeJeuJPanel extends JPanel
 	 */
 	public void initAttribut()
 	{
-		grille_jeu = new GrilleJeux();								//Initialisation de la grille.
 		grille = new CaseJButton[TAILLE_GRILLE][TAILLE_GRILLE];		//Initialisation du tableau de CaseJButton.
 
 		//Parcours de la grille pour initialiser chaque case.

@@ -26,8 +26,6 @@ public class CaseJButton extends JButton
 	// Start of user code (user defined attributes for CaseJButton)
 	public int x;				//Abscisse de la case.
 	public int y;				//Ordonnée de la case.
-
-	public Case case_moteur;	//Case — moteur.
 	// End of user code
 
 	/**
@@ -38,7 +36,6 @@ public class CaseJButton extends JButton
 		super();
 		this.x = x;
 		this.y = y;
-		case_moteur = new Case(grille_jeu, x, y);
 	}
 
 	// Start of user code (user defined methods for CaseJButton)
