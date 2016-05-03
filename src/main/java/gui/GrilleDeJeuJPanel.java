@@ -63,6 +63,7 @@ public class GrilleDeJeuJPanel extends JPanel
 
 		//Initialisation de l'intitulé des colonnes.
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
+			//Erreur, c'est quoi le but de code ?
 			intitule_colonne = new JLabel(Integer.toString(i + 1));
 	}
 

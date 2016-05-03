@@ -31,9 +31,9 @@ public class GrilleJeux {
 	public GrilleJeux() {
 		// Start of user code constructor for GrilleJeux)
 		super();
-		for (int x=0; x<case.length(); x++){
-			for (int y=0; y<x.length(); y++){
-				cases[x][y]= new Case (EAU);
+		for (int x = 0; x < cases.length; x++) {
+			for (int y = 0; y < cases[x].length; y++) {
+				cases[x][y] = new Case(this, x, y);
 			}
 		}
 		// End of user code
@@ -44,7 +44,8 @@ public class GrilleJeux {
 	// End of user code
 	/**
 	 * Returns cases.
-	 * @return cases 
+	 * 
+	 * @return cases
 	 */
 	public Case[][] getCases() {
 		return this.cases;
