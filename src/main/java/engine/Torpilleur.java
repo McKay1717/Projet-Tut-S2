@@ -24,6 +24,7 @@ public class Torpilleur extends Bateaux {
 	public Torpilleur(Case[] c, Equipe e) {
 		// Start of user code constructor for Torpilleur)
 		super(c, e);
+		taille=2;
 		// End of user code
 	}
 

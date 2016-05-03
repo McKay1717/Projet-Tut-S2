@@ -24,6 +24,7 @@ public class SousMarin extends Bateaux {
 	public SousMarin(Case[] c, Equipe e) {
 		// Start of user code constructor for SousMarin)
 		super(c, e);
+		taille=3;
 		// End of user code
 	}
 

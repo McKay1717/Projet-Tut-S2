@@ -31,6 +31,11 @@ public class GrilleJeux {
 	public GrilleJeux() {
 		// Start of user code constructor for GrilleJeux)
 		super();
+		for (int x=0; x<case.length(); x++){
+			for (int y=0; y<x.length(); y++){
+				cases[x][y]= new Case (EAU);
+			}
+		}
 		// End of user code
 	}
 

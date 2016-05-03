@@ -24,6 +24,7 @@ public class Croiseur extends Bateaux {
 	public Croiseur(Case[] c, Equipe e) {
 		// Start of user code constructor for Croiseur)
 		super(c, e);
+		taille=4;
 		// End of user code
 	}
 

@@ -24,6 +24,7 @@ public class PorteAvion extends Bateaux {
 	public PorteAvion(Case[] c, Equipe e) {
 		// Start of user code constructor for PorteAvion)
 		super(c, e);
+		taille=5;
 		// End of user code
 	}
 
