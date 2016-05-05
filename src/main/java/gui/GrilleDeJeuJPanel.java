@@ -3,14 +3,15 @@
  *******************************************************************************/
 package gui;
 
-import java.awt.GridLayout;
-
 // Start of user code (user defined imports)
+import java.awt.GridLayout;
+import java.awt.event.ActionListener;
+
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
+import engine.Case;
 import engine.GrilleJeux;
-// End of user code
 
 /**
  * Description of GrilleDeJeuJPanel.
@@ -35,9 +36,8 @@ public class GrilleDeJeuJPanel extends JPanel {
 	public JLabel[] intitule_colonne = new JLabel[TAILLE_GRILLE];; // Intitulé
 																	// des
 																	// colonnes.
-	public CaseListener control_button; // Contrôleur de bouton.
-	// End of user code
 	private GrilleJeux grille_jeu;
+	// End of user code
 
 	/**
 	 * The constructor.
@@ -45,8 +45,6 @@ public class GrilleDeJeuJPanel extends JPanel {
 	public GrilleDeJeuJPanel(GrilleJeux gj) {
 		// Start of user code constructor for GrilleDeJeuJPanel)
 		this.grille_jeu = gj;
-		control_button = new CaseListener(this); // Initialisation du contrôleur
-													// de bouton.
 		initAttribut(); // Initialisation des attributs.
 		creerWidget(); // Initialisation de la fenêtre.
 		// End of user code
@@ -65,7 +63,10 @@ public class GrilleDeJeuJPanel extends JPanel {
 		// Parcours de la grille pour initialiser chaque case.
 		for (int i = 0; i < TAILLE_GRILLE; i++)
 			for (int j = 0; j < TAILLE_GRILLE; j++)
-				grille[i][j] = new CaseJButton(grille_jeu, i, j);
+			{
+				Case case_model = grille_jeu.cases[i][j];
+				grille[i][j] = new CaseJButton(case_model);
+			}
 
 		// Initialisation de l'intitulé des lignes.
 		for (int i = 0; i < TAILLE_GRILLE; i++)
@@ -91,6 +92,16 @@ public class GrilleDeJeuJPanel extends JPanel {
 				else if (i != 0 && j != 0)
 					pGrille.add(grille[i - 1][j - 1]);
 			}
+	}
+
+	/**
+	 * Initialisation du listener de la grille.
+	 */
+	public void setCaseListener(ActionListener actionListener)
+	{
+		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
+			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
+				grille[i][j].addActionListener(actionListener);
 	}
 
 	// End of user code

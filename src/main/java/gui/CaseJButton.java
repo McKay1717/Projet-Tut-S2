@@ -7,7 +7,6 @@ package gui;
 import javax.swing.JButton;
 
 import engine.Case;
-import engine.GrilleJeux;
 
 // End of user code
 
@@ -26,16 +25,18 @@ public class CaseJButton extends JButton
 	// Start of user code (user defined attributes for CaseJButton)
 	public int x;				//Abscisse de la case.
 	public int y;				//Ordonnée de la case.
+	public Case case_model;
 	// End of user code
 
 	/**
 	 * The constructor.
 	 */
-	public CaseJButton(GrilleJeux grille_jeu, int x, int y)
+	public CaseJButton(Case case_model)
 	{
 		super();
-		this.x = x;
-		this.y = y;
+		this.case_model = case_model;
+		this.x = getX();
+		this.y = getY();
 	}
 
 	// Start of user code (user defined methods for CaseJButton)
