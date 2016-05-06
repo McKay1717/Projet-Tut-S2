@@ -17,8 +17,6 @@ public class GrilleJeux {
 	 * Description of the property cases.
 	 */
 	public Case[][] cases = new Case[10][10];
-	Equipe[] equipes = new Equipe[2];
-	int currentEquipe;
 
 	// Start of user code (user defined attributes for GrilleJeux)
 
@@ -30,15 +28,17 @@ public class GrilleJeux {
 	/**
 	 * Initialise le tableau de 100 case
 	 */
-	public GrilleJeux(int equipeID) {
+	public GrilleJeux() {
 		// Start of user code constructor for GrilleJeux)
 		super();
-		currentEquipe = equipeID;
+
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {
 				cases[x][y] = new Case(this, x, y);
 			}
 		}
+
+
 		// End of user code
 	}
 
@@ -52,14 +52,6 @@ public class GrilleJeux {
 	 */
 	public Case[][] getCases() {
 		return this.cases;
-	}
-
-	public Equipe[] getEquipes() {
-		return equipes;
-	}
-
-	public void setEquipes(Equipe[] equipes) {
-		this.equipes = equipes;
 	}
 
 }
