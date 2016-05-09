@@ -34,16 +34,10 @@ public class Equipe {
 	/**
 	 * The constructor.
 	 */
-	public Equipe(GrilleJeux gj) {
+	public Equipe() {
 		// Start of user code constructor for Equipe)
 		super();
-        this.gj = gj;
 
-        System.out.println("Choisissez un nom d'equipe " );
-        setNomEquipe(input.next());
-
-        //Declaration et placement des bateaux
-        bateaux[0] = new Torpilleur(getPlacementTorpilleur(),this);
 
         // End of user code
 	}
@@ -51,7 +45,7 @@ public class Equipe {
     * Placement du torpilleur
     *
      */
-    private Case[] getPlacementTorpilleur() {
+    Case[] getPlacementTorpilleur() {
         Case[] c = new Case[2];
         boolean alignement = false; //Il faut que les cases soit cote a cote pour placer le bateau
         int x, y;
@@ -199,6 +193,15 @@ public class Equipe {
 	@Override
 	public String toString() {
 		return "Equipe [nomEquipe=" + nomEquipe + ", bateaux=" + Arrays.toString(bateaux) + "]";
+	}
+	public GrilleJeux getGj() {
+		return gj;
+	}
+	public void setGj(GrilleJeux gj) {
+		this.gj = gj;
+	}
+	public void setBateaux(Bateaux[] bateaux) {
+		this.bateaux = bateaux;
 	}
 
 
