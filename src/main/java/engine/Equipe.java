@@ -15,8 +15,7 @@ import java.util.Scanner;
  * 
  * @author nicolas
  */
-public class Equipe {
-    static final Scanner input = new Scanner(System.in);
+public class Equipe {;
     //Grille de l'equipe
     GrilleJeux gj;
 
@@ -45,7 +44,7 @@ public class Equipe {
     * Placement du torpilleur
     *
      */
-    Case[] getPlacementTorpilleur() {
+    Case[] getPlacementTorpilleur(Scanner input) {
         Case[] c = new Case[2];
         boolean alignement = false; //Il faut que les cases soit cote a cote pour placer le bateau
         int x, y;
@@ -93,19 +92,10 @@ public class Equipe {
     * Fonction de tire
     *
      */
-    public void tire(Equipe e) {
-        int x, y;
+    public void tire(Equipe e, int x, int y) {
         System.out.println("Au tour de " + getNomEquipe());
         System.out.println("Tirer sur quel case ?");
-        x = input.nextInt();
-        y = input.nextInt();
 
-        //erreur si la case est deja touché
-        while(e.gj.cases[x][y].getTouche()){
-            System.out.println("Vous avez deja tirer sur cette case ?");
-            x = input.nextInt();
-            y = input.nextInt();
-        }
         e.gj.cases[x][y].setTouche(true);
 
         //Si la case contient un bateau

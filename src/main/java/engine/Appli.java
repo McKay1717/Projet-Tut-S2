@@ -22,14 +22,14 @@ public class Appli {
         System.out.println("Choisissez un nom d'equipe 2" );
         equipe2. setNomEquipe(input.next());
         
-        equipe1.getBateaux()[0] = new Torpilleur(equipe1.getPlacementTorpilleur(),equipe1);
-        equipe2.getBateaux()[0] = new Torpilleur(equipe2.getPlacementTorpilleur(),equipe2);
+        equipe1.getBateaux()[0] = new Torpilleur(equipe1.getPlacementTorpilleur(input),equipe1);
+        equipe2.getBateaux()[0] = new Torpilleur(equipe2.getPlacementTorpilleur(input),equipe2);
 
 
         while (equipe1.equipeEnVie() && equipe2.equipeEnVie()){
-            equipe1.tire(equipe2);
+            equipe1.tire(equipe2,input.nextInt(),input.nextInt());
             if(equipe2.equipeEnVie()) {
-                equipe2.tire(equipe1);
+                equipe2.tire(equipe1,input.nextInt(),input.nextInt());
             }
         }
         if (equipe1.equipeEnVie()){
