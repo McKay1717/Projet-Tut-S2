@@ -7,33 +7,52 @@ import java.io.*;
 // MP3, WMA, MPEG, WAV compatible
 
 public class Jukebox {
-    //Indiquer le rep ou se trouvent les son!!!!
+
+    //Rep ou ce trouve les fichiers audio
     private final String rep = "./BibliSonMP3/";
-    
-    
-    private final String[] listeMP3 = {"304.mp3","684.mp3","689.mp3","alarme1.mp3","coule.mp3","dansLeau.mp3","eau.mp3","estCoule.mp3","explosion.mp3","rocket.mp3","start.mp3","tirerate.mp3","touche.mp3"};
-    private final String[] nomSon = {"BruitBulle1","BruitBulle2","BruitBulle3","SousMarin","BruitCoule","TireDansEau","BruitEau","Couler","BruitExplosion","Fire","START","Plouf","Toucher"};
+
+    private final String[] listeMP3 = {"alarme1.mp3","coule.mp3","eau.mp3","explosion.mp3","rocket.mp3","start.mp3","shortrocket.mp3"};
+    private final int[][] secance = {{0},{1},{2},{3},{6},{4},{5},{6,3,1},{6,3},{6,2}};
+    private final String[] nomSon = {"SousMarin","Coule","Plouf","Explosion","LitleFire","Fire","Ouverture","COULER","TOUCHER","EAU"};
 
     public Jukebox(){
 
     }
 
-
     public void playSon(String nom){
         try {
-            //Initialisation
-            String path=new String("");
-
+            boolean trouve = false;
             //Compteur
-            int i;
+            int i,k;
 
             //Recherche du son
             for (i=0;i<nomSon.length;i++){
                 if(nomSon[i].equals(nom)){
-                    path=listeMP3[i];
+                    for (k=0;k<secance[i].length;k++){
+                        playSon(secance[i][k]);
+                    }
+                    trouve=true;
                     break;
                 }
             }
+            if(!trouve){
+                System.out.println("Utilisez les noms si dessous :");
+                System.out.println(this);
+            }
+
+        }catch (Exception e){
+            displayExeption(e);
+        }
+    }
+
+    public void playSon(int n){
+        try {
+            //Initialisation
+            String path=new String("");
+
+            //Recherche du son
+            path=listeMP3[n];
+
 
             //Creation de l'adresse
             path=rep+path;
@@ -119,7 +138,7 @@ public class Jukebox {
         int i;
 
         for (i=0;i<nomSon.length;i++){
-            chaine=chaine+nomSon[i]+" => "+ listeMP3[i]+"; ";
+            chaine=chaine+"<"+nomSon[i]+"> ";
         }
         return chaine;
     }
