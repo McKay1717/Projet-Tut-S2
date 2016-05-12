@@ -10,17 +10,23 @@ public class Jukebox {
 
     //Rep ou ce trouve les fichiers audio
     private final String rep = "./BibliSonMP3/";
+    
+    private boolean mute;
+    
+    private boolean isPlaying = false;
+    private AdvancedPlayer player = null;
 
     private final String[] listeMP3 = {"alarme1.mp3","coule.mp3","eau.mp3","explosion.mp3","rocket.mp3","start.mp3","shortrocket.mp3"};
     private final int[][] secance = {{0},{1},{2},{3},{6},{4},{5},{6,3,1},{6,3},{6,2}};
     private final String[] nomSon = {"SousMarin","Coule","Plouf","Explosion","LitleFire","Fire","Ouverture","COULER","TOUCHER","EAU"};
 
     public Jukebox(){
-
+        mute=false;
     }
 
     public void playSon(String nom){
-        try {
+        if(!mute){
+            try {
             boolean trouve = false;
             //Compteur
             int i,k;
@@ -43,10 +49,13 @@ public class Jukebox {
         }catch (Exception e){
             displayExeption(e);
         }
+        }
+        
     }
 
     public void playSon(int n){
-        try {
+        if(!mute){
+            try {
             //Initialisation
             String path=new String("");
 
@@ -63,11 +72,14 @@ public class Jukebox {
             play();
         }catch (Exception e){
             displayExeption(e);
+        }    
         }
+       
     }
 
     public void playSon(String nom,PlaybackListener listener){
-        try {
+        if(!mute){
+            try {
             //Initialisation
             String path=new String("");
 
@@ -93,6 +105,7 @@ public class Jukebox {
         }catch (Exception e){
             displayExeption(e);
         }
+        } 
     }
     
 
@@ -129,8 +142,7 @@ public class Jukebox {
         return isPlaying;
     }
 
-    private boolean isPlaying = false;
-    private AdvancedPlayer player = null;
+    
 
     public String toString(){
         String chaine = new String("");
@@ -149,6 +161,10 @@ public class Jukebox {
         for(i=0;i<nomSon.length;i++){
             playSon(nomSon[i]);
         }
+    }
+    
+    public void activeSon(boolean b){
+        mute=!b;
     }
 
     private void displayExeption(Exception e){
