@@ -110,7 +110,8 @@ public abstract class Bateaux {
 	 * @param newEstCoule 
 	 */
 	public void setEstCoule(boolean newEstCoule) {
-		this.estCoule = newEstCoule;
+		if (this.taille==(Case.length()).getTouche() && !Case.vide)
+			this.estCoule = newEstCoule;
 	}
 
 	/**

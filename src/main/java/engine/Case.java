@@ -114,7 +114,8 @@ public class Case {
 	 * @param newTouche 
 	 */
 	public void setTouche(boolean newTouche) {
-		this.touche = newTouche;
+		if (bateau.taille==(getTouche()) && !Case.vide)
+			this.touche = newTouche;
 	}
 
 	public int getX() {
