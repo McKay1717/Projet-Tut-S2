@@ -10,7 +10,7 @@ public class GroupListener
 	// Start of user code (user defined attributes for GrilleDeJeuJPanel)
 	public GrilleJeux grille_jeu;
 	public AccueilJFrame fenetre;
-	public CaseListener caseListener;
+	public CaseListener_Initialisation caseListener;
 	// End of user code
 
 	/**
@@ -20,7 +20,7 @@ public class GroupListener
 	{
 		this.grille_jeu = grille_jeu;
 		//fenetre = new AcceuilJFrame(this.grille_jeu);
-		caseListener = new CaseListener(grille_jeu, fenetre);
+		caseListener = new CaseListener_Initialisation(grille_jeu, fenetre);
 		//fenetre.affiche();
 	}
 }

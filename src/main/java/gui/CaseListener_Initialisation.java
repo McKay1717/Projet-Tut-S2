@@ -10,7 +10,7 @@ import java.awt.event.ActionListener;
 
 import engine.GrilleJeux;
 
-public class CaseListener implements ActionListener
+public class CaseListener_Initialisation implements ActionListener
 {
 	// Start of user code (user defined attributes for CaseListener)
 	public AccueilJFrame fenetre;
@@ -20,7 +20,7 @@ public class CaseListener implements ActionListener
 	/**
 	 * The constructor.
 	 */
-	public CaseListener(GrilleJeux grille_jeu, AccueilJFrame fenetre)
+	public CaseListener_Initialisation(GrilleJeux grille_jeu, AccueilJFrame fenetre)
 	{
 		this.grille_jeu = grille_jeu;
 		this.fenetre = fenetre;
@@ -32,7 +32,7 @@ public class CaseListener implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		// TODO Auto-generated method stub
+		
 	}
 
 	// End of user code
