@@ -1,8 +1,8 @@
-/*******************************************************************************
- * 2016, All rights reserved.
- *******************************************************************************/
 package gui;
+
 import javax.swing.*;
+import java.awt.event.*;
+
 
 /**
  * Description of MenuSuperieurJMenuBar.
@@ -10,8 +10,22 @@ import javax.swing.*;
  * @author guillaume
  */
 public class MenuSuperieurJMenuBar extends JMenuBar{
-    
+	//Chemin du repertoire des icones
+	static final String rep = "src/icone/";
 
+	//Dialog Message
+	private static final JOptionPane message = new JOptionPane();
+
+	//Message info
+	final String signature = new String("Projet informatique semestre 2"+System.getProperty("line.separator")+"(session 2015-2016)"+System.getProperty("line.separator")+"Programmé par :" +System.getProperty("line.separator")+"nom1"+System.getProperty("line.separator")+"nom2"+System.getProperty("line.separator")+"nom3" +System.getProperty("line.separator")+"nom3"+System.getProperty("line.separator")+"nom4"+System.getProperty("line.separator")+"nom5"+System.getProperty("line.separator")+"SALVI Tom" +System.getProperty("line.separator")+"LAROYENNE Guillaume");
+
+	//icone
+	private final ImageIcon iconeInfo = new ImageIcon(new ImageIcon(rep+"info.jpg").getImage().getScaledInstance(30,30,0));
+	private final ImageIcon iconeRestart = new ImageIcon(new ImageIcon(rep+"restart.png").getImage().getScaledInstance(25,25,0));
+	private final ImageIcon iconeSonOn = new ImageIcon(new ImageIcon(rep+"sonOn.jpg").getImage().getScaledInstance(30,30,0));
+	private final ImageIcon iconeSonOff = new ImageIcon(new ImageIcon(rep+"sonOff.jpg").getImage().getScaledInstance(30,30,0));
+	private final ImageIcon iconeStop = new ImageIcon(new ImageIcon(rep+"stop.png").getImage().getScaledInstance(25,25,0));
+	private final ImageIcon iconePause = new ImageIcon(new ImageIcon(rep+"pause.png").getImage().getScaledInstance(25,25,0));
 
 	//JMenu
 	private JMenu optionPlay;
@@ -38,9 +52,8 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 		initAttribut();
 		creerJMenuBar();
-
+		action();
 	}
-
 
 	private void initAttribut(){
 		//JMenu
@@ -57,20 +70,28 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemAudio2 = new JMenuItem("OFF");
 
 		itemInfo1 = new JMenuItem("Createurs");
-
 	}
 
 	private void creerJMenuBar(){
-		//Mise en plan du JMenu optionAudio
+
+		//Ajout des icones
+		itemOptionPlay1.setIcon(iconeStop);
+		itemOptionPlay2.setIcon(iconeRestart);
+		itemOptionPlay3.setIcon(iconePause);
+
+		itemAudio1.setIcon(iconeSonOn);
+		itemAudio2.setIcon(iconeSonOff);
+
+		itemInfo1.setIcon(iconeInfo);
+
+		//Mise en plan du JMenu
 		optionPlay.add(itemOptionPlay1);
 		optionPlay.add(itemOptionPlay2);
 		optionPlay.add(itemOptionPlay3);
 
-		//Mise en plan du JMenu audio
 		audio.add(itemAudio1);
 		audio.add(itemAudio2);
 
-		//Mise en plan du JMenu info
 		info.add(itemInfo1);
 
 		//Ajout dans le JMenuBar
@@ -79,4 +100,41 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		this.add(info);
 	}
 
+	private void action(){
+		itemInfo1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+				message.showMessageDialog( message,signature, "Information",  JOptionPane.INFORMATION_MESSAGE);
+			}
+		});
+
+		itemOptionPlay1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+
+			}
+		});
+
+		itemOptionPlay2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+
+			}
+		});
+
+		itemOptionPlay3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+
+			}
+		});
+
+		itemAudio1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+
+			}
+		});
+
+		itemAudio2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e){
+
+			}
+		});
+	}
 }
