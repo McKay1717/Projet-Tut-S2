@@ -4,6 +4,7 @@
 package engine;
 
 import java.util.Arrays;
+import java.util.Scanner;
 
 import engine.Equipe;
 // Start of user code (user defined imports)
@@ -51,6 +52,8 @@ public abstract class Bateaux {
 	public Bateaux(Case[] c, Equipe e) {
 		// Start of user code constructor for Bateaux)
 		super();
+		this.cases = c;
+		this.equipe = e;
 		// End of user code
 	}
 
@@ -110,8 +113,7 @@ public abstract class Bateaux {
 	 * @param newEstCoule 
 	 */
 	public void setEstCoule(boolean newEstCoule) {
-		if (this.taille==(Case.length()).getTouche() && !Case.vide)
-			this.estCoule = newEstCoule;
+		this.estCoule = newEstCoule;
 	}
 
 	/**
@@ -141,6 +143,8 @@ public abstract class Bateaux {
 		result = prime * result + taille;
 		return result;
 	}
+
+
 
 	@Override
 	public boolean equals(Object obj) {

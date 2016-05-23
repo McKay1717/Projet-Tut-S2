@@ -48,6 +48,9 @@ public class Case {
 	public Case(GrilleJeux gj, int x,int y) {
 		// Start of user code constructor for Case)
 		super();
+		grilleJeuxs = gj;
+		this.x = x;
+		this.y = y;
 		// End of user code
 	}
 
@@ -114,8 +117,21 @@ public class Case {
 	 * @param newTouche 
 	 */
 	public void setTouche(boolean newTouche) {
-		if (bateau.taille==(getTouche()) && !Case.vide)
-			this.touche = newTouche;
+		this.touche = newTouche;
+	}
+
+
+
+	/**
+	 * Lors du placement
+	 * Detecte les cases qui sont disponibles
+	 */
+
+	public boolean casePossible(Case[] c){
+		if(c.length == 1){
+
+		}
+		return true;
 	}
 
 	public int getX() {

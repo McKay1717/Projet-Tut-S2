@@ -30,11 +30,10 @@ public class GrilleJeux {
 	/**
 	 * Initialise le tableau de 100 case
 	 */
-	public GrilleJeux(int equipeID) {
+	public GrilleJeux() {
 		// Start of user code constructor for GrilleJeux)
 		
 		super();
-		currentEquipe = equipeID;
 
 		for (int x = 0; x < cases.length; x++) {
 			for (int y = 0; y < cases[x].length; y++) {

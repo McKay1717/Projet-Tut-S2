@@ -12,144 +12,223 @@ import java.util.Scanner;
 
 /**
  * Description of Equipe.
- * 
+ *
  * @author nicolas
  */
-public class Equipe {;
-    //Grille de l'equipe
-    GrilleJeux gj;
+public class Equipe {
 
-    private int CasesBateauNonToucher = 2;
+	//Grille de l'equipe
+	GrilleJeux gj;
+	//Si l'equipe a tirer dans le tour passage a true
+	static private boolean tirDisponible = false;
+
+	private int CasesBateauNonToucher = 4;
 	/**
 	 * Description of the property nomEquipe.
 	 */
-	 String nomEquipe = "";
+	String nomEquipe = "";
 
 	/**
 	 * Description of the property bateaux.
 	 */
-	 Bateaux[] bateaux = new Bateaux[5];
+	Bateaux[] bateaux = new Bateaux[5];
 
 	/**
 	 * The constructor.
 	 */
-	public Equipe() {
+	public Equipe(GrilleJeux _gj){
 		// Start of user code constructor for Equipe)
 		super();
-
-
-        // End of user code
+		this.gj = _gj;
+		// End of user code
 	}
-    /*
-    * Placement du torpilleur
-    *
-     */
-    Case[] getPlacementTorpilleur(Scanner input) {
-        Case[] c = new Case[2];
-        boolean alignement = false; //Il faut que les cases soit cote a cote pour placer le bateau
-        int x, y;
-        for ( int i =0 ; i < 2; i++){
-            System.out.println("Entrez x et y");
-            x = input.nextInt();
-            y = input.nextInt();
 
-            //pour la premiere partie, verifié si la case est vide
-            if (i == 0) {
-                while (!this.gj.cases[x][y].getVide()){
-                    System.out.println("Coordonnée non valide en [" + x + "][" + y + "]");
-                    System.out.println("Entrez x et y");
-                    x = input.nextInt();
-                    y = input.nextInt();
-                }
-            } else {
-                //Verifié que la seconde case est a coté de la premiere
-                do  {
-                    if (((x == (c[0].getX() - 1) && y == (c[0].getY())) || (x == (c[0].getX() + 1) && y == (c[0].getY()))
-                            || (x == (c[0].getX()) && y == (c[0].getY() - 1)) || (x == (c[0].getX()) && y == (c[0].getY() + 1)))
-                            && this.gj.cases[x][y].getVide()) {
-                        alignement = true;
-                    } else {
-                        System.out.println("Coordonner en [" + x + "][" + y + "] non valide");
-                        System.out.println("Entrez x et y");
-                        System.out.println(c[0].getX() + " " + c[0].getY());
 
-                        x = input.nextInt();
-                        y = input.nextInt();
-                    }
-                } while(!alignement);
-            }
-            //attribuer les coordonnées au bateau
-            c[i] = new Case(this.gj, x, y);
-            c[0].setX(x);
-            c[0].setY(y);
-            this.gj.cases[x][y].setVide(false);
-        }
-
-        return c;
-    }
-
-    /*
+	/*
     * Fonction de tire
     *
      */
-    public void tire(Equipe e, int x, int y) {
-        System.out.println("Au tour de " + getNomEquipe());
-        System.out.println("Tirer sur quel case ?");
+	public void tire(Equipe e, int x, int y) {
+		//Si la case contient un bateau
+		if (!e.gj.cases[x][y].getVide()) {
+			e.CasesBateauNonToucher--;
+			e.bateaux[4].setTaille(e.bateaux[4].getTaille() - 1);
+			System.out.println(" Touché !");
+			e.gj.cases[x][y].setTouche(true);
+			//si le bateau est coulé (taille = 0)
+			if (e.bateaux[4].getTaille() == 0) {
+				e.bateaux[4].setEstCoule(true);
+				System.out.println(" Coulé !");
+			}
+		} else {
+			//Si il n'y a rien
+			System.out.println("Raté !");
 
-        e.gj.cases[x][y].setTouche(true);
-
-        //Si la case contient un bateau
-        if(!e.gj.cases[x][y].getVide()){
-            e.CasesBateauNonToucher--;
-            e.bateaux[0].setTaille(e.bateaux[0].getTaille() - 1);
-            System.out.println(" Touché !");
-            e.gj.cases[x][y].setTouche(false);
-            //si le bateau est coulé (taille = 0)
-            if(e.bateaux[0].getTaille() == 0) {
-                e.bateaux[0].setEstCoule(true);
-                System.out.print(" Coulé !");
-            }
-        } else {
-            //Si il n'y a rien
-            System.out.println("Raté !");
-        }
-    }
+		}
+	}
 
 
-    // Start of user code (user defined methods for Equipe)
+	// Start of user code (user defined methods for Equipe)
+	/*
+   * Placement du torpilleur
+   *
+    */
+	public Case[] setPlacement(Scanner input, int taille) {
+		Case[] c = new Case[taille];
+		int x, y;
+		int i = 0;
+		//initialisation de la case [0]
+		System.out.println("Case 1 : Entrez x et y : ");
+		x = input.nextInt();
+		y = input.nextInt();			//vérification que la case choisis se trouve dans le tableau 
+		while (!(verification(this, x, y)) || !(this.gj.cases[x][y].getVide())){
+			System.out.println("Case 1 : Entrez x et y : ");
+			x = input.nextInt();
+			y = input.nextInt();
+		}
+		this.gj.cases[x][y].setVide(false);
+		c[0] = new Case(this.gj,x,y);
+		//intialisation de la case [1]
+		System.out.println("Case 2 : Entrez x et y : ");
+		x = input.nextInt();
+		y = input.nextInt();  			//vérification que la case choisis se trouve a coté de la première et qu'elle se trouve dans le tableau .
+		while (!(verification(this, x, y)) || !(verification_adjacent_case2(this, x, y ,c ))|| !(this.gj.cases[x][y].getVide())){
+			System.out.println("Erreur.");
+			System.out.println("Case 2 : Entrez x et y : ");
+			x = input.nextInt();
+			y = input.nextInt();
+		}
+		c[1] = new Case(this.gj,x,y);
+		this.gj.cases[x][y].setVide(false);
+
+		for (i = 2; i < taille -1; i++){
+			if (c[0].getX() == c[1].getX()){
+				System.out.println("Case "+(i+1)+" : Entrez y : ");
+				y = input.nextInt();
+				while (!(verification(this, x, y)) || !(this.gj.cases[x][y].getVide()) || !(verification_adjacent_y(this, x, y ,c ,i))){
+					System.out.println("Erreur.");
+					System.out.println("Case "+(i+1)+" : Entrez y : ");
+					y = input.nextInt();
+				}
+			}
+			else if (c[0].getY() == c[1].getY()){
+				System.out.println("Case "+(i+1)+" : Entrez x : ");
+				x = input.nextInt();
+				while (!(verification(this, x, y)) || !(this.gj.cases[x][y].getVide()) || !(verification_adjacent_x(this, x, y ,c ,i))){
+					System.out.println("Erreur.");
+					System.out.println("Case " + (i + 1) + " : Entrez x : ");
+					x = input.nextInt();
+				}
+			}
+			c[i] = new Case(this.gj,x,y);
+			this.gj.cases[x][y].setVide(false);
+		}
+		return c;
+	}
+
+
+	protected boolean verification(Equipe e,int a, int b){
+		if(a >= 0 && a <= 9 && b >= 0 && b <= 9){
+			if(!e.gj.cases[a][b].getTouche())
+				return true;
+		}
+		return false;
+	}
+
+	protected boolean verification_adjacent_case2(Equipe e,int x, int y,Case c[]){
+		boolean bool=false;
+		if (( x == (c[0].getX() +1) &&  y == (c[0].getY())) ||
+			(x == (c[0].getX() -1) && y == (c[0].getY())) ||
+			(x == (c[0].getX()) &&  y == (c[0].getY() +1)) ||
+			(x == (c[0].getX() ) &&  y == (c[0].getY() -1 ))
+			){
+			if(!e.gj.cases[x][y].getTouche()) {
+				bool= true;
+			}
+		}
+		return bool;
+	}
+
+	protected boolean verification_adjacent_x(Equipe e,int x, int y,Case c[],int taille){
+		boolean bool=false;
+		int i;
+		int min=c[0].getX();
+		int max=c[0].getX();
+		for (i=0 ; i< c.length -1; i++){
+			if (c[i].getX() > max) max= c[i].getX();
+			else if (c[i].getX() < min) min= c[i].getX();
+		}
+		if ( x == (min +1) ||  x == (min -1) || x == (max+1) || x== max-1 ){
+			if(!e.gj.cases[x][y].getTouche()) {
+				bool= true;
+			}
+		}
+		return bool;
+	}
+
+	protected boolean verification_adjacent_y(Equipe e,int x, int y,Case c[],int taille){
+		boolean bool=false;
+		int i;
+		int min=c[0].getY();
+		int max=c[0].getY();
+		for (i=0 ; i< taille; i++){
+			if (c[i].getY() > max){
+				max= c[i].getY();
+			}
+			else if (c[i].getY() < min){
+				min= c[i].getY();
+			}
+		}
+		if ( y == (min +1) ||  y == (min -1) || y == (max+1) || y == (max-1) ){
+			if(!e.gj.cases[x][y].getTouche()) {
+				bool= true;
+			}
+		}
+		return bool;
+	}
+
 
 	// End of user code
 	/**
 	 * Returns nomEquipe.
-	 * @return nomEquipe 
+	 * @return nomEquipe
 	 */
 	public String getNomEquipe() {
 		return this.nomEquipe;
 	}
 
 	/**
-	 * Sets a value to attribute nomEquipe. 
-	 * @param newNomEquipe 
+	 * Sets a value to attribute nomEquipe.
+	 * @param newNomEquipe
 	 */
 	public void setNomEquipe(String newNomEquipe) {
 		this.nomEquipe = newNomEquipe;
 	}
 
+	public boolean getPeuxTirer(){
+		return tirDisponible;
+	}
+
+	public void setPeuxTirer(boolean tirDisponible){
+		this.tirDisponible=tirDisponible;
+	}
+
 	/**
 	 * Returns bateaux.
-	 * @return bateaux 
+	 * @return bateaux
 	 */
 	public Bateaux[] getBateaux() {
 		return this.bateaux;
 	}
-	
+
 	public boolean equipeEnVie()
 	{
-        if(this.CasesBateauNonToucher == 0) {
-            return false;
-        }
+		if(this.CasesBateauNonToucher == 0) {
+			return false;
+		}
 		return true;
 	}
+
 
 
 	@Override
