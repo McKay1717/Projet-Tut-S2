@@ -18,6 +18,7 @@ public class App {
 
 		javax.swing.SwingUtilities.invokeLater(new Runnable() {
 			public void run() {
+				/*
 				Equipe equipes1 = new Equipe();
 				Equipe equipes2 = new Equipe();
 				Equipe[] equipes = new Equipe[] { equipes1, equipes2 };
@@ -27,6 +28,7 @@ public class App {
 				gj2.setEquipes(equipes);
 				// Controleur GUI ?
 				// ControlGroup control = new ControlGroup(model);
+				*/
 			}
 		});
 	}

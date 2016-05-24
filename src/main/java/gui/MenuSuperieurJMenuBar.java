@@ -1,6 +1,7 @@
 package gui;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.*;
 
 
@@ -21,11 +22,11 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 	//icone
 	private final ImageIcon iconeInfo = new ImageIcon(new ImageIcon(rep+"info.jpg").getImage().getScaledInstance(30,30,0));
-	private final ImageIcon iconeRestart = new ImageIcon(new ImageIcon(rep+"restart.png").getImage().getScaledInstance(25,25,0));
+	private final ImageIcon iconeRestart = new ImageIcon(new ImageIcon(rep+"restart.png").getImage().getScaledInstance(30,30,0));
 	private final ImageIcon iconeSonOn = new ImageIcon(new ImageIcon(rep+"sonOn.jpg").getImage().getScaledInstance(30,30,0));
 	private final ImageIcon iconeSonOff = new ImageIcon(new ImageIcon(rep+"sonOff.jpg").getImage().getScaledInstance(30,30,0));
-	private final ImageIcon iconeStop = new ImageIcon(new ImageIcon(rep+"stop.png").getImage().getScaledInstance(25,25,0));
-	private final ImageIcon iconePause = new ImageIcon(new ImageIcon(rep+"pause.png").getImage().getScaledInstance(25,25,0));
+	private final ImageIcon iconeStop = new ImageIcon(new ImageIcon(rep+"stop.png").getImage().getScaledInstance(30,30,0));
+	private final ImageIcon iconePause = new ImageIcon(new ImageIcon(rep+"pause.png").getImage().getScaledInstance(30,30,0));
 
 	//JMenu
 	private JMenu optionPlay;
@@ -83,6 +84,14 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemAudio2.setIcon(iconeSonOff);
 
 		itemInfo1.setIcon(iconeInfo);
+
+		//Color
+		itemAudio1.setBackground(Color.white);
+		itemAudio2.setBackground(Color.white);
+		itemInfo1.setBackground(Color.white);
+		itemOptionPlay1.setBackground(Color.white);
+		itemOptionPlay2.setBackground(Color.white);
+		itemOptionPlay3.setBackground(Color.white);
 
 		//Mise en plan du JMenu
 		optionPlay.add(itemOptionPlay1);

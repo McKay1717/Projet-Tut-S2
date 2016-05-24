@@ -2,7 +2,7 @@
  * Created by guillaume on 10/05/16.
  */
 package engine.Jukebox;
-import engine.Jukebox.javazoom.jl.player.advanced.*;
+import javazoom.jl.player.advanced.*;
 import java.io.*;
 
 // MP3, WMA, MPEG, WAV compatible

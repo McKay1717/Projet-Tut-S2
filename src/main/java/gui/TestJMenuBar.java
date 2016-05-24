@@ -1,7 +1,7 @@
 /**
  * Created by guillaume on 08/05/16.
  */
-
+package gui;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
