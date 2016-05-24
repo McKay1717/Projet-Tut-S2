@@ -17,18 +17,18 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.player.advanced;
+package engine.Jukebox.javazoom.jl.player.advanced;
 
 import java.io.InputStream;
 
-import javazoom.jl.decoder.Bitstream;
-import javazoom.jl.decoder.BitstreamException;
-import javazoom.jl.decoder.Decoder;
-import javazoom.jl.decoder.Header;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.decoder.SampleBuffer;
-import javazoom.jl.player.AudioDevice;
-import javazoom.jl.player.FactoryRegistry;
+import engine.Jukebox.javazoom.jl.decoder.Bitstream;
+import engine.Jukebox.javazoom.jl.decoder.BitstreamException;
+import engine.Jukebox.javazoom.jl.decoder.Decoder;
+import engine.Jukebox.javazoom.jl.decoder.Header;
+import engine.Jukebox.javazoom.jl.decoder.JavaLayerException;
+import engine.Jukebox.javazoom.jl.decoder.SampleBuffer;
+import engine.Jukebox.javazoom.jl.player.AudioDevice;
+import engine.Jukebox.javazoom.jl.player.FactoryRegistry;
 
 /**
  * a hybrid of javazoom.jl.player.Player tweeked to include <code>play(startFrame, endFrame)</code>

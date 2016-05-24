@@ -17,7 +17,7 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.player.advanced;
+package engine.Jukebox.javazoom.jl.player.advanced;
 
 /**
  * An event which indicates a <code>Player</code> has performed an 'playback action'

@@ -17,7 +17,7 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.player.advanced;
+package engine.Jukebox.javazoom.jl.player.advanced;
 
 import java.io.BufferedInputStream;
 import java.io.File;
@@ -25,7 +25,7 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
 
-import javazoom.jl.decoder.JavaLayerException;
+import engine.Jukebox.javazoom.jl.decoder.JavaLayerException;
 
 /**
  * This class implements a sample player using Playback listener.
