@@ -23,7 +23,7 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.decoder;
+package engine.Jukebox.javazoom.jl.decoder;
 
 /**
  * The <code>SampleBuffer</code> class implements an output buffer

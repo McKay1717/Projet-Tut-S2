@@ -18,7 +18,7 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.decoder;
+package engine.Jukebox.javazoom.jl.decoder;
 
 /**
  * Exception erorr codes for components of the JavaLayer API.

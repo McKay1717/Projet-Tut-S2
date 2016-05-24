@@ -37,7 +37,7 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.decoder;
+package engine.Jukebox.javazoom.jl.decoder;
 
 /**
  * Class to implements Huffman decoder.

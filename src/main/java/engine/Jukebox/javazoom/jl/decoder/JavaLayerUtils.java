@@ -18,7 +18,7 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.decoder;
+package engine.Jukebox.javazoom.jl.decoder;
 
 import java.io.IOException;
 import java.io.InputStream;

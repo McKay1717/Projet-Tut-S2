@@ -18,12 +18,12 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.player;
+package engine.Jukebox.javazoom.jl.player;
 
 import java.util.Enumeration;
 import java.util.Hashtable;
 
-import javazoom.jl.decoder.JavaLayerException;
+import engine.Jukebox.javazoom.jl.decoder.JavaLayerException;
 
 /**
  * The <code>FactoryRegistry</code> class stores the factories

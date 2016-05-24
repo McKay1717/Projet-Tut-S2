@@ -11,7 +11,7 @@ import java.awt.event.*;
  */
 public class MenuSuperieurJMenuBar extends JMenuBar{
 	//Chemin du repertoire des icones
-	static final String rep = "src/icone/";
+	static final String rep = "src/main/java/gui/icone/";
 
 	//Dialog Message
 	private static final JOptionPane message = new JOptionPane();

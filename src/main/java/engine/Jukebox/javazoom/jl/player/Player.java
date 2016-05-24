@@ -18,16 +18,16 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.player;
+package engine.Jukebox.javazoom.jl.player;
 
 import java.io.InputStream;
 
-import javazoom.jl.decoder.Bitstream;
-import javazoom.jl.decoder.BitstreamException;
-import javazoom.jl.decoder.Decoder;
-import javazoom.jl.decoder.Header;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.decoder.SampleBuffer;
+import engine.Jukebox.javazoom.jl.decoder.Bitstream;
+import engine.Jukebox.javazoom.jl.decoder.BitstreamException;
+import engine.Jukebox.javazoom.jl.decoder.Decoder;
+import engine.Jukebox.javazoom.jl.decoder.Header;
+import engine.Jukebox.javazoom.jl.decoder.JavaLayerException;
+import engine.Jukebox.javazoom.jl.decoder.SampleBuffer;
 	
 /**
  * The <code>Player</code> class implements a simple player for playback

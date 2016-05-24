@@ -18,7 +18,7 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.decoder;
+package engine.Jukebox.javazoom.jl.decoder;
 
 /**
  * The <code>DecoderException</code> represents the class of

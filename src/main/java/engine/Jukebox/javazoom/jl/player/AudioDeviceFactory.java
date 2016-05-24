@@ -18,9 +18,9 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.player;
+package engine.Jukebox.javazoom.jl.player;
 
-import javazoom.jl.decoder.JavaLayerException;
+import engine.Jukebox.javazoom.jl.decoder.JavaLayerException;
 
 /**
  * An <code>AudioDeviceFactory</code> class is responsible for creating

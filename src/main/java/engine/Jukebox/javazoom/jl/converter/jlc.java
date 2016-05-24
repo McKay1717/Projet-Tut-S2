@@ -26,13 +26,13 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.converter;
+package engine.Jukebox.javazoom.jl.converter;
 
 import java.io.PrintWriter;
 
-import javazoom.jl.decoder.Crc16;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.decoder.OutputChannels;
+import engine.Jukebox.javazoom.jl.decoder.Crc16;
+import engine.Jukebox.javazoom.jl.decoder.JavaLayerException;
+import engine.Jukebox.javazoom.jl.decoder.OutputChannels;
 
 /**
  * The <code>jlc</code> class presents the JavaLayer

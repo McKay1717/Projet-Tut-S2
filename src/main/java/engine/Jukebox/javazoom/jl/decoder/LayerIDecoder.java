@@ -22,7 +22,7 @@
  *----------------------------------------------------------------------
  */
  
-package javazoom.jl.decoder;
+package engine.Jukebox.javazoom.jl.decoder;
 
 /**
  * Implements decoding of MPEG Audio Layer I frames. 

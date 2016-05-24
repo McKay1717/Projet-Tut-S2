@@ -18,10 +18,10 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.player;
+package engine.Jukebox.javazoom.jl.player;
 
-import javazoom.jl.decoder.Decoder;
-import javazoom.jl.decoder.JavaLayerException;
+import engine.Jukebox.javazoom.jl.decoder.Decoder;
+import engine.Jukebox.javazoom.jl.decoder.JavaLayerException;
 
 /**
  * The <code>AudioDeviceBase</code> class provides a simple thread-safe

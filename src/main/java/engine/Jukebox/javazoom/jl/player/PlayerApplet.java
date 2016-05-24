@@ -18,14 +18,14 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.player;
+package engine.Jukebox.javazoom.jl.player;
 
 import java.applet.Applet;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
 
-import javazoom.jl.decoder.JavaLayerException;
+import engine.Jukebox.javazoom.jl.decoder.JavaLayerException;
 
 /**
  * A simple applet that plays an MPEG audio file. 

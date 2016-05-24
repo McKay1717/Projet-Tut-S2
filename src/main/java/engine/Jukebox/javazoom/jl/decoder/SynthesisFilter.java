@@ -28,7 +28,7 @@
  *   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
  *----------------------------------------------------------------------
  */
-package javazoom.jl.decoder;
+package engine.Jukebox.javazoom.jl.decoder;
 
 import java.io.IOException;
 

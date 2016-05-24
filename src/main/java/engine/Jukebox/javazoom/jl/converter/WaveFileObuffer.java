@@ -23,9 +23,9 @@
  *----------------------------------------------------------------------
  */
 
-package javazoom.jl.converter;
+package engine.Jukebox.javazoom.jl.converter;
 
-import javazoom.jl.decoder.Obuffer;
+import engine.Jukebox.javazoom.jl.decoder.Obuffer;
 
 /**
  * Implements an Obuffer by writing the data to

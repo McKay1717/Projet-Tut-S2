@@ -1,7 +1,8 @@
 /**
  * Created by guillaume on 10/05/16.
  */
-import javazoom.jl.player.advanced.*;
+package engine.Jukebox;
+import engine.Jukebox.javazoom.jl.player.advanced.*;
 import java.io.*;
 
 // MP3, WMA, MPEG, WAV compatible
@@ -9,7 +10,7 @@ import java.io.*;
 public class Jukebox {
 
     //Rep ou ce trouve les fichiers audio
-    private final String rep = "./BibliSonMP3/";
+    private final String rep = "src/main/java/engine/Jukebox/BibliSonMP3/";
     
     private boolean mute;
     
