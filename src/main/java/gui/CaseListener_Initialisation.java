@@ -102,6 +102,16 @@ public class CaseListener_Initialisation implements ActionListener
 		else if (position[0] == TAILLE_GRILLE - 2 || position[0] == TAILLE_GRILLE - 1)
 			for (int i = TAILLE_GRILLE - bateauJButton.length , j = 0 ; i < TAILLE_GRILLE ; i++ , j++)
 				((GrilleDeJeuJPanel) fenetre.jPanel).grille[i][position[1]] = bateauJButton[j];
+		else if (bateauJButton.length % 2 != 0)
+			for (int i = -bateauJButton.length / 2 , j = 0 ; i <= bateauJButton.length / 2 ; i++ , j++)
+				((GrilleDeJeuJPanel) fenetre.jPanel).grille[position[0] + i][position[1]] = bateauJButton[j];
+		else
+			for (int i = -bateauJButton.length / 2 , j = 0 ; i < bateauJButton.length / 2 ; i++ , j++)
+				((GrilleDeJeuJPanel) fenetre.jPanel).grille[position[0] + i][position[1]] = bateauJButton[j];
+
+		BateauJButton[] save = bateauJButton;
+		for (int i = 0 , j = bateauJButton.length - 1 ; i < bateauJButton.length ; i++ , j--)
+			bateauJButton[i] = save[j];
 	}
 
 	// End of user code
