@@ -4,6 +4,7 @@
 package gui;
 
 import javax.swing.JFrame;
+import javax.swing.JPanel;
 
 // Start of user code (user defined imports)
 
@@ -14,20 +15,22 @@ import javax.swing.JFrame;
  * 
  * @author nicolas
  */
-public class AccueilJFrame extends JFrame {
+public class AccueilJFrame extends JFrame
+{
 	// Start of user code (user defined attributes for AcueilleJFrame)
-
+	JPanel						jPanel;
 	// End of user code
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 6984202546554955770L;
+	private static final long	serialVersionUID	= 6984202546554955770L;
 
 	/**
 	 * The constructor.
 	 */
-	public AccueilJFrame() {
+	public AccueilJFrame()
+	{
 		// Start of user code constructor for AcueilleJFrame)
 		super();
 		// End of user code
