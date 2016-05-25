@@ -40,11 +40,19 @@ public class CaseListener_Initialisation implements ActionListener
 		{
 			int[] position = case_appelee(e);
 			if (!bateauJButton.equals(null))
-				place_bateau(position);
+			{
+				if (!est_en_ligne(position, e))
+				{
+					place_bateau(position);
+					bateauJButton = null;
+				}
+				else
+					retourne_bateau(position);
+			}
 		}
 	}
 
-	public int[] case_appelee(ActionEvent e)
+	private int[] case_appelee(ActionEvent e)
 	{
 		int[] position = new int[2];
 
@@ -59,7 +67,18 @@ public class CaseListener_Initialisation implements ActionListener
 		return position;
 	}
 
-	public void place_bateau(int[] position)
+	private boolean est_en_ligne(int[] position, ActionEvent e)
+	{
+		if (position[1] != 0)
+			if (((GrilleDeJeuJPanel) fenetre.jPanel).grille[position[0]][position[1] - 1] instanceof BateauJButton)
+				return true;
+		if (position[1] != TAILLE_GRILLE - 1)
+			if (((GrilleDeJeuJPanel) fenetre.jPanel).grille[position[0]][position[1] + 1] instanceof BateauJButton)
+				return true;
+		return false;
+	}
+
+	private void place_bateau(int[] position)
 	{
 		if (position[1] == 0 || position[1] == 1)
 			for (int i = 0 ; i < bateauJButton.length ; i++)
@@ -73,6 +92,16 @@ public class CaseListener_Initialisation implements ActionListener
 		else
 			for (int i = -bateauJButton.length / 2 , j = 0 ; i < bateauJButton.length / 2 ; i++ , j++)
 				((GrilleDeJeuJPanel) fenetre.jPanel).grille[position[0]][position[1] + i] = bateauJButton[j];
+	}
+
+	private void retourne_bateau(int[] position)
+	{
+		if (position[0] == 0 || position[0] == 1)
+			for (int i = 0 ; i < bateauJButton.length ; i++)
+				((GrilleDeJeuJPanel) fenetre.jPanel).grille[i][position[1]] = bateauJButton[i];
+		else if (position[0] == TAILLE_GRILLE - 2 || position[0] == TAILLE_GRILLE - 1)
+			for (int i = TAILLE_GRILLE - bateauJButton.length , j = 0 ; i < TAILLE_GRILLE ; i++ , j++)
+				((GrilleDeJeuJPanel) fenetre.jPanel).grille[i][position[1]] = bateauJButton[j];
 	}
 
 	// End of user code
