@@ -1,9 +1,10 @@
 /*******************************************************************************
  * 2016, All rights reserved.
  *******************************************************************************/
-package gui;
+package listener;
 
 import engine.GrilleJeux;
+import gui.AccueilJFrame;
 
 public class GroupListener
 {

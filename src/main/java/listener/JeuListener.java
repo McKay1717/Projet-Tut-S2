@@ -1,4 +1,4 @@
-package gui;
+package listener;
 
 import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
 
@@ -9,6 +9,9 @@ import javax.swing.JButton;
 
 import engine.Case;
 import engine.GrilleJeux;
+import gui.AccueilJFrame;
+import gui.BateauJButton;
+import gui.GrilleDeJeuJPanel;
 
 public class JeuListener implements ActionListener
 {
@@ -17,7 +20,7 @@ public class JeuListener implements ActionListener
 
 	public JeuListener(AccueilJFrame fenetre, GrilleJeux grilleJeux)
 	{
-		this.grille = ((GrilleDeJeuJPanel) fenetre.jPanel).grille;
+		this.grille = ((GrilleDeJeuJPanel) fenetre.getjPanel()).grille;
 		grille_model = grilleJeux.getCases();
 	}
 
@@ -26,7 +29,13 @@ public class JeuListener implements ActionListener
 	{
 		int[] position = case_appelee(e);
 
-		grille_model[position[0]][position[1]].setTouche(true);
+		if (!grille_model[position[0]][position[1]].getTouche())
+			grille_model[position[0]][position[1]].setTouche(true);
+		
+		if (grille[position[0]][position[1]] instanceof BateauJButton)
+		{
+			
+		}
 	}
 
 	private int[] case_appelee(ActionEvent e)

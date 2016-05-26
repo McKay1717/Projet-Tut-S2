@@ -18,7 +18,7 @@ import javax.swing.JPanel;
 public class AccueilJFrame extends JFrame
 {
 	// Start of user code (user defined attributes for AcueilleJFrame)
-	JPanel						jPanel;
+	private JPanel						jPanel;
 	// End of user code
 
 	/**
@@ -34,6 +34,16 @@ public class AccueilJFrame extends JFrame
 		// Start of user code constructor for AcueilleJFrame)
 		super();
 		// End of user code
+	}
+
+	public JPanel getjPanel()
+	{
+		return jPanel;
+	}
+
+	public void setjPanel(JPanel jPanel)
+	{
+		this.jPanel = jPanel;
 	}
 
 	// Start of user code (user defined methods for AcueilleJFrame)
