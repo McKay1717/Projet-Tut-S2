@@ -3,14 +3,16 @@
  *******************************************************************************/
 package gui;
 
+import engine.*;
+
 import javax.swing.*;
 
 
 public class BateauJButton extends JButton{
 	// Start of user code (user defined attributes for BateauJButton)
-	public String[] tblTypeBateau = {"PorteAvion","Croiseur","ContretTorpilleur","Torpilleur","Topilleur"};
 	public String typeBateau;
 	public int nbSelection;
+	public int taille;
 	// End of user code
 
 	private static final long serialVersionUID = 6321877984607297289L;
@@ -31,31 +33,37 @@ public class BateauJButton extends JButton{
 	}
 
 	public void estPorteAvion() {
-		//this.typeBateau=tblTypeBateau[0];
+
+		taille = new PorteAvion().getTaille();
+
 		//futur attribu du bouton
 		this.nbSelection = 1;
 	}
 
 	public void estCroiseur() {
-		//this.typeBateau=tblTypeBateau[1];
+
+		taille = new Croiseur().getTaille();
 		//futur attribu du bouton
 		this.nbSelection = 1;
 	}
 
 	public void estContretTorpilleur() {
-		//this.typeBateau=tblTypeBateau[2];
+
+		taille = new ContretTorpilleur().getTaille();
 		//futur attribu du bouton
 		this.nbSelection = 1;
 	}
 
 	public void estTorpilleur() {
-		//this.typeBateau=tblTypeBateau[3];
+
+		taille = new Torpilleur().getTaille();
 		//futur attribu du bouton
 		this.nbSelection = 2;
 	}
 
 	public void estSousMarin() {
-		//this.typeBateau=tblTypeBateau[4];
+
+		taille = new SousMarin().getTaille();
 		//futur attribu du bouton
 		this.nbSelection = 1;
 	}
