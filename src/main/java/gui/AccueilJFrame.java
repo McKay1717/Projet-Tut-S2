@@ -3,11 +3,10 @@
  *******************************************************************************/
 package gui;
 
+import javax.swing.*;
+
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
 
 // Start of user code (user defined imports)
 
@@ -22,21 +21,36 @@ public class AccueilJFrame extends JFrame
 {
 	// Start of user code (user defined attributes for AccueilJFrame)
 	private JPanel				jPanel;
+
 	// End of user code
 
-	/**
-	 * 
-	 */
 	private static final long	serialVersionUID	= 6984202546554955770L;
 
-	/**
-	 * The constructor.
-	 */
 	public AccueilJFrame()
 	{
 		// Start of user code constructor for AccueilJFrame)
 		super();
+
+		FramWidget();
+
+		setSize(400,400);                                // Fixe la taille par défaut
+		setLocationRelativeTo(null);                     //position de la fenetre sur l'ordi
+		setVisible(true);                                // Affiche la fenetre
+		setTitle("Battle-Nav Menu");                       //donne un titre au jFrame
+		//setIconImage(...)                              //associer une icon a la fenetre
+		setResizable(false);                             //empaiche la redimention du JFrame
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);  // Gestion de la fermeture
 		// End of user code
+	}
+
+	public void FramWidget(){
+
+		AccueilJFrame fAccueil = new AccueilJFrame();
+
+
+
+
+		///setContentPane(...);
 	}
 
 	// Start of user code (user defined methods for AccueilJFrame)
@@ -55,6 +69,10 @@ public class AccueilJFrame extends JFrame
 	{
 		showMessageDialog(this, message, "Erreur", ERROR_MESSAGE);
 	}
+
+
+
+
 
 	// End of user code
 
