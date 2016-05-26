@@ -11,6 +11,7 @@ import engine.Case;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.BateauJButton;
+import gui.CaseJButton;
 import gui.GrilleDeJeuJPanel;
 
 public class JeuListener implements ActionListener
@@ -31,11 +32,18 @@ public class JeuListener implements ActionListener
 
 		if (!grille_model[position[0]][position[1]].getTouche())
 			grille_model[position[0]][position[1]].setTouche(true);
-		
-		if (grille[position[0]][position[1]] instanceof BateauJButton)
+
+		if (grille[position[0]][position[1]] instanceof CaseJButton)
 		{
-			
+			// Image d'une case vide touchée.
 		}
+		else if (grille[position[0]][position[1]] instanceof BateauJButton)
+		{
+			// Si le bateau est touché, une image de feu ou autre.
+			// Si le bateau est coulé, apparition du bateau coulé à l'écran.
+		}
+
+		// Passage à la seconde grille.
 	}
 
 	private int[] case_appelee(ActionEvent e)

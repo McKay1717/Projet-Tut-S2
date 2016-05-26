@@ -3,6 +3,9 @@
  *******************************************************************************/
 package gui;
 
+import static javax.swing.JOptionPane.ERROR_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
@@ -11,14 +14,14 @@ import javax.swing.JPanel;
 // End of user code
 
 /**
- * Description of AcueilleJFrame.
+ * Description of AccueilJFrame.
  * 
  * @author nicolas
  */
 public class AccueilJFrame extends JFrame
 {
-	// Start of user code (user defined attributes for AcueilleJFrame)
-	private JPanel						jPanel;
+	// Start of user code (user defined attributes for AccueilJFrame)
+	private JPanel				jPanel;
 	// End of user code
 
 	/**
@@ -31,10 +34,12 @@ public class AccueilJFrame extends JFrame
 	 */
 	public AccueilJFrame()
 	{
-		// Start of user code constructor for AcueilleJFrame)
+		// Start of user code constructor for AccueilJFrame)
 		super();
 		// End of user code
 	}
+
+	// Start of user code (user defined methods for AccueilJFrame)
 
 	public JPanel getjPanel()
 	{
@@ -46,7 +51,10 @@ public class AccueilJFrame extends JFrame
 		this.jPanel = jPanel;
 	}
 
-	// Start of user code (user defined methods for AcueilleJFrame)
+	public void creerDialogError(String message)
+	{
+		showMessageDialog(this, message, "Erreur", ERROR_MESSAGE);
+	}
 
 	// End of user code
 

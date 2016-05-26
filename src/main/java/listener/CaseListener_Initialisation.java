@@ -85,33 +85,129 @@ public class CaseListener_Initialisation implements ActionListener
 	private void place_bateau(int[] position)
 	{
 		if (position[1] == 0 || position[1] == 1)
+		{
+			boolean placement_possible = true;
 			for (int i = 0 ; i < bateauJButton.length ; i++)
+				if (((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]][i] instanceof BateauJButton)
+				{
+					fenetre.creerDialogError("Il y a déjà un bateau sur les cases où vous voulez placer le nouveau.");
+					placement_possible = false;
+				}
+
+			for (int i = 0 ; i < bateauJButton.length && placement_possible ; i++)
 				((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]][i] = bateauJButton[i];
+
+			return;
+		}
 		else if (position[1] == TAILLE_GRILLE - 2 || position[1] == TAILLE_GRILLE - 1)
+		{
+			boolean placement_possible = true;
 			for (int i = TAILLE_GRILLE - bateauJButton.length , j = 0 ; i < TAILLE_GRILLE ; i++ , j++)
+				if (((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]][i] instanceof BateauJButton)
+				{
+					fenetre.creerDialogError("Il y a déjà un bateau sur les cases où vous voulez placer le nouveau.");
+					placement_possible = false;
+				}
+
+			for (int i = TAILLE_GRILLE - bateauJButton.length , j = 0 ; i < TAILLE_GRILLE
+					&& placement_possible ; i++ , j++)
 				((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]][i] = bateauJButton[j];
+
+			return;
+		}
 		else if (bateauJButton.length % 2 != 0)
+		{
+			boolean placement_possible = true;
 			for (int i = -bateauJButton.length / 2 , j = 0 ; i <= bateauJButton.length / 2 ; i++ , j++)
+				if (((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]][position[1]
+						+ i] instanceof BateauJButton)
+				{
+					fenetre.creerDialogError("Il y a déjà un bateau sur les cases où vous voulez placer le nouveau.");
+					placement_possible = false;
+				}
+
+			for (int i = -bateauJButton.length / 2 , j = 0 ; i <= bateauJButton.length / 2
+					&& placement_possible ; i++ , j++)
 				((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]][position[1] + i] = bateauJButton[j];
+
+			return;
+		}
 		else
+		{
+			boolean placement_possible = true;
 			for (int i = -bateauJButton.length / 2 , j = 0 ; i < bateauJButton.length / 2 ; i++ , j++)
+				if (((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]][position[1]
+						+ 1] instanceof BateauJButton)
+				{
+					fenetre.creerDialogError("Il y a déjà un bateau sur les cases où vous voulez placer le nouveau.");
+					placement_possible = false;
+				}
+
+			for (int i = -bateauJButton.length / 2 , j = 0 ; i < bateauJButton.length / 2
+					&& placement_possible ; i++ , j++)
 				((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]][position[1] + i] = bateauJButton[j];
+		}
 	}
 
 	public void retourne_bateau(int[] position)
 	{
 		if (position[0] == 0 || position[0] == 1)
+		{
+			boolean placement_possible = true;
 			for (int i = 0 ; i < bateauJButton.length ; i++)
+				if (((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[i][position[1]] instanceof BateauJButton)
+				{
+					fenetre.creerDialogError("Il y a déjà un bateau sur les cases où vous voulez placer le nouveau.");
+					placement_possible = false;
+				}
+
+			for (int i = 0 ; i < bateauJButton.length && placement_possible ; i++)
 				((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[i][position[1]] = bateauJButton[i];
+		}
 		else if (position[0] == TAILLE_GRILLE - 2 || position[0] == TAILLE_GRILLE - 1)
+		{
+			boolean placement_possible = true;
 			for (int i = TAILLE_GRILLE - bateauJButton.length , j = 0 ; i < TAILLE_GRILLE ; i++ , j++)
+				if (((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[i][position[1]] instanceof BateauJButton)
+				{
+					fenetre.creerDialogError("Il y a déjà un bateau sur les cases où vous voulez placer le nouveau.");
+					placement_possible = false;
+				}
+
+			for (int i = TAILLE_GRILLE - bateauJButton.length , j = 0 ; i < TAILLE_GRILLE
+					&& placement_possible ; i++ , j++)
 				((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[i][position[1]] = bateauJButton[j];
+		}
 		else if (bateauJButton.length % 2 != 0)
+		{
+			boolean placement_possible = true;
 			for (int i = -bateauJButton.length / 2 , j = 0 ; i <= bateauJButton.length / 2 ; i++ , j++)
+				if (((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]
+						+ i][position[1]] instanceof BateauJButton)
+				{
+					fenetre.creerDialogError("Il y a déjà un bateau sur les cases où vous voulez placer le nouveau.");
+					placement_possible = false;
+				}
+
+			for (int i = -bateauJButton.length / 2 , j = 0 ; i <= bateauJButton.length / 2
+					&& placement_possible ; i++ , j++)
 				((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0] + i][position[1]] = bateauJButton[j];
+		}
 		else
+		{
+			boolean placement_possible = true;
 			for (int i = -bateauJButton.length / 2 , j = 0 ; i < bateauJButton.length / 2 ; i++ , j++)
+				if (((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0]
+						+ i][position[1]] instanceof BateauJButton)
+				{
+					fenetre.creerDialogError("Il y a déjà un bateau sur les cases où vous voulez placer le nouveau.");
+					placement_possible = false;
+				}
+
+			for (int i = -bateauJButton.length / 2 , j = 0 ; i < bateauJButton.length / 2
+					&& placement_possible ; i++ , j++)
 				((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[position[0] + i][position[1]] = bateauJButton[j];
+		}
 
 		BateauJButton[] save = bateauJButton;
 		for (int i = 0 , j = bateauJButton.length - 1 ; i < bateauJButton.length ; i++ , j--)
