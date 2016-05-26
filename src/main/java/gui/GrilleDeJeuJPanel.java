@@ -121,5 +121,12 @@ public class GrilleDeJeuJPanel extends JPanel
 				grille[i][j].addActionListener(actionListener);
 	}
 
+	public void setJeuListener(ActionListener actionListener)
+	{
+		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
+			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
+				grille[i][j].addActionListener(actionListener);
+	}
+
 	// End of user code
 }

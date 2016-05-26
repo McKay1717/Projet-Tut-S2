@@ -94,7 +94,7 @@ public class CaseListener_Initialisation implements ActionListener
 				((GrilleDeJeuJPanel) fenetre.jPanel).grille[position[0]][position[1] + i] = bateauJButton[j];
 	}
 
-	private void retourne_bateau(int[] position)
+	public void retourne_bateau(int[] position)
 	{
 		if (position[0] == 0 || position[0] == 1)
 			for (int i = 0 ; i < bateauJButton.length ; i++)
