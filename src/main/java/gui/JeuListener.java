@@ -7,13 +7,18 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 
+import engine.Case;
+import engine.GrilleJeux;
+
 public class JeuListener implements ActionListener
 {
-	public JButton[][] grille;
+	public JButton[][]	grille;
+	public Case[][]		grille_model;
 
-	public JeuListener(AccueilJFrame fenetre)
+	public JeuListener(AccueilJFrame fenetre, GrilleJeux grilleJeux)
 	{
 		this.grille = ((GrilleDeJeuJPanel) fenetre.jPanel).grille;
+		grille_model = grilleJeux.getCases();
 	}
 
 	@Override
@@ -21,10 +26,7 @@ public class JeuListener implements ActionListener
 	{
 		int[] position = case_appelee(e);
 
-		if (e.getSource() instanceof BateauJButton)
-		{
-			//Il manque les méthodes pour toucher les bateaux !
-		}
+		grille_model[position[0]][position[1]].setTouche(true);
 	}
 
 	private int[] case_appelee(ActionEvent e)
