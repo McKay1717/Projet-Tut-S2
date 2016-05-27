@@ -4,6 +4,7 @@
 package listener;
 
 import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.BLUE;
 import static java.awt.Color.RED;
 import static java.lang.Math.max;
 import static java.lang.Math.min;
@@ -65,6 +66,7 @@ public class CaseListener_Initialisation implements ActionListener
 				place_bateau();
 				position_save = null;
 				bateauJButton = null;
+				reset_color();
 			}
 		}
 		else if (e.getSource() instanceof BateauJButton)
@@ -105,6 +107,13 @@ public class CaseListener_Initialisation implements ActionListener
 			for (int i = min(position_save[0][1], position_save[1][1]) , j = 0 ; i < max(position_save[0][1],
 					position_save[1][1]) ; i++ , j++)
 				grille[position_save[0][0]][i] = bateauJButton[j];
+	}
+
+	private void reset_color()
+	{
+		for (int i = 0 ; i < grille.length ; i++)
+			for (int j = 0 ; j < grille.length ; j++)
+				grille[i][j].setBackground(BLUE);
 	}
 	// End of user code
 }
