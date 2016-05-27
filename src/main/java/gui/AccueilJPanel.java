@@ -29,6 +29,7 @@ public class AccueilJPanel extends JPanel {
 
 
 	private static final long serialVersionUID = -992696352145551420L;
+
 	public AccueilJPanel(AccueilJFrame accueilJFrame) {
 		// Start of user code constructor for AcueilleJPanel)
 		super();

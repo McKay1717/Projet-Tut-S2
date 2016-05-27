@@ -3,8 +3,6 @@
  *******************************************************************************/
 package gui;
 
-import engine.*;
-
 import javax.swing.*;
 
 
@@ -34,7 +32,7 @@ public class BateauJButton extends JButton{
 
 	public void estPorteAvion() {
 
-		taille = new PorteAvion().getTaille();
+		//taille = new PorteAvion().getTaille();
 
 		//futur attribu du bouton
 		this.nbSelection = 1;
@@ -42,28 +40,28 @@ public class BateauJButton extends JButton{
 
 	public void estCroiseur() {
 
-		taille = new Croiseur().getTaille();
+		//taille = new Croiseur().getTaille();
 		//futur attribu du bouton
 		this.nbSelection = 1;
 	}
 
 	public void estContretTorpilleur() {
 
-		taille = new ContretTorpilleur().getTaille();
+		//taille = new ContretTorpilleur().getTaille();
 		//futur attribu du bouton
 		this.nbSelection = 1;
 	}
 
 	public void estTorpilleur() {
 
-		taille = new Torpilleur().getTaille();
+		//taille = new Torpilleur().getTaille();
 		//futur attribu du bouton
 		this.nbSelection = 2;
 	}
 
 	public void estSousMarin() {
 
-		taille = new SousMarin().getTaille();
+		//taille = new SousMarin().getTaille();
 		//futur attribu du bouton
 		this.nbSelection = 1;
 	}

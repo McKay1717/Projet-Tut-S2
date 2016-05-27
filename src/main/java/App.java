@@ -1,7 +1,4 @@
-import engine.Equipe;
-import engine.GrilleJeux;
-
-/**
+import gui.AccueilJFrame; /**
  * 
  */
 
@@ -29,6 +26,7 @@ public class App {
 				// Controleur GUI ?
 				// ControlGroup control = new ControlGroup(model);
 				*/
+					AccueilJFrame accueilJFrame = new AccueilJFrame();
 			}
 		});
 	}

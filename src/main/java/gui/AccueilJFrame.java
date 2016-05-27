@@ -45,7 +45,8 @@ public class AccueilJFrame extends JFrame
 
 	public void FramWidget(){
 
-		AccueilJFrame fAccueil = new AccueilJFrame();
+		AccueilJPanel pAccueil = new AccueilJPanel(this);
+
 
 
 
