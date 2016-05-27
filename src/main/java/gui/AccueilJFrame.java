@@ -51,7 +51,7 @@ public class AccueilJFrame extends JFrame
 
 
 
-		///setContentPane(...);
+		setContentPane(pAccueil);
 	}
 
 	// Start of user code (user defined methods for AccueilJFrame)
