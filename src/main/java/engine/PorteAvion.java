@@ -21,10 +21,10 @@ public class PorteAvion extends Bateaux {
 	/**
 	 * The constructor.
 	 */
-	public PorteAvion(Case[] c, Equipe e) {
+	public PorteAvion(int x1, int y1, int x2, int y2, Equipe e) throws Exception{
 		// Start of user code constructor for PorteAvion)
-		super(c, e);
-		taille=5;
+		super(x1, y1, x2, y2, e,5);
+		
 		// End of user code
 	}
 

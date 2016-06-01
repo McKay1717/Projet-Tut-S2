@@ -199,4 +199,9 @@ public class Case {
 		return true;
 	}
 
+	public void touche() {
+		setTouche(true);
+		
+	}
+
 }

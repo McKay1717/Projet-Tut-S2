@@ -21,10 +21,10 @@ public class Croiseur extends Bateaux {
 	/**
 	 * The constructor.
 	 */
-	public Croiseur(Case[] c, Equipe e) {
+	public Croiseur(int x1, int y1, int x2, int y2, Equipe e) throws Exception{
 		// Start of user code constructor for Croiseur)
-		super(c, e);
-		taille=4;
+		super(x1, y1, x2, y2, e,4);
+		
 		// End of user code
 	}
 

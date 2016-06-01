@@ -5,6 +5,7 @@ package engine;
 
 import java.util.Arrays;
 import java.util.Scanner;
+import java.util.concurrent.ExecutionException;
 
 import engine.Equipe;
 // Start of user code (user defined imports)
@@ -20,27 +21,27 @@ public abstract class Bateaux {
 	/**
 	 * Description of the property taille.
 	 */
-	 int taille = -1;
+	private int taille = -1;
 
 	/**
 	 * Description of the property cases.
 	 */
-	 Case[] cases ;
+	private Case[] cases ;
 
 	/**
 	 * Description of the property equipe.
 	 */
-	public Equipe equipe;
+	private Equipe equipe;
 
 	/**
 	 * Description of the property estCoule.
 	 */
-	public boolean estCoule = false;
+	private boolean estCoule = false;
 
 	/**
 	 * Description of the property equipes.
 	 */
-	public Equipe equipes = null;
+	private Equipe equipes = null;
 
 	// Start of user code (user defined attributes for Bateaux)
 
@@ -48,12 +49,20 @@ public abstract class Bateaux {
 
 	/**
 	 * The constructor.
+	 * @throws Exception 
+	 * @throws ExecutionException 
 	 */
-	public Bateaux(Case[] c, Equipe e) {
+	public Bateaux(int x1, int y1, int x2, int y2, Equipe e, int taille) throws Exception {
 		// Start of user code constructor for Bateaux)
 		super();
-		this.cases = c;
 		this.equipe = e;
+		try {
+			setTaille(taille);
+		} catch (ExecutionException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
+		}
+		e.setPlacement(this, x1, y1, x2, y2);
 		// End of user code
 	}
 
@@ -71,9 +80,14 @@ public abstract class Bateaux {
 	/**
 	 * Sets a value to attribute taille. 
 	 * @param newTaille 
+	 * @throws ExecutionException 
 	 */
-	public void setTaille(int newTaille) {
+	public void setTaille(int newTaille) throws ExecutionException {
+		if(newTaille >= 2 && newTaille <=5)
+		{
 		this.taille = newTaille;
+		}else throw new ExecutionException("La taille doit etre compris entre 2 et 5", null);
+		
 	}
 
 	/**
@@ -124,13 +138,6 @@ public abstract class Bateaux {
 		return this.equipes;
 	}
 
-	/**
-	 * Sets a value to attribute equipes. 
-	 * @param newEquipes 
-	 */
-	public void setEquipes(Equipe newEquipes) {
-		this.equipes = newEquipes;
-	}
 
 	@Override
 	public int hashCode() {
@@ -144,6 +151,10 @@ public abstract class Bateaux {
 		return result;
 	}
 
+	public void touche()
+	{
+		taille--;
+	}
 
 
 	@Override

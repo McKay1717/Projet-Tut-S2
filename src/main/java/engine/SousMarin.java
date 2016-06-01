@@ -21,10 +21,9 @@ public class SousMarin extends Bateaux {
 	/**
 	 * The constructor.
 	 */
-	public SousMarin(Case[] c, Equipe e) {
+	public SousMarin(int x1, int y1, int x2, int y2, Equipe e) throws Exception {
 		// Start of user code constructor for SousMarin)
-		super(c, e);
-		taille=3;
+		super(x1, y1, x2, y2, e,3);
 		// End of user code
 	}
 
