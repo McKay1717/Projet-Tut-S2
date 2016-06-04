@@ -28,8 +28,5 @@ public class TestJMenuBar extends JFrame {
       setJMenuBar(menuBar);
    }
 
-   public static void main(String args[]){
-      TestJMenuBar f = new TestJMenuBar();
-   }
 
 }

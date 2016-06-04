@@ -7,6 +7,7 @@ import listener.FprincListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
 
 
 
@@ -92,6 +93,13 @@ public class AccueilJPanel extends JPanel {
 		return bPLay;
 	}
 
+	public void close()
+	{
+		JFrame topFrame = (JFrame) SwingUtilities.getWindowAncestor(this);
+		topFrame.setVisible(false);
+		topFrame.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+		topFrame.dispatchEvent(new WindowEvent(topFrame, WindowEvent.WINDOW_CLOSING));
+	}
 	// End of user code
 
 }

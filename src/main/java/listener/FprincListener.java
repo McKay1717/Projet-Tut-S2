@@ -11,16 +11,16 @@ import java.awt.event.ActionListener;
  */
 public class FprincListener implements ActionListener {
 
-    private AccueilJPanel accueilJFrame;
+    private AccueilJPanel accueilJPanel;
 
     public FprincListener( AccueilJPanel accueilJPane) {
-        this.accueilJFrame = accueilJPane;
+        this.accueilJPanel = accueilJPane;
     }
 
     @Override
     public void actionPerformed(ActionEvent actionEvent) {
         if (actionEvent.getSource().equals(AccueilJPanel.getbPLay())){
-            accueilJFrame.setVisible(false);
+            accueilJPanel.close();
             TestJMenuBar menuBar = new TestJMenuBar();
             //FenetreJeu f = new FenetreJeu(pict,menuBar);
             //EventMenu eventMenu = new EventMenu(pict,f,FPrincipale);

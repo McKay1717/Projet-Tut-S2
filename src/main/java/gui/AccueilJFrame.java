@@ -66,6 +66,7 @@ public class AccueilJFrame extends JFrame
 		this.jPanel = jPanel;
 	}
 
+
 	public void creerDialogError(String message)
 	{
 		showMessageDialog(this, message, "Erreur", ERROR_MESSAGE);
