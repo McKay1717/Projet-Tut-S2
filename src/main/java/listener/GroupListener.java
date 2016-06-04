@@ -15,7 +15,7 @@ public class GroupListener
 	public GrilleDeJeuJPanel			grilleDeJeuJPanel1, grilleDeJeuJPanel2;
 	public Equipe						equipe1, equipe2;
 	public AccueilJFrame				fenetre;
-	public CaseListener_Initialisation	caseListener;
+	public CaseListener_Initialisation	caseListener1, caseListener2;
 	// End of user code
 
 	/**
@@ -40,11 +40,15 @@ public class GroupListener
 		{
 			grilleDeJeuJPanel1 = new GrilleDeJeuJPanel(grille_jeux1);
 			fenetre.setjPanel(grilleDeJeuJPanel1);
+			caseListener1 = new CaseListener_Initialisation(grille_jeux1, fenetre);
+			grilleDeJeuJPanel1.setCaseListener(caseListener1);
 		}
 		else
 		{
 			grilleDeJeuJPanel2 = new GrilleDeJeuJPanel(grille_jeux2);
 			fenetre.setjPanel(grilleDeJeuJPanel2);
+			caseListener2 = new CaseListener_Initialisation(grille_jeux2, fenetre);
+			grilleDeJeuJPanel2.setCaseListener(caseListener2);
 		}
 		fenetre.pack();
 		fenetre.setLocationRelativeTo(null);

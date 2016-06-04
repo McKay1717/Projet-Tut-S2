@@ -54,7 +54,7 @@ public class CaseListener_Initialisation implements ActionListener
 	{
 		if (e.getSource() instanceof CaseJButton)
 		{
-			if (position_save.equals(null))
+			if (position_save == null)
 			{
 				position_save = new int[2][2];
 				case_appelee(e, 0);

@@ -47,13 +47,6 @@ public class AccueilJFrame extends JFrame
 		// End of user code
 	}
 
-	public void FramWidget()
-	{
-		AccueilJPanel pAccueil = new AccueilJPanel(this);
-
-		setContentPane(pAccueil);
-	}
-
 	// Start of user code (user defined methods for AccueilJFrame)
 
 	public JPanel getjPanel()
