@@ -16,7 +16,7 @@ public class GrilleJeux {
 	/**
 	 * Description of the property cases.
 	 */
-	public Case[][] cases = new Case[10][10];
+	private Case[][] cases = new Case[10][10];
 	Equipe[] equipes = new Equipe[2];
 	int currentEquipe;
 

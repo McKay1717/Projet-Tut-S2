@@ -73,8 +73,7 @@ public class GrilleDeJeuJPanel extends JPanel {
 		// Parcours de la grille pour initialiser chaque case.
 		for (int i = 0; i < TAILLE_GRILLE; i++)
 			for (int j = 0; j < TAILLE_GRILLE; j++) {
-				Case case_model = grille_jeu.cases[i][j];
-				grille[i][j] = new CaseJButton(case_model);
+				grille[i][j] = new CaseJButton(grille_jeu.getCases()[i][j]);
 			}
 
 		// Initialisation de l'intitulé des lignes.

@@ -1,6 +1,7 @@
 package listener;
 
 import gui.AccueilJPanel;
+import gui.FenetreJeux;
 import gui.TestJMenuBar;
 
 import java.awt.event.ActionEvent;
@@ -26,7 +27,8 @@ public class FprincListener implements ActionListener {
 	public void actionPerformed(ActionEvent actionEvent) {
 		if (actionEvent.getSource().equals(AccueilJPanel.getbPLay())) {
 			accueilJPanel.close();
-			initGame();
+			Equipe[] e = initGame();
+			FenetreJeux f = new FenetreJeux(e);
 			// EventMenu eventMenu = new EventMenu(pict,f,FPrincipale);
 		}
 

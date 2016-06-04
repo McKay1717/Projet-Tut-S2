@@ -100,7 +100,7 @@ public class Equipe {
 
 	protected boolean verification(Equipe e, int a, int b) {
 		if (a >= 0 && a <= 9 && b >= 0 && b <= 9) {
-			if (!e.gj.cases[a][b].getTouche())
+			if (!e.gj.getCases()[a][b].getTouche())
 				return true;
 		}
 		return false;
@@ -110,7 +110,7 @@ public class Equipe {
 		boolean bool = false;
 		if ((x == (c[0].getX() + 1) && y == (c[0].getY())) || (x == (c[0].getX() - 1) && y == (c[0].getY()))
 				|| (x == (c[0].getX()) && y == (c[0].getY() + 1)) || (x == (c[0].getX()) && y == (c[0].getY() - 1))) {
-			if (!e.gj.cases[x][y].getTouche()) {
+			if (!e.gj.getCases()[x][y].getTouche()) {
 				bool = true;
 			}
 		}
@@ -129,7 +129,7 @@ public class Equipe {
 				min = c[i].getX();
 		}
 		if (x == (min + 1) || x == (min - 1) || x == (max + 1) || x == max - 1) {
-			if (!e.gj.cases[x][y].getTouche()) {
+			if (!e.gj.getCases()[x][y].getTouche()) {
 				bool = true;
 			}
 		}
@@ -149,7 +149,7 @@ public class Equipe {
 			}
 		}
 		if (y == (min + 1) || y == (min - 1) || y == (max + 1) || y == (max - 1)) {
-			if (!e.gj.cases[x][y].getTouche()) {
+			if (!e.gj.getCases()[x][y].getTouche()) {
 				bool = true;
 			}
 		}
