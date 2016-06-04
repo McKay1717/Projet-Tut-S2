@@ -3,25 +3,52 @@
  *******************************************************************************/
 package listener;
 
+import engine.Equipe;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
+import gui.GrilleDeJeuJPanel;
 
 public class GroupListener
 {
 	// Start of user code (user defined attributes for GrilleDeJeuJPanel)
-	public GrilleJeux grille_jeu;
-	public AccueilJFrame fenetre;
-	public CaseListener_Initialisation caseListener;
+	public GrilleJeux					grille_jeux1, grille_jeux2;
+	public GrilleDeJeuJPanel			grilleDeJeuJPanel1, grilleDeJeuJPanel2;
+	public Equipe						equipe1, equipe2;
+	public AccueilJFrame				fenetre;
+	public CaseListener_Initialisation	caseListener;
 	// End of user code
 
 	/**
 	 * The constructor.
 	 */
-	public GroupListener(GrilleJeux grille_jeu)
+	public GroupListener(GrilleJeux grille_jeux1, GrilleJeux grille_jeux2, Equipe equipe1, Equipe equipe2)
 	{
-		this.grille_jeu = grille_jeu;
-		//fenetre = new AcceuilJFrame(this.grille_jeu);
-		caseListener = new CaseListener_Initialisation(grille_jeu, fenetre);
-		//fenetre.affiche();
+		this.grille_jeux1 = grille_jeux1;
+		this.grille_jeux2 = grille_jeux2;
+		this.equipe1 = equipe1;
+		this.equipe2 = equipe2;
+
+		fenetre = new AccueilJFrame(this);
+		fenetre.setVisible(true);
+	}
+
+	public void createGrilleDeJeuJPanel(int i)
+	{
+		fenetre.setVisible(false);
+		fenetre.getContentPane().removeAll();
+		if (i == 1)
+		{
+			grilleDeJeuJPanel1 = new GrilleDeJeuJPanel(grille_jeux1);
+			fenetre.setjPanel(grilleDeJeuJPanel1);
+		}
+		else
+		{
+			grilleDeJeuJPanel2 = new GrilleDeJeuJPanel(grille_jeux2);
+			fenetre.setjPanel(grilleDeJeuJPanel2);
+		}
+		fenetre.pack();
+		fenetre.setLocationRelativeTo(null);
+		fenetre.getContentPane().repaint();
+		fenetre.setVisible(true);
 	}
 }

@@ -1,62 +1,45 @@
 package listener;
 
-import gui.AccueilJPanel;
-import gui.FenetreJeux;
-import gui.TestJMenuBar;
-
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
-import engine.Equipe;
-import engine.GrilleJeux;
+import gui.AccueilJPanel;
 
 /**
  * Created by victor on 26/05/16.
  */
-public class FprincListener implements ActionListener {
+public class FprincListener implements ActionListener
+{
 
 	private AccueilJPanel accueilJPanel;
 
-	public FprincListener(AccueilJPanel accueilJPane) {
+	public FprincListener(AccueilJPanel accueilJPane)
+	{
 		this.accueilJPanel = accueilJPane;
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent actionEvent) {
-		if (actionEvent.getSource().equals(AccueilJPanel.getbPLay())) {
+	public void actionPerformed(ActionEvent actionEvent)
+	{
+		if (actionEvent.getSource().equals(AccueilJPanel.getbPLay()))
+		{
 			accueilJPanel.close();
-			Equipe[] e = initGame();
-			FenetreJeux f = new FenetreJeux(e);
-			// EventMenu eventMenu = new EventMenu(pict,f,FPrincipale);
+			initGame();
+			accueilJPanel.accueilJFrame.groupListener.createGrilleDeJeuJPanel(1);
 		}
 
-		if (actionEvent.getSource().equals(AccueilJPanel.getbQuit())) {
+		if (actionEvent.getSource().equals(AccueilJPanel.getbQuit()))
 			System.exit(0);
-		}
 	}
 
-	public Equipe[] initGame() {
-
-		// On Crée les Objets que l'on à besoins
-		GrilleJeux gj1 = new GrilleJeux();
-
-		GrilleJeux gj2 = new GrilleJeux();
-
-		Equipe equipes1 = new Equipe(gj1, "");
-		Equipe equipes2 = new Equipe(gj2, "");
-
-		Equipe[] equipes = new Equipe[] { equipes1, equipes2 };
-		// On créer le liens entre equipes et grille
-		gj1.setEquipes(equipes);
-		gj2.setEquipes(equipes);
-
+	public void initGame()
+	{
 		String equipe1 = JOptionPane.showInputDialog(null, "nom du Joueur 1 ?", "", JOptionPane.QUESTION_MESSAGE);
-		equipes1.setNomEquipe(equipe1);
-		
+		accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe(equipe1);
+
 		String equipe2 = JOptionPane.showInputDialog(null, "nom du Joueur 2 ?", "", JOptionPane.QUESTION_MESSAGE);
-		equipes2.setNomEquipe(equipe2);
-		return equipes;
+		accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe(equipe2);
 	}
 }
