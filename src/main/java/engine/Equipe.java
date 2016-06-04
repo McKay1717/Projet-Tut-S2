@@ -64,28 +64,30 @@ public class Equipe {
 
 		Case[] cases = new Case[b.getTaille()];
 		for (int i = 0; i < b.getTaille(); i++) {
-			if (x2 - x1 == b.getTaille()) {
+			if (x2 - x1 == b.getTaille() - 1) {
 				if (!this.getGj().getCases()[x1 + i][y1].getVide()) {
 					throw new Exception("Case " + (x1 + i) + ',' + (y1) + " non vide");
 				}
 
-			} else {
+			} else if (y2 - y1 == b.getTaille() - 1) {
 				if (!this.getGj().getCases()[x1][y1 + i].getVide()) {
 					throw new Exception("Case " + (x1) + ',' + (y1 + i) + " non vide");
 				}
 
+			} else {
+				throw new Exception("Case non alignée");
 			}
 		}
 		for (int i = 0; i < b.getTaille(); i++) {
-			if (x2 - x1 == b.getTaille()) {
-				if (!this.getGj().getCases()[x1 + i][y1].getVide()) {
+			if (x2 - x1 == b.getTaille() - 1) {
+				if (this.getGj().getCases()[x1 + i][y1].getVide()) {
 					this.getGj().getCases()[x1 + i][y1].setBateau(b);
 					this.getGj().getCases()[x1 + i][y1].setVide(false);
 					cases[i] = this.getGj().getCases()[x1 + i][y1];
 				}
 
 			} else {
-				if (!this.getGj().getCases()[x1][y1 + i].getVide()) {
+				if (this.getGj().getCases()[x1][y1 + i].getVide()) {
 					this.getGj().getCases()[x1][y1 + i].setBateau(b);
 					this.getGj().getCases()[x1][y1 + i].setVide(false);
 					cases[i] = this.getGj().getCases()[x1][y1 + i];
