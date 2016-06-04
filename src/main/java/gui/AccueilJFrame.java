@@ -3,13 +3,12 @@
  *******************************************************************************/
 package gui;
 
+import listener.GroupListener;
+
+import javax.swing.*;
+
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
-
-import javax.swing.JFrame;
-import javax.swing.JPanel;
-
-import listener.GroupListener;
 
 // Start of user code (user defined imports)
 
@@ -34,9 +33,14 @@ public class AccueilJFrame extends JFrame
 	{
 		// Start of user code constructor for AccueilJFrame)
 		super();
+
+		//affichage de la bare de menu
+		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar();
+		setJMenuBar(menuBar);
+
 		this.groupListener = groupListener;
 		setjPanel(new AccueilJPanel(this));
-		setSize(400, 200); // Fixe la taille par défaut
+		setSize(400, 250); // Fixe la taille par défaut
 		setLocationRelativeTo(null); // position de la fenetre sur l'ordi
 		setVisible(true); // Affiche la fenetre
 		setTitle("Battle-Nav Menu"); // donne un titre au jFrame

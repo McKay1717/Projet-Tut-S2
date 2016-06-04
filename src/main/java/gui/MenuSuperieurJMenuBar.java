@@ -18,7 +18,17 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	private static final JOptionPane message = new JOptionPane();
 
 	//Message info
-	final String signature = new String("Projet informatique semestre 2"+System.getProperty("line.separator")+"(session 2015-2016)"+System.getProperty("line.separator")+"Programmé par :" +System.getProperty("line.separator")+"nom1"+System.getProperty("line.separator")+"nom2"+System.getProperty("line.separator")+"nom3" +System.getProperty("line.separator")+"nom3"+System.getProperty("line.separator")+"nom4"+System.getProperty("line.separator")+"nom5"+System.getProperty("line.separator")+"SALVI Tom" +System.getProperty("line.separator")+"LAROYENNE Guillaume");
+	final String signature = new String("Projet informatique semestre 2"
+			+System.getProperty("line.separator")+"(session 2015-2016)"
+			+System.getProperty("line.separator")+"Programmé par :"
+			+System.getProperty("line.separator")+"BORDY Tanguy"
+			+System.getProperty("line.separator")+"COUTURIEUX Victor"
+			+System.getProperty("line.separator")+"LAROYENNE Guillaume"
+			+System.getProperty("line.separator")+"MARTIN Florent"
+			+System.getProperty("line.separator")+"SALVI Tom"
+			+System.getProperty("line.separator")+"IUNG Nicolas"
+			+System.getProperty("line.separator")+"VALENZA Pierre"
+			+System.getProperty("line.separator")+"VAISSIERE Floriant");
 
 	//icone
 	private final ImageIcon iconeInfo = new ImageIcon(new ImageIcon(rep+"info.jpg").getImage().getScaledInstance(30,30,0));
