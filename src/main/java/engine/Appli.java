@@ -6,19 +6,21 @@ import java.util.Scanner;
 /**
  * Created by valenza on 05/05/16.
  */
-public class Appli {
-	static final Scanner input = new Scanner(System.in);
-	static final String[] name = { "Contre Torpillieur", "Croiseur", "Porte Avion", "Sous Marin", "Torpillieur" };
+public class Appli
+{
+	static final Scanner	input	= new Scanner(System.in);
+	static final String[]	name	= { "Contre Torpillieur", "Croiseur", "Porte Avion", "Sous Marin", "Torpillieur" };
 
-	public static void main(String[] args) {
+	public static void main(String[] args)
+	{
 
 		// On Crée les Objets que l'on à besoins
 		GrilleJeux gj1 = new GrilleJeux();
 
 		GrilleJeux gj2 = new GrilleJeux();
 
-		Equipe equipes1 = new Equipe(gj1,"");
-		Equipe equipes2 = new Equipe(gj2,"");
+		Equipe equipes1 = new Equipe(gj1, "");
+		Equipe equipes2 = new Equipe(gj2, "");
 
 		Equipe[] equipes = new Equipe[] { equipes1, equipes2 };
 		// On créer le liens entre equipes et grille
@@ -36,7 +38,8 @@ public class Appli {
 		equipes2.setNomEquipe(nomEquipe2);
 
 		// On Affiche on exemple de grille
-		for (int i = 0; i < gj1.getCases().length + 1; i++) {
+		for (int i = 0 ; i < gj1.getCases().length + 1 ; i++)
+		{
 			if (i == 0)
 				System.out.println("Y/X: 0 1 2 3 4 5 6 7 8 9");
 			else
@@ -48,7 +51,7 @@ public class Appli {
 		// On demende des coordonées à la suite sans les vérifier (A ne pas
 		// faire)
 		// Il faudrait instancié directement les bateaux
-		for (int i = 0; i < equipes1.getBateaux().length; i++)
+		for (int i = 0 ; i < equipes1.getBateaux().length ; i++)
 
 		{
 			System.out.println(name[i]);
@@ -63,14 +66,17 @@ public class Appli {
 
 		}
 		// On instancie les Bateaux de l'équipe 1
-		try {
+		try
+		{
 			equipes1.getBateaux()[0] = new ContretTorpilleur(list.get(0), list.get(1), list.get(2), list.get(3),
 					equipes1);
 			equipes1.getBateaux()[1] = new Croiseur(list.get(0), list.get(1), list.get(2), list.get(3), equipes1);
 			equipes1.getBateaux()[2] = new PorteAvion(list.get(0), list.get(1), list.get(2), list.get(3), equipes1);
 			equipes1.getBateaux()[3] = new SousMarin(list.get(0), list.get(1), list.get(2), list.get(3), equipes1);
 			equipes1.getBateaux()[4] = new Torpilleur(list.get(0), list.get(1), list.get(2), list.get(3), equipes1);
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 		// On demende à l'équipe 2 de placé ces bateaux
@@ -79,7 +85,7 @@ public class Appli {
 		// On demende des coordonées à la suite sans les vérifier (A ne pas
 		// faire)
 		// Il faudrait instancié directement les bateaux
-		for (int i = 0; i < equipes2.getBateaux().length; i++)
+		for (int i = 0 ; i < equipes2.getBateaux().length ; i++)
 
 		{
 			System.out.println(name[i]);
@@ -94,19 +100,23 @@ public class Appli {
 
 		}
 		// On instancie les Bateaux de l'équipe 2
-		try {
+		try
+		{
 			equipes2.getBateaux()[0] = new ContretTorpilleur(list.get(0), list.get(1), list.get(2), list.get(3),
 					equipes2);
 			equipes2.getBateaux()[1] = new Croiseur(list.get(0), list.get(1), list.get(2), list.get(3), equipes2);
 			equipes2.getBateaux()[2] = new PorteAvion(list.get(0), list.get(1), list.get(2), list.get(3), equipes2);
 			equipes2.getBateaux()[3] = new SousMarin(list.get(0), list.get(1), list.get(2), list.get(3), equipes2);
 			equipes2.getBateaux()[4] = new Torpilleur(list.get(0), list.get(1), list.get(2), list.get(3), equipes2);
-		} catch (Exception e) {
+		}
+		catch (Exception e)
+		{
 			e.printStackTrace();
 		}
 		// On peux comméncé à joué
 		// On joue tant que les deux equipes sont en vie
-		while (equipes1.equipeEnVie() && equipes2.equipeEnVie()) {
+		while (equipes1.equipeEnVie() && equipes2.equipeEnVie())
+		{
 			System.out.println("Ou voulez-vous tirer " + equipes1.getNomEquipe());
 			System.out.println("X ?");
 			int x = input.nextInt();
@@ -126,9 +136,12 @@ public class Appli {
 				break;
 
 		}
-		if (equipes1.equipeEnVie()) {
+		if (equipes1.equipeEnVie())
+		{
 			System.out.println(equipes1.getNomEquipe() + " est le gagnant !");
-		} else {
+		}
+		else
+		{
 			System.out.println(equipes2.getNomEquipe() + " est le gagnant !");
 		}
 	}

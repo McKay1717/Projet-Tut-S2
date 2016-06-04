@@ -3,6 +3,8 @@
  *******************************************************************************/
 package gui;
 
+import static java.awt.Color.BLACK;
+
 // Start of user code (user defined imports)
 import java.awt.GridLayout;
 import java.awt.event.ActionListener;
@@ -101,6 +103,7 @@ public class GrilleDeJeuJPanel extends JPanel
 		{
 			bateau[j] = new BateauJButton();
 			bateau[j].estPorteAvion();
+			bateau[j].setBackground(BLACK);
 		}
 		bateauJButtons.add(bateau);
 
@@ -109,6 +112,7 @@ public class GrilleDeJeuJPanel extends JPanel
 		{
 			bateau[j] = new BateauJButton();
 			bateau[j].estCroiseur();
+			bateau[j].setBackground(BLACK);
 		}
 		bateauJButtons.add(bateau);
 
@@ -117,6 +121,7 @@ public class GrilleDeJeuJPanel extends JPanel
 		{
 			bateau[j] = new BateauJButton();
 			bateau[j].estContretTorpilleur();
+			bateau[j].setBackground(BLACK);
 		}
 		bateauJButtons.add(bateau);
 
@@ -125,6 +130,7 @@ public class GrilleDeJeuJPanel extends JPanel
 		{
 			bateau[j] = new BateauJButton();
 			bateau[j].estSousMarin();
+			bateau[j].setBackground(BLACK);
 		}
 		bateauJButtons.add(bateau);
 
@@ -133,6 +139,7 @@ public class GrilleDeJeuJPanel extends JPanel
 		{
 			bateau[j] = new BateauJButton();
 			bateau[j].estTorpilleur();
+			bateau[j].setBackground(BLACK);
 		}
 		bateauJButtons.add(bateau);
 	}
@@ -187,6 +194,10 @@ public class GrilleDeJeuJPanel extends JPanel
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
 				grille[i][j].addActionListener(actionListener);
+
+		for (int i = 0 ; i < bateauJButtons.size() ; i++)
+			for (int j = 0 ; j < bateauJButtons.get(i).length ; j++)
+				bateauJButtons.get(i)[j].addActionListener(actionListener);
 	}
 
 	public void setJeuListener(ActionListener actionListener)
