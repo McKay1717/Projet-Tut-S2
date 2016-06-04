@@ -3,6 +3,9 @@
  *******************************************************************************/
 package listener;
 
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import engine.Equipe;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
@@ -38,6 +41,8 @@ public class GroupListener
 		fenetre.getContentPane().removeAll();
 		if (i == 1)
 		{
+			showMessageDialog(null, equipe1.getNomEquipe() + ", veuillez placer vos bateaux", "Initialisation",
+					INFORMATION_MESSAGE);
 			grilleDeJeuJPanel1 = new GrilleDeJeuJPanel(grille_jeux1);
 			fenetre.setjPanel(grilleDeJeuJPanel1);
 			caseListener1 = new CaseListener_Initialisation(grille_jeux1, fenetre);
@@ -45,6 +50,8 @@ public class GroupListener
 		}
 		else
 		{
+			showMessageDialog(null, equipe2.getNomEquipe() + ", veuillez placer vos bateaux", "Initialisation",
+					INFORMATION_MESSAGE);
 			grilleDeJeuJPanel2 = new GrilleDeJeuJPanel(grille_jeux2);
 			fenetre.setjPanel(grilleDeJeuJPanel2);
 			caseListener2 = new CaseListener_Initialisation(grille_jeux2, fenetre);

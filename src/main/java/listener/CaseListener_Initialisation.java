@@ -52,11 +52,10 @@ public class CaseListener_Initialisation implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		if (e.getSource() instanceof CaseJButton)
+		if (e.getSource() instanceof CaseJButton && bateauJButton != null)
 		{
 			if (position_save == null)
 			{
-				position_save = new int[2][2];
 				case_appelee(e, 0);
 				cases_possibles();
 			}
@@ -75,6 +74,7 @@ public class CaseListener_Initialisation implements ActionListener
 
 	private void case_appelee(ActionEvent e, int numero_case)
 	{
+		position_save = new int[2][2];
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
 				if (e.getSource().equals(((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[i][j]))
