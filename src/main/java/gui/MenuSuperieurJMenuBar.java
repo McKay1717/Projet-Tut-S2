@@ -1,5 +1,7 @@
 package gui;
 
+import listener.MenuListener;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
@@ -46,7 +48,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	//JMenuItem optionPlay
 	private JMenuItem itemOptionPlay1;
 	private JMenuItem itemOptionPlay2;
-	private JMenuItem itemOptionPlay3;
 
 	//JMenuItem audio
 	private JMenuItem itemAudio1;
@@ -54,6 +55,9 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 	//JMenuItem info
 	private JMenuItem itemInfo1;
+
+	//Listener du JMenuBar
+	private MenuListener menuListener;
 
 	/**
 	 * The constructor.
@@ -63,7 +67,7 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 		initAttribut();
 		creerJMenuBar();
-		action();
+
 	}
 
 	private void initAttribut(){
@@ -75,12 +79,17 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		//JMenuItem
 		itemOptionPlay1 = new JMenuItem("Abandonner la partie");
 		itemOptionPlay2 = new JMenuItem("Recommencer la partie");
-		itemOptionPlay3 = new JMenuItem("Pause");
 
 		itemAudio1 = new JMenuItem("ON");
 		itemAudio2 = new JMenuItem("OFF");
 
 		itemInfo1 = new JMenuItem("Createurs");
+		menuListener= new MenuListener(this);
+		itemOptionPlay1.addActionListener(menuListener);
+		itemOptionPlay2.addActionListener(menuListener);
+		itemAudio1.addActionListener(menuListener);
+		itemAudio2.addActionListener(menuListener);
+		itemInfo1.addActionListener(menuListener);
 	}
 
 	private void creerJMenuBar(){
@@ -88,7 +97,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		//Ajout des icones
 		itemOptionPlay1.setIcon(iconeStop);
 		itemOptionPlay2.setIcon(iconeRestart);
-		itemOptionPlay3.setIcon(iconePause);
 
 		itemAudio1.setIcon(iconeSonOn);
 		itemAudio2.setIcon(iconeSonOff);
@@ -101,12 +109,10 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemInfo1.setBackground(Color.white);
 		itemOptionPlay1.setBackground(Color.white);
 		itemOptionPlay2.setBackground(Color.white);
-		itemOptionPlay3.setBackground(Color.white);
 
 		//Mise en plan du JMenu
 		optionPlay.add(itemOptionPlay1);
 		optionPlay.add(itemOptionPlay2);
-		optionPlay.add(itemOptionPlay3);
 
 		audio.add(itemAudio1);
 		audio.add(itemAudio2);
@@ -119,41 +125,31 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		this.add(info);
 	}
 
-	private void action(){
-		itemInfo1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-				message.showMessageDialog( message,signature, "Information",  JOptionPane.INFORMATION_MESSAGE);
-			}
-		});
+	public JMenuItem getItemInfo1() {
+		return itemInfo1;
+	}
 
-		itemOptionPlay1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
+	public JMenuItem getItemAudio1() {
+		return itemAudio1;
+	}
 
-			}
-		});
+	public JMenuItem getItemAudio2() {
+		return itemAudio2;
+	}
 
-		itemOptionPlay2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
+	public JMenuItem getItemOptionPlay1() {
+		return itemOptionPlay1;
+	}
 
-			}
-		});
+	public JMenuItem getItemOptionPlay2() {
+		return itemOptionPlay2;
+	}
 
-		itemOptionPlay3.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
+	public static JOptionPane getMessage() {
+		return message;
+	}
 
-			}
-		});
-
-		itemAudio1.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-
-			}
-		});
-
-		itemAudio2.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e){
-
-			}
-		});
+	public String getSignature() {
+		return signature;
 	}
 }
