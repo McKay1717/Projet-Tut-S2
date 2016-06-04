@@ -17,8 +17,8 @@ public class Appli {
 
 		GrilleJeux gj2 = new GrilleJeux();
 
-		Equipe equipes1 = new Equipe(gj1);
-		Equipe equipes2 = new Equipe(gj2);
+		Equipe equipes1 = new Equipe(gj1,"");
+		Equipe equipes2 = new Equipe(gj2,"");
 
 		Equipe[] equipes = new Equipe[] { equipes1, equipes2 };
 		// On créer le liens entre equipes et grille

@@ -35,10 +35,11 @@ public class Equipe {
 	/**
 	 * The constructor.
 	 */
-	public Equipe(GrilleJeux _gj) {
+	public Equipe(GrilleJeux _gj, String nom_equipe) {
 		// Start of user code constructor for Equipe)
 		super();
 		this.gj = _gj;
+		nomEquipe = nom_equipe;
 		// End of user code
 	}
 

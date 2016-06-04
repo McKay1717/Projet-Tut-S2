@@ -33,7 +33,7 @@ public class AccueilJFrame extends JFrame
 
 		FramWidget();
 
-		setSize(400,400);                                // Fixe la taille par défaut
+		setSize(400,200);                                // Fixe la taille par défaut
 		setLocationRelativeTo(null);                     //position de la fenetre sur l'ordi
 		setVisible(true);                                // Affiche la fenetre
 		setTitle("Battle-Nav Menu");                       //donne un titre au jFrame

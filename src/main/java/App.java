@@ -24,8 +24,8 @@ public class App {
 
 				GrilleJeux gj2 = new GrilleJeux();
 
-				Equipe equipes1 = new Equipe(gj1);
-				Equipe equipes2 = new Equipe(gj2);
+				Equipe equipes1 = new Equipe(gj1,"");
+				Equipe equipes2 = new Equipe(gj2,"");
 
 				Equipe[] equipes = new Equipe[] { equipes1, equipes2 };
 				gj1.setEquipes(equipes);
