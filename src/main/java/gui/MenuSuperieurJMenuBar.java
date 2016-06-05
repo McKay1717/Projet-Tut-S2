@@ -85,6 +85,14 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		}
 	}
 
+	public MenuSuperieurJMenuBar(FenetreJeux fenetreJeux){
+		super();
+		this.fenetreJeux=fenetreJeux;
+		this.jPanel=accueilJFrame.getjPanel();
+		initAttribut();
+		creerJMenuBar();
+	}
+
 
 	private void initAttribut(){
 		//JMenu
