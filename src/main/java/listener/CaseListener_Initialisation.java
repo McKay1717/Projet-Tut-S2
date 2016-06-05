@@ -80,7 +80,6 @@ public class CaseListener_Initialisation implements ActionListener
 			{
 				case_appelee(e, 1);
 				place_bateau();
-				reset_color(true);
 				position_save = null;
 				bateauJButton = null;
 			}
@@ -288,6 +287,8 @@ public class CaseListener_Initialisation implements ActionListener
 							break;
 					}
 				}
+
+			reset_color(true);
 		}
 		catch (Exception e)
 		{
