@@ -177,7 +177,7 @@ public class CaseListener_Initialisation implements ActionListener
 				}
 			}
 		else if (position_save[1][1] - bateauJButton.length + 1 == position_save[0][1])
-			for (int i = position_save[0][1] , j = 0 ; i < position_save[1][1] ; i++ , j++)
+			for (int i = position_save[0][1] , j = 0 ; i <= position_save[1][1] ; i++ , j++)
 			{
 				grille[position_save[1][0]][i] = new BateauJButton();
 				switch (bateauJButton[j].typeBateau)
@@ -200,7 +200,7 @@ public class CaseListener_Initialisation implements ActionListener
 				}
 			}
 		else if (position_save[1][1] + bateauJButton.length - 1 == position_save[0][1])
-			for (int i = position_save[1][1] , j = 0 ; i < position_save[0][1] ; i++ , j++)
+			for (int i = position_save[1][1] , j = 0 ; i <= position_save[0][1] ; i++ , j++)
 			{
 				grille[position_save[1][0]][i] = new BateauJButton();
 				switch (bateauJButton[j].typeBateau)
@@ -240,7 +240,6 @@ public class CaseListener_Initialisation implements ActionListener
 				if (grille[i][j] instanceof CaseJButton)
 					grille[i][j].setBackground(BLUE);
 				else if (grille[i][j] instanceof BateauJButton)
-					//Problème.
 					grille[i][j].setBackground(BLACK);
 			}
 	}
