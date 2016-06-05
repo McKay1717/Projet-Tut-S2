@@ -78,4 +78,18 @@ public class GroupListener
 		fenetreJeux = new FenetreJeux(e, arrierePlanJPanel1.getGrilleDeJeuJPanel(),
 				arrierePlanJPanel2.getGrilleDeJeuJPanel());
 	}
+
+	public void resetGame()
+	{
+		grille_jeux1 = new GrilleJeux();
+
+		grille_jeux2 = new GrilleJeux();
+
+		equipe1 = new Equipe(grille_jeux1, "");
+		equipe2 = new Equipe(grille_jeux2, "");
+
+		Equipe[] equipes = new Equipe[] { equipe1, equipe2 };
+		grille_jeux1.setEquipes(equipes);
+		grille_jeux2.setEquipes(equipes);
+	}
 }
