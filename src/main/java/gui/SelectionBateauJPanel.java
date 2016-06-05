@@ -139,10 +139,10 @@ public class SelectionBateauJPanel extends JPanel {
 		for (int i=0;i<3;i++)
 			pInContretTorpilleur.add(contretTorpilleur.get(0)[i]);
 
-		for (int i=0;i<3;i++)
+		for (int i=0;i<2;i++)
 			pInTorpilleur.add(torpilleur.get(0)[i]);
 
-		for (int i=0;i<2;i++)
+		for (int i=0;i<3;i++)
 			pInSousMarin.add(sousMarin.get(0)[i]);
 
 		pPorteAvion.add(lPorteAvion);

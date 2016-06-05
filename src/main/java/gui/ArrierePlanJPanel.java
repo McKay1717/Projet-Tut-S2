@@ -48,11 +48,15 @@ public class ArrierePlanJPanel extends JPanel {
 		grilleDeJeuJPanel = new GrilleDeJeuJPanel(grille_jeux);
 		selectionBateauJPanel = new SelectionBateauJPanel(grille_jeux);
 
-		add(grilleDeJeuJPanel);
-		add(selectionBateauJPanel);
+		add(grilleDeJeuJPanel );
+		add(selectionBateauJPanel, BorderLayout.EAST);
 	}
 
 	public SelectionBateauJPanel getSelectionBateauJPanel() {
 		return selectionBateauJPanel;
+	}
+
+	public GrilleDeJeuJPanel getGrilleDeJeuJPanel() {
+		return grilleDeJeuJPanel;
 	}
 }

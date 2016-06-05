@@ -1,11 +1,10 @@
 package listener;
 
+import gui.AccueilJPanel;
+
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
-import javax.swing.JOptionPane;
-
-import gui.AccueilJPanel;
 
 /**
  * Created by victor on 26/05/16.
