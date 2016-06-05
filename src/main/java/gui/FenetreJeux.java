@@ -1,8 +1,8 @@
 package gui;
 
-import javax.swing.JFrame;
-
 import engine.Equipe;
+
+import javax.swing.*;
 
 public class FenetreJeux extends JFrame {
 
