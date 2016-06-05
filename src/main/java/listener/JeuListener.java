@@ -1,20 +1,17 @@
 package listener;
 
-import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
-import static java.awt.Color.GRAY;
-import static java.awt.Color.ORANGE;
-import static java.awt.Color.RED;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-
 import engine.Case;
 import engine.GrilleJeux;
 import gui.BateauJButton;
 import gui.CaseJButton;
 import gui.FenetreJeux;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.*;
 
 public class JeuListener implements ActionListener
 {
