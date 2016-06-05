@@ -36,7 +36,7 @@ public class MenuListener implements ActionListener{
             accueilJFrame.setLocationRelativeTo(null);
 
             accueilJFrame.getContentPane().repaint();
-            MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(this.accueilJFrame);
+            MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(this.accueilJFrame,accueilJPanel);
             accueilJFrame.setJMenuBar(menuBar);
             accueilJFrame.setVisible(true);
 

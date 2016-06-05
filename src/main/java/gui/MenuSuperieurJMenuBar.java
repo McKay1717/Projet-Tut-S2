@@ -64,6 +64,15 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	/**
 	 * The constructor.
 	 */
+	public MenuSuperieurJMenuBar(AccueilJFrame accueilJFrame,AccueilJPanel accueilJPanel) {
+		super();
+		this.accueilJFrame=accueilJFrame;
+		this.accueilJPanel=accueilJPanel;
+		this.jPanel=accueilJFrame.getjPanel();
+		initAttribut();
+		creerJMenuBar2();
+	}
+
 	public MenuSuperieurJMenuBar(AccueilJFrame accueilJFrame) {
 		super();
 		this.accueilJFrame=accueilJFrame;
@@ -74,8 +83,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		}else {
 			creerJMenuBar();
 		}
-
-
 	}
 
 
