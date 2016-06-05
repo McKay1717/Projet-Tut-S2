@@ -3,14 +3,11 @@
  *******************************************************************************/
 package gui;
 
-import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import engine.GrilleJeux;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 // Start of user code (user defined imports)
 
@@ -64,6 +61,7 @@ public class GrilleDeJeuJPanel extends JPanel
 		this.grille_jeu = gj;
 		initAttribut(); // Initialisation des attributs.
 		creerWidget(); // Initialisation de la fenêtre.
+
 		// End of user code
 	}
 
@@ -98,7 +96,7 @@ public class GrilleDeJeuJPanel extends JPanel
 		// Initialisation de l'intitulé des colonnes.
 		intitule_colonne = new JLabel[TAILLE_GRILLE];
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
-			// Erreur, c'est quoi le but de code ?
+			// Erreur, c'est quoi le but de ce code ?
 			// C'est marqué plus haut : initialisation de l'intitulé des
 			// colonnes ! Il faut apprendre à lire !
 			intitule_colonne[i] = new JLabel(Integer.toString(i + 1));
@@ -109,6 +107,8 @@ public class GrilleDeJeuJPanel extends JPanel
 	 */
 	public void creerWidget()
 	{
+
+
 		JPanel pGrille = new JPanel(new GridLayout(TAILLE_GRILLE + 1, TAILLE_GRILLE + 1));
 		for (int i = 0 ; i < TAILLE_GRILLE + 1 ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE + 1 ; j++)
