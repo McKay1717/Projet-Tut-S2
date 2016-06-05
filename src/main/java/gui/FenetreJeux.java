@@ -31,12 +31,10 @@ public class FenetreJeux extends JFrame
 	public GrilleDeJeuJPanel	deJeuJPanel1;
 	public GrilleDeJeuJPanel	deJeuJPanel2;
 
-	public FenetreJeux(Equipe[] e, GrilleDeJeuJPanel deJeuJPanel1, GrilleDeJeuJPanel deJeuJPanel2)
+	public FenetreJeux(Equipe[] e)
 	{
 		equipes = e;
 		creerWidget();
-		this.deJeuJPanel1 = deJeuJPanel1;
-		this.deJeuJPanel2 = deJeuJPanel2;
 		setTitle("Jeux");
 		setSize(400, 400);
 		setLocationRelativeTo(null);
