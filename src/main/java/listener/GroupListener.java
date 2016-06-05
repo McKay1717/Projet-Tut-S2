@@ -3,15 +3,15 @@
  *******************************************************************************/
 package listener;
 
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
-
 import engine.Equipe;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.ArrierePlanJPanel;
 import gui.FenetreJeux;
 import gui.MenuSuperieurJMenuBar;
+
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class GroupListener
 {
@@ -78,6 +78,9 @@ public class GroupListener
 		e[1] = equipe2;
 		fenetreJeux = new FenetreJeux(e, arrierePlanJPanel1.getGrilleDeJeuJPanel(),
 				arrierePlanJPanel2.getGrilleDeJeuJPanel());
+		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(fenetreJeux);
+		fenetreJeux.setJMenuBar(menuBar);
+
 	}
 
 	public void resetGame()

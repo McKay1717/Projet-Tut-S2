@@ -1,18 +1,17 @@
 package listener;
 
-import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-
 import engine.Case;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.BateauJButton;
 import gui.CaseJButton;
 import gui.GrilleDeJeuJPanel;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
 
 public class JeuListener implements ActionListener
 {

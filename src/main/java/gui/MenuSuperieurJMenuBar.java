@@ -4,7 +4,6 @@ import listener.MenuListener;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.*;
 
 
 /**
@@ -59,6 +58,7 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	private MenuListener menuListener;
 	private AccueilJFrame accueilJFrame;
 	private AccueilJPanel accueilJPanel;
+	private FenetreJeux fenetreJeux;
 	private JPanel jPanel;
 
 	/**
@@ -88,7 +88,7 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	public MenuSuperieurJMenuBar(FenetreJeux fenetreJeux){
 		super();
 		this.fenetreJeux=fenetreJeux;
-		this.jPanel=accueilJFrame.getjPanel();
+		//this.jPanel=accueilJFrame.getjPanel();
 		initAttribut();
 		creerJMenuBar();
 	}
