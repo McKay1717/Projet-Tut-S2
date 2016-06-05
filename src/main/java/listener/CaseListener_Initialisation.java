@@ -240,6 +240,7 @@ public class CaseListener_Initialisation implements ActionListener
 				if (grille[i][j] instanceof CaseJButton)
 					grille[i][j].setBackground(BLUE);
 				else if (grille[i][j] instanceof BateauJButton)
+					//Problème.
 					grille[i][j].setBackground(BLACK);
 			}
 	}
