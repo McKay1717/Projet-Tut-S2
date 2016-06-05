@@ -1,8 +1,10 @@
 package listener;
 
 import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.GRAY;
+import static java.awt.Color.ORANGE;
+import static java.awt.Color.RED;
 
-import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -13,16 +15,16 @@ import engine.GrilleJeux;
 import gui.BateauJButton;
 import gui.CaseJButton;
 import gui.FenetreJeux;
-import gui.GrilleDeJeuJPanel;
 
 public class JeuListener implements ActionListener
 {
-	public JButton[][]	grille;
+	public JButton[][]	grille1, grille2;
 	public Case[][]		grille_model1, grille_model2;
 
 	public JeuListener(FenetreJeux fenetre, GrilleJeux grilleJeux1, GrilleJeux grilleJeux2)
 	{
-		this.grille = ((GrilleDeJeuJPanel) fenetre.getjPanel()).grille;
+		this.grille1 = fenetre.deJeuJPanel1.grille;
+		this.grille2 = fenetre.deJeuJPanel2.grille;
 		grille_model1 = grilleJeux1.getCases();
 		grille_model2 = grilleJeux2.getCases();
 	}
@@ -30,48 +32,61 @@ public class JeuListener implements ActionListener
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		int[] position = case_appelee(e);
+		Case[][] grille_model_courante = grille_model_courante();
+		JButton[][] grille_courante = grille_courante();
 
-		if (!grille_model[position[0]][position[1]].getTouche())
-			grille_model[position[0]][position[1]].setTouche(true);
+		int[] position = case_appelee(e, grille_courante);
 
-		if (grille[position[0]][position[1]] instanceof CaseJButton)
+		if (!grille_model_courante[position[0]][position[1]].getTouche())
+			grille_model_courante[position[0]][position[1]].setTouche(true);
+
+		if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
 		{
 			// Image d'une case vide touchée.
 
-			grille[position[0]][position[1]].setBackground(Color.GRAY);
+			grille_courante[position[0]][position[1]].setBackground(GRAY);
 
 		}
-		else if (grille[position[0]][position[1]] instanceof BateauJButton)
+		else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
 		{
-			if (grille_model[position[0]][position[1]].getTouche())
+			if (grille_model_courante[position[0]][position[1]].getTouche())
 			{
 				// Si le bateau est touché, une image de feu ou autre.
-				grille[position[0]][position[1]].setBackground(Color.ORANGE);
+				grille_courante[position[0]][position[1]].setBackground(ORANGE);
 
 			}
-			else if (grille_model[position[0]][position[1]].getBateau().getEstCoule())
+			else if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
 			{
 				// Si le bateau est coulé, apparition du bateau coulé à l'écran.
-				grille[position[0]][position[1]].setBackground(Color.RED);
+				grille_courante[position[0]][position[1]].setBackground(RED);
 			}
 		}
 
 		// Passage à la seconde grille.
 	}
 
-	private int[] case_appelee(ActionEvent e)
+	private int[] case_appelee(ActionEvent e, JButton[][] grille_courante)
 	{
 		int[] position = new int[2];
 
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
-				if (e.getSource().equals(grille[i][j]))
+				if (e.getSource().equals(grille_courante[i][j]))
 				{
 					position[0] = i;
 					position[1] = j;
 				}
 
 		return position;
+	}
+
+	private Case[][] grille_model_courante()
+	{
+		return grille_model1;
+	}
+
+	private JButton[][] grille_courante()
+	{
+		return grille1;
 	}
 }

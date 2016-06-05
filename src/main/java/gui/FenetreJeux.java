@@ -28,8 +28,8 @@ public class FenetreJeux extends JFrame
 																			// un
 																			// bateau
 	MenuSuperieurJMenuBar		menuBar;
-	GrilleDeJeuJPanel			deJeuJPanel1;
-	GrilleDeJeuJPanel			deJeuJPanel2;
+	public GrilleDeJeuJPanel	deJeuJPanel1;
+	public GrilleDeJeuJPanel	deJeuJPanel2;
 
 	public FenetreJeux(Equipe[] e, GrilleDeJeuJPanel deJeuJPanel1, GrilleDeJeuJPanel deJeuJPanel2)
 	{
