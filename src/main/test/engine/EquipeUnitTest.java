@@ -3,9 +3,7 @@ package engine;
 import org.mockito.Mockito;
 
 import org.junit.Assert;
-import org.junit.Rule;
 import org.junit.Test;
-import org.junit.rules.ExpectedException;
 
 /**
  * Created by valenza on 04/06/16.
@@ -30,15 +28,38 @@ public class EquipeUnitTest {
         Assert.assertTrue(e2.tire(e1, 5, 5));
     }
 
-    //PROBLEME  : la fonction renvoie une taille de 0 ?
     @Test
-    public void testSetPlacement() throws Exception {
+    public void testSetPlacementEnX() throws Exception {
         GrilleJeux gj = new GrilleJeux();
         Equipe e1 = new Equipe(gj, "e1");
         PorteAvion b = new PorteAvion(0,0,4,0,e1);
+
+        e1.gj.getCases()[0][0].setVide(true);
+        e1.gj.getCases()[1][0].setVide(true);
+        e1.gj.getCases()[2][0].setVide(true);
+        e1.gj.getCases()[3][0].setVide(true);
+        e1.gj.getCases()[4][0].setVide(true);
+
         Case[] c = new Case[]{gj.getCases()[0][0], gj.getCases()[1][0], gj.getCases()[2][0], gj.getCases()[3][0], gj.getCases()[4][0]};
         Assert.assertArrayEquals(c, e1.setPlacement(b, 0,0,4,0));
 
     }
+
+    @Test
+    public void testSetPlacementEnY() throws Exception {
+        GrilleJeux gj = new GrilleJeux();
+        Equipe e1 = new Equipe(gj, "e1");
+        PorteAvion b = new PorteAvion(0,0,0,4,e1);
+
+        e1.gj.getCases()[0][0].setVide(true);
+        e1.gj.getCases()[0][1].setVide(true);
+        e1.gj.getCases()[0][2].setVide(true);
+        e1.gj.getCases()[0][3].setVide(true);
+        e1.gj.getCases()[0][4].setVide(true);
+
+        Case[] c = new Case[]{gj.getCases()[0][0], gj.getCases()[0][1], gj.getCases()[0][2], gj.getCases()[0][3], gj.getCases()[0][4]};
+        Assert.assertArrayEquals(c, e1.setPlacement(b, 0,0,0,4));
+    }
+
 
 }

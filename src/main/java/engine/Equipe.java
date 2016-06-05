@@ -64,12 +64,12 @@ public class Equipe {
 
 		Case[] cases = new Case[b.getTaille()];
 		for (int i = 0; i < b.getTaille(); i++) {
-			if (x2 - x1 == b.getTaille() - 1) {
+			if (x2 - x1 	== b.getTaille() - 1 && y1 == y2) {
 				if (!this.getGj().getCases()[x1 + i][y1].getVide()) {
 					throw new Exception("Case " + (x1 + i) + ',' + (y1) + " non vide");
 				}
 
-			} else if (y2 - y1 == b.getTaille() - 1) {
+			} else if (y2 - y1 == b.getTaille() - 1 && x1 == x2) {
 				if (!this.getGj().getCases()[x1][y1 + i].getVide()) {
 					throw new Exception("Case " + (x1) + ',' + (y1 + i) + " non vide");
 				}
