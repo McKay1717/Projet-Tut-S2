@@ -1,12 +1,12 @@
 package gui;
 
-import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import engine.Equipe;
 
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-
-import engine.Equipe;
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
 
 public class FenetreJeux extends JFrame
 {
@@ -49,9 +49,24 @@ public class FenetreJeux extends JFrame
 	{
 		menuBar = new MenuSuperieurJMenuBar(this);
 		setJMenuBar(menuBar);
+
 		deJeuJPanel1 = new GrilleDeJeuJPanel(equipes[0].getGj());
 		deJeuJPanel2 = new GrilleDeJeuJPanel(equipes[1].getGj());
-		setContentPane(deJeuJPanel1);
+
+		JPanel pPrinc = new JPanel();
+		JPanel pGrille = new JPanel();
+		JPanel pLabel = new JPanel();
+
+		JLabel afficheNomEquipeCourant = new JLabel("C'est au tour de l'equipe "+equipes[1].getNomEquipe()+" de jouer");
+		afficheNomEquipeCourant.setFont(new Font("FreeMono",Font.PLAIN,25));
+
+		pGrille.add(deJeuJPanel1);
+		pLabel.add(afficheNomEquipeCourant);
+
+		pPrinc.add(pLabel,BorderLayout.NORTH);
+		pPrinc.add(pGrille,BorderLayout.SOUTH);
+
+		setContentPane(pPrinc);
 	}
 
 	public void setListener(ActionListener actionListener)
