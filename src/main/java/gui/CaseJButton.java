@@ -3,12 +3,15 @@
  *******************************************************************************/
 package gui;
 
+import engine.Case;
+
+import javax.swing.*;
+
+import java.awt.*;
+
 import static java.awt.Color.BLUE;
 
 // Start of user code (user defined imports)
-import javax.swing.JButton;
-
-import engine.Case;
 
 // End of user code
 
@@ -43,9 +46,7 @@ public class CaseJButton extends JButton
 	{
 		super();
 		this.case_model = case_model;
-		this.x = getX();
-		this.y = getY();
-
+		setPreferredSize(new Dimension(35,35));
 		setBackground(BLUE);
 	}
 

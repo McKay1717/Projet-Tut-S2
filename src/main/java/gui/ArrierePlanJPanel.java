@@ -3,12 +3,10 @@
  *******************************************************************************/
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JPanel;
-
 import engine.GrilleJeux;
+
+import javax.swing.*;
+import java.awt.*;
 
 // Start of user code (user defined imports)
 
@@ -34,7 +32,7 @@ public class ArrierePlanJPanel extends JPanel
 	{
 		// Start of user code constructor for ArrierePlanJPanel)
 		// super();
-		super(new GridLayout(1, 2));
+		super(new GridLayout(1, 1));
 
 		this.grille_jeux = grille_jeux;
 
@@ -49,8 +47,22 @@ public class ArrierePlanJPanel extends JPanel
 		grilleDeJeuJPanel = new GrilleDeJeuJPanel(grille_jeux);
 		selectionBateauJPanel = new SelectionBateauJPanel(grille_jeux);
 
-		add(grilleDeJeuJPanel);
+
+		//disposition des panels
+		Container contp = new Container();
+		contp.setLayout(new GridBagLayout());
+		GridBagConstraints gbd = new GridBagConstraints();
+		gbd.ipadx = 20;
+		gbd.ipady = 20;
+		contp.add(grilleDeJeuJPanel, gbd);
+		contp.add(selectionBateauJPanel, gbd);
+
+		add(contp);
+
+
+		/*add(grilleDeJeuJPanel);
 		add(selectionBateauJPanel, BorderLayout.EAST);
+		*/
 	}
 
 	public SelectionBateauJPanel getSelectionBateauJPanel()
