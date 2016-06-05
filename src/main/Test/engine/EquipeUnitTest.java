@@ -67,16 +67,44 @@ public class EquipeUnitTest {
     public ExpectedException thrown = ExpectedException.none();
 
     @Test(expected = Exception.class)
-    public void testCompareCombinaisonsNonComparables()         {
-        // la méthode compare retourne un objet Indice. On va tout d'abord tester la classe Indice.
-        Combinaison combinaison = new Combinaison(new Pion[]{pion(rouge), pion(jaune), pion(blanc), pion(vert)});
-        Combinaison combinaisonCachee = new Combinaison();
-        thrown.expect(RuntimeException.class);
-        thrown.expectMessage("Combinaisons non comparables");
-        combinaison.compare(combinaisonCachee);
+    public void testSetPlacementNonAligner() throws Exception {
+        GrilleJeux gj = new GrilleJeux();
+        Equipe e1 = new Equipe(gj, "e1");
+        PorteAvion b = new PorteAvion(0, 0, 1, 4, e1);
+
+        thrown.expect(Exception.class);
+        thrown.expectMessage("Case non alignÃ©e");
     }
 
+    @Test(expected = Exception.class)
+    public void testSetPlacementXNonVide() throws Exception {
+        GrilleJeux gj = new GrilleJeux();
+        Equipe e1 = new Equipe(gj, "e1");
+        PorteAvion b = new PorteAvion(0, 0, 4, 0, e1);
 
+        e1.gj.getCases()[0][0].setVide(true);
+        e1.gj.getCases()[1][0].setVide(true);
+        e1.gj.getCases()[3][0].setVide(true);
+        e1.gj.getCases()[4][0].setVide(true);
 
+        e1.setPlacement(b, 0,0,4,0);
+        thrown.expect(Exception.class);
+        thrown.expectMessage("Case 2,0 non vide");
+    }
 
+    @Test(expected = Exception.class)
+    public void testSetPlacementYNonVide() throws Exception {
+        GrilleJeux gj = new GrilleJeux();
+        Equipe e1 = new Equipe(gj, "e1");
+        PorteAvion b = new PorteAvion(0,0,0,4,e1);
+
+        e1.gj.getCases()[0][0].setVide(true);
+        e1.gj.getCases()[0][1].setVide(true);
+        e1.gj.getCases()[0][3].setVide(true);
+        e1.gj.getCases()[0][4].setVide(true);
+
+        e1.setPlacement(b, 0,0,0,4);
+        thrown.expect(Exception.class);
+        thrown.expectMessage("Case 0,2 non vide");
+    }
 }
