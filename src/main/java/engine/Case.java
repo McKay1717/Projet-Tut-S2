@@ -18,26 +18,26 @@ public class Case {
 	/**
 	 * Description of the property vide.
 	 */
-	 boolean vide = true;
+	boolean vide = true;
 
 	/**
 	 * Description of the property grilleJeuxs.
 	 */
-	 GrilleJeux grilleJeuxs ;
+	private GrilleJeux grilleJeuxs;
 
 	/**
 	 * Description of the property bateau.
 	 */
-	 Bateaux bateau ;
+	private Bateaux bateau;
 
 	/**
 	 * Description of the property touche.
 	 */
-	 boolean touche = false;
-	 
-	 int x = -1;
-	 int y = -1;
-	
+	boolean touche = false;
+
+	int x = -1;
+	int y = -1;
+
 	// Start of user code (user defined attributes for Case)
 
 	// End of user code
@@ -45,7 +45,7 @@ public class Case {
 	/**
 	 * The constructor.
 	 */
-	public Case(GrilleJeux gj, int x,int y) {
+	public Case(GrilleJeux gj, int x, int y) {
 		// Start of user code constructor for Case)
 		super();
 		grilleJeuxs = gj;
@@ -58,15 +58,17 @@ public class Case {
 
 	/**
 	 * Returns vide.
-	 * @return vide 
+	 * 
+	 * @return vide
 	 */
 	public boolean getVide() {
 		return this.vide;
 	}
 
 	/**
-	 * Sets a value to attribute vide. 
-	 * @param newVide 
+	 * Sets a value to attribute vide.
+	 * 
+	 * @param newVide
 	 */
 	public void setVide(boolean newVide) {
 		this.vide = newVide;
@@ -74,15 +76,17 @@ public class Case {
 
 	/**
 	 * Returns grilleJeuxs.
-	 * @return grilleJeuxs 
+	 * 
+	 * @return grilleJeuxs
 	 */
 	public GrilleJeux getGrilleJeuxs() {
 		return this.grilleJeuxs;
 	}
 
 	/**
-	 * Sets a value to attribute grilleJeuxs. 
-	 * @param newGrilleJeuxs 
+	 * Sets a value to attribute grilleJeuxs.
+	 * 
+	 * @param newGrilleJeuxs
 	 */
 	public void setGrilleJeuxs(GrilleJeux newGrilleJeuxs) {
 		this.grilleJeuxs = newGrilleJeuxs;
@@ -90,15 +94,17 @@ public class Case {
 
 	/**
 	 * Returns bateau.
-	 * @return bateau 
+	 * 
+	 * @return bateau
 	 */
 	public Bateaux getBateau() {
 		return this.bateau;
 	}
 
 	/**
-	 * Sets a value to attribute bateau. 
-	 * @param newBateau 
+	 * Sets a value to attribute bateau.
+	 * 
+	 * @param newBateau
 	 */
 	public void setBateau(Bateaux newBateau) {
 		this.bateau = newBateau;
@@ -106,29 +112,28 @@ public class Case {
 
 	/**
 	 * Returns touche.
-	 * @return touche 
+	 * 
+	 * @return touche
 	 */
 	public boolean getTouche() {
 		return this.touche;
 	}
 
 	/**
-	 * Sets a value to attribute touche. 
-	 * @param newTouche 
+	 * Sets a value to attribute touche.
+	 * 
+	 * @param newTouche
 	 */
 	public void setTouche(boolean newTouche) {
 		this.touche = newTouche;
 	}
 
-
-
 	/**
-	 * Lors du placement
-	 * Detecte les cases qui sont disponibles
+	 * Lors du placement Detecte les cases qui sont disponibles
 	 */
 
-	public boolean casePossible(Case[] c){
-		if(c.length == 1){
+	public boolean casePossible(Case[] c) {
+		if (c.length == 1) {
 
 		}
 		return true;
@@ -201,7 +206,7 @@ public class Case {
 
 	public void touche() {
 		setTouche(true);
-		
+
 	}
 
 }
