@@ -10,6 +10,7 @@ import engine.Equipe;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.ArrierePlanJPanel;
+import gui.FenetreJeux;
 import gui.MenuSuperieurJMenuBar;
 
 public class GroupListener
@@ -20,6 +21,7 @@ public class GroupListener
 	public Equipe						equipe1, equipe2;
 	public AccueilJFrame				fenetre;
 	public CaseListener_Initialisation	caseListener1, caseListener2;
+	public FenetreJeux					fenetreJeux;
 	// End of user code
 
 	/**
@@ -46,7 +48,7 @@ public class GroupListener
 					INFORMATION_MESSAGE);
 			arrierePlanJPanel1 = new ArrierePlanJPanel(grille_jeux1);
 			fenetre.setjPanel(arrierePlanJPanel1);
-			caseListener1 = new CaseListener_Initialisation(grille_jeux1, fenetre, equipe1);
+			caseListener1 = new CaseListener_Initialisation(grille_jeux1, fenetre, equipe1, 1, this);
 			arrierePlanJPanel1.getGrilleDeJeuJPanel().setCaseListener(caseListener1);
 			arrierePlanJPanel1.getSelectionBateauJPanel().setCaseListener(caseListener1);
 		}
@@ -56,7 +58,7 @@ public class GroupListener
 					INFORMATION_MESSAGE);
 			arrierePlanJPanel2 = new ArrierePlanJPanel(grille_jeux2);
 			fenetre.setjPanel(arrierePlanJPanel2);
-			caseListener2 = new CaseListener_Initialisation(grille_jeux2, fenetre, equipe2);
+			caseListener2 = new CaseListener_Initialisation(grille_jeux2, fenetre, equipe2, 2, this);
 			arrierePlanJPanel2.getGrilleDeJeuJPanel().setCaseListener(caseListener2);
 			arrierePlanJPanel2.getGrilleDeJeuJPanel().setCaseListener(caseListener2);
 		}
@@ -66,5 +68,14 @@ public class GroupListener
 		fenetre.setJMenuBar(menuBar);
 		fenetre.getContentPane().repaint();
 		fenetre.setVisible(true);
+	}
+
+	public void createFenetreJeu()
+	{
+		Equipe[] e = new Equipe[2];
+		e[0] = equipe1;
+		e[1] = equipe2;
+		fenetreJeux = new FenetreJeux(e, arrierePlanJPanel1.getGrilleDeJeuJPanel(),
+				arrierePlanJPanel2.getGrilleDeJeuJPanel());
 	}
 }

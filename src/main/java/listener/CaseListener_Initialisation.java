@@ -9,6 +9,7 @@ import static java.awt.Color.BLUE;
 import static java.awt.Color.ORANGE;
 import static java.awt.Color.PINK;
 import static java.awt.Color.RED;
+import static java.lang.Math.max;
 import static java.lang.Math.min;
 
 import java.awt.event.ActionEvent;
@@ -42,16 +43,21 @@ public class CaseListener_Initialisation implements ActionListener
 	public BateauJButton[]				bateauJButton;
 	public ArrayList<BateauJButton[]>	bateauJButtons;
 	public int[][]						position_save;
+	public int							numero_grille;
+	public GroupListener				groupListener;
 	// End of user code
 
 	/**
 	 * The constructor.
 	 */
-	public CaseListener_Initialisation(GrilleJeux grille_jeu, AccueilJFrame fenetre, Equipe equipe)
+	public CaseListener_Initialisation(GrilleJeux grille_jeu, AccueilJFrame fenetre, Equipe equipe, int numero_grille,
+			GroupListener groupListener)
 	{
 		this.grille_jeu = grille_jeu;
 		this.fenetre = fenetre;
 		this.equipe = equipe;
+		this.numero_grille = numero_grille;
+		this.groupListener = groupListener;
 		grille = ((ArrierePlanJPanel) fenetre.getjPanel()).getGrilleDeJeuJPanel().grille;
 		bateauJButton = null;
 		position_save = null;
@@ -87,6 +93,8 @@ public class CaseListener_Initialisation implements ActionListener
 		}
 		else if (e.getSource() instanceof BateauJButton && !((JButton) e.getSource()).getBackground().equals(RED))
 			setBateau(e);
+		else if (e.getSource().equals(((ArrierePlanJPanel) fenetre.getjPanel()).getSelectionBateauJPanel().bValider))
+			valider();
 	}
 
 	private void case_appelee(ActionEvent e, int numero_case)
@@ -142,23 +150,23 @@ public class CaseListener_Initialisation implements ActionListener
 				{
 					case "Porte-avion":
 						new PorteAvion(position_save[0][0], min(position_save[0][1], position_save[1][1]),
-								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
+								position_save[1][0], max(position_save[0][1], position_save[1][1]), equipe);
 						break;
 					case "Croiseur":
 						new Croiseur(position_save[0][0], min(position_save[0][1], position_save[1][1]),
-								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
+								position_save[1][0], max(position_save[0][1], position_save[1][1]), equipe);
 						break;
 					case "Contre-Torpilleur":
 						new ContretTorpilleur(position_save[0][0], min(position_save[0][1], position_save[1][1]),
-								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
+								position_save[1][0], max(position_save[0][1], position_save[1][1]), equipe);
 						break;
 					case "Torpilleur":
 						new Torpilleur(position_save[0][0], min(position_save[0][1], position_save[1][1]),
-								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
+								position_save[1][0], max(position_save[0][1], position_save[1][1]), equipe);
 						break;
 					case "Sous-marin":
 						new SousMarin(position_save[0][0], min(position_save[0][1], position_save[1][1]),
-								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
+								position_save[1][0], max(position_save[0][1], position_save[1][1]), equipe);
 						break;
 				}
 			else if (position_save[0][1] == position_save[1][1])
@@ -166,23 +174,23 @@ public class CaseListener_Initialisation implements ActionListener
 				{
 					case "Porte-avion":
 						new PorteAvion(min(position_save[0][0], position_save[1][0]), position_save[0][1],
-								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
+								max(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 					case "Croiseur":
 						new Croiseur(min(position_save[0][0], position_save[1][0]), position_save[0][1],
-								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
+								max(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 					case "Contre-Torpilleur":
 						new ContretTorpilleur(min(position_save[0][0], position_save[1][0]), position_save[0][1],
-								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
+								max(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 					case "Torpilleur":
 						new Torpilleur(min(position_save[0][0], position_save[1][0]), position_save[0][1],
-								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
+								max(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 					case "Sous-marin":
 						new SousMarin(min(position_save[0][0], position_save[1][0]), position_save[0][1],
-								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
+								max(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 				}
 
@@ -318,6 +326,22 @@ public class CaseListener_Initialisation implements ActionListener
 					}
 					stop = true;
 				}
+	}
+
+	private void valider()
+	{
+		boolean valider = true;
+		for (int i = 0 ; i < bateauJButtons.size() ; i++)
+			for (int j = 0 ; j < bateauJButtons.get(i).length ; j++)
+				if (!bateauJButtons.get(i)[j].getBackground().equals(RED))
+					valider = false;
+
+		if (valider && numero_grille == 1)
+			groupListener.createGrilleDeJeuJPanel(2);
+		else if (valider && numero_grille == 2)
+			groupListener.createFenetreJeu();
+		else
+			fenetre.creerDialogError("Veuillez placer tous vos bateaux.");
 	}
 	// End of user code
 }

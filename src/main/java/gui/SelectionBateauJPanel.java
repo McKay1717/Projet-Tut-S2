@@ -3,15 +3,18 @@
  *******************************************************************************/
 package gui;
 
-import engine.GrilleJeux;
-import listener.CaseListener_Initialisation;
+import static java.awt.Color.BLACK;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static java.awt.Color.BLACK;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import engine.GrilleJeux;
+import listener.CaseListener_Initialisation;
 
 /**
  * Description of SelectionBateauJPanel.
@@ -23,6 +26,7 @@ public class SelectionBateauJPanel extends JPanel
 	// Start of user code (user defined attributes for SelectionBateauJPanel)
 	public ArrayList<BateauJButton[]>	bateauJButtons;
 	private GrilleJeux					grilleJeux;
+	public JButton						bValider;
 	// End of user code
 
 	private static final long			serialVersionUID	= 3937304672276095355L;
@@ -87,6 +91,8 @@ public class SelectionBateauJPanel extends JPanel
 			bateau[j].setBackground(BLACK);
 		}
 		bateauJButtons.add(bateau);
+
+		bValider = new JButton("Valider les bateaux");
 	}
 
 	private void createPanel()
@@ -116,10 +122,10 @@ public class SelectionBateauJPanel extends JPanel
 		JPanel pInSousMarin = new JPanel(new GridLayout(1, 5));
 		JPanel pInTorpilleur = new JPanel(new GridLayout(1, 5));
 
-		//creation du panel et du bouton pour valider l'initialisation des bateaux
+		// creation du panel et du bouton pour valider l'initialisation des
+		// bateaux
 
 		JPanel pValider = new JPanel();
-		JButton bValider = new JButton("Valider les bateaux");
 
 		///////
 		// assamblage des attribut de selection
@@ -155,9 +161,7 @@ public class SelectionBateauJPanel extends JPanel
 		pTorpilleur.add(lTorpilleur);
 		pTorpilleur.add(pInTorpilleur);
 
-
 		pValider.add(bValider);
-
 
 		add(pPorteAvion);
 		add(pCroiseur);
@@ -174,6 +178,8 @@ public class SelectionBateauJPanel extends JPanel
 				bateauJButtons.get(i)[j].addActionListener(actionListener);
 
 		((CaseListener_Initialisation) actionListener).bateauJButtons = bateauJButtons;
+
+		bValider.addActionListener(actionListener);
 	}
 	// End of user code
 
