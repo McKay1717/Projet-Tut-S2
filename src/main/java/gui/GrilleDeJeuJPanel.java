@@ -86,14 +86,21 @@ public class GrilleDeJeuJPanel extends JPanel
 			}
 
 		// Initialisation de l'intitulé des lignes.
-		intitule_ligne = new JLabel[TAILLE_GRILLE];
-		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
-			intitule_ligne[i] = new JLabel(Character.toString(INTITULE_LIGNE[i]));
+		intitule_ligne = new JLabel[TAILLE_GRILLE + 1];
+		for (int i = 0 , j = -1 ; i < TAILLE_GRILLE + 1 ; i++ , j++)
+		{
+			if (i == 0)
+				intitule_ligne[i] = new JLabel();
+			else
+				intitule_ligne[i] = new JLabel(Character.toString(INTITULE_LIGNE[j]));
+		}
 
 		// Initialisation de l'intitulé des colonnes.
 		intitule_colonne = new JLabel[TAILLE_GRILLE];
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			// Erreur, c'est quoi le but de code ?
+			// C'est marqué plus haut : initialisation de l'intitulé des
+			// colonnes ! Il faut apprendre à lire !
 			intitule_colonne[i] = new JLabel(Integer.toString(i + 1));
 	}
 
@@ -106,10 +113,12 @@ public class GrilleDeJeuJPanel extends JPanel
 		for (int i = 0 ; i < TAILLE_GRILLE + 1 ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE + 1 ; j++)
 			{
-				if (i == 0 && j != 0)
+				if (i == 0 && j == 0)
+					pGrille.add(intitule_ligne[i]);
+				else if (i == 0 && j != 0)
 					pGrille.add(intitule_colonne[j - 1]);
 				else if (i != 0 && j == 0)
-					pGrille.add(intitule_ligne[i - 1]);
+					pGrille.add(intitule_ligne[i]);
 				else if (i != 0 && j != 0)
 					pGrille.add(grille[i - 1][j - 1]);
 			}

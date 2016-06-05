@@ -20,7 +20,6 @@ import gui.AccueilJFrame;
 import gui.ArrierePlanJPanel;
 import gui.BateauJButton;
 import gui.CaseJButton;
-import gui.GrilleDeJeuJPanel;
 
 // Start of user code (user defined imports)
 // End of user code
@@ -79,7 +78,7 @@ public class CaseListener_Initialisation implements ActionListener
 		position_save = new int[2][2];
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
-				if (e.getSource().equals(((GrilleDeJeuJPanel) fenetre.getjPanel()).grille[i][j]))
+				if (e.getSource().equals(grille[i][j]))
 				{
 					position_save[numero_case][0] = i;
 					position_save[numero_case][1] = j;
