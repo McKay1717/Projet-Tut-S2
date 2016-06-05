@@ -98,28 +98,28 @@ public class CaseListener_Initialisation implements ActionListener
 		if (position_save[0][0] - bateauJButton.length + 1 >= 0)
 		{
 			for (int i = position_save[0][0] - bateauJButton.length + 1 ; i <= position_save[0][0] ; i++)
-				grille[i][position_save[0][1]].setBackground(ORANGE);
+				grille[i][position_save[0][1]].setBackground(BLACK);
 			grille[position_save[0][0] - bateauJButton.length + 1][position_save[0][1]].setBackground(RED);
 		}
 
 		if (position_save[0][0] + bateauJButton.length - 1 < TAILLE_GRILLE)
 		{
 			for (int i = position_save[0][0] ; i <= position_save[0][0] + bateauJButton.length - 1 ; i++)
-				grille[i][position_save[0][1]].setBackground(ORANGE);
+				grille[i][position_save[0][1]].setBackground(BLACK);
 			grille[position_save[0][0] + bateauJButton.length - 1][position_save[0][1]].setBackground(RED);
 		}
 
 		if (position_save[0][1] - bateauJButton.length + 1 >= 0)
 		{
 			for (int i = position_save[0][1] - bateauJButton.length + 1 ; i <= position_save[0][1] ; i++)
-				grille[position_save[0][0]][i].setBackground(ORANGE);
+				grille[position_save[0][0]][i].setBackground(BLACK);
 			grille[position_save[0][0]][position_save[0][1] - bateauJButton.length + 1].setBackground(RED);
 		}
 
 		if (position_save[0][1] + bateauJButton.length - 1 < TAILLE_GRILLE)
 		{
 			for (int i = position_save[0][1] ; i <= position_save[0][1] + bateauJButton.length - 1 ; i++)
-				grille[position_save[0][0]][i].setBackground(ORANGE);
+				grille[position_save[0][0]][i].setBackground(BLACK);
 			grille[position_save[0][0]][position_save[0][1] + bateauJButton.length - 1].setBackground(RED);
 		}
 
