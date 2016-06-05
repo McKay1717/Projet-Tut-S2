@@ -15,7 +15,7 @@ public class FenetreJeux extends JFrame
 	 * 
 	 */
 	private static final long	serialVersionUID	= 7002519433302593785L;
-	Equipe[]					equipes;									// equipe
+	private Equipe[]					equipes;									// equipe
 																			// =>
 																			// grille
 																			// =>
@@ -76,5 +76,9 @@ public class FenetreJeux extends JFrame
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
 				deJeuJPanel2.grille[i][j].addActionListener(actionListener);
+	}
+
+	public Equipe[] getEquipes(){
+		return equipes;
 	}
 }

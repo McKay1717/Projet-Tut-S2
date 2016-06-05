@@ -69,32 +69,45 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		this.accueilJFrame=accueilJFrame;
 		this.accueilJPanel=accueilJPanel;
 		this.jPanel=accueilJFrame.getjPanel();
-		initAttribut();
+		initAttribut2();
 		creerJMenuBar2();
-	}
-
-	public MenuSuperieurJMenuBar(AccueilJFrame accueilJFrame) {
-		super();
-		this.accueilJFrame=accueilJFrame;
-		this.jPanel=accueilJFrame.getjPanel();
-		initAttribut();
-		if(this.jPanel==this.accueilJPanel){
-			creerJMenuBar2();
-		}else {
-			creerJMenuBar();
-		}
 	}
 
 	public MenuSuperieurJMenuBar(FenetreJeux fenetreJeux){
 		super();
 		this.fenetreJeux=fenetreJeux;
 		//this.jPanel=accueilJFrame.getjPanel();
-		initAttribut();
+		initAttribut1();
 		creerJMenuBar();
 	}
 
+	public MenuSuperieurJMenuBar(AccueilJFrame accueilJFrame) {
+		super();
+		this.accueilJFrame=accueilJFrame;
+		this.jPanel=accueilJFrame.getjPanel();
+		initAttribut2();
+		if(this.jPanel==this.accueilJPanel){
+			creerJMenuBar2();
+		}else {
+			creerJMenuBar2();
+		}
+	}
 
-	private void initAttribut(){
+
+
+	private void initAttribut2(){
+		//JMenu
+		info = new JMenu("A propos");
+
+		//JMenuItem
+		itemInfo1 = new JMenuItem("Createurs");
+
+		menuListener= new MenuListener(this,this.accueilJFrame);
+
+		itemInfo1.addActionListener(menuListener);
+	}
+
+	private void initAttribut1(){
 		//JMenu
 		optionPlay = new JMenu("Game");
 		audio = new JMenu("Audio");
@@ -108,7 +121,9 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemAudio2 = new JMenuItem("OFF");
 
 		itemInfo1 = new JMenuItem("Createurs");
-		menuListener= new MenuListener(this,this.accueilJFrame);
+
+		menuListener= new MenuListener(this,this.fenetreJeux);
+
 		itemOptionPlay1.addActionListener(menuListener);
 		itemOptionPlay2.addActionListener(menuListener);
 		itemAudio1.addActionListener(menuListener);
@@ -151,24 +166,12 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	}
 	private void creerJMenuBar2(){
 
-		itemAudio1.setIcon(iconeSonOn);
-		itemAudio2.setIcon(iconeSonOff);
-
 		itemInfo1.setIcon(iconeInfo);
 
 		//Color
-		itemAudio1.setBackground(Color.white);
-		itemAudio2.setBackground(Color.white);
 		itemInfo1.setBackground(Color.white);
 
-
-		audio.add(itemAudio1);
-		audio.add(itemAudio2);
-
 		info.add(itemInfo1);
-
-		//Ajout dans le JMenuBar
-		this.add(audio);
 		this.add(info);
 	}
 

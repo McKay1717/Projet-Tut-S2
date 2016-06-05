@@ -7,6 +7,7 @@ import javax.swing.JOptionPane;
 
 import gui.AccueilJFrame;
 import gui.AccueilJPanel;
+import gui.FenetreJeux;
 import gui.MenuSuperieurJMenuBar;
 
 /**
@@ -17,15 +18,17 @@ public class MenuListener implements ActionListener
 	MenuSuperieurJMenuBar	menuSuperieurJMenuBar;
 	AccueilJFrame			accueilJFrame;
 	AccueilJPanel			accueilJPanel;
+	FenetreJeux fenetreJeux;
 
-	public MenuListener()
-	{
-	};
 
 	public MenuListener(MenuSuperieurJMenuBar menuSuperieurJMenuBar, AccueilJFrame accueilJFrame)
 	{
 		this.menuSuperieurJMenuBar = menuSuperieurJMenuBar;
 		this.accueilJFrame = accueilJFrame;
+	}
+	public MenuListener(MenuSuperieurJMenuBar menuSuperieurJMenuBar, FenetreJeux fenetreJeux) {
+		this.fenetreJeux = fenetreJeux;
+		this.menuSuperieurJMenuBar = menuSuperieurJMenuBar;
 	}
 
 	@Override
@@ -51,5 +54,21 @@ public class MenuListener implements ActionListener
 			accueilJFrame.setVisible(true);
 
 		}
+
+		//Son ON
+		if (e.getSource() == menuSuperieurJMenuBar.getItemAudio1())
+		{
+			fenetreJeux.getEquipes()[0].getJukebox().activeSon(true);
+			fenetreJeux.getEquipes()[1].getJukebox().activeSon(true);
+
+		}
+		//Son OFF
+		if (e.getSource() == menuSuperieurJMenuBar.getItemAudio2())
+		{
+			fenetreJeux.getEquipes()[0].getJukebox().activeSon(false);
+			fenetreJeux.getEquipes()[1].getJukebox().activeSon(false);
+
+		}
 	}
 }
+

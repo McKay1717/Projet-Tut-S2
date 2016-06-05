@@ -3,6 +3,8 @@
  *******************************************************************************/
 package engine;
 
+import engine.Jukebox.Jukebox;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
@@ -16,6 +18,8 @@ import java.util.Scanner;
  * @author nicolas
  */
 public class Equipe {
+	//Son de l equipe
+	private Jukebox jukebox = new Jukebox();
 
 	// Grille de l'equipe
 	GrilleJeux gj;
@@ -247,6 +251,10 @@ public class Equipe {
 
 	public void setBateaux(Bateaux[] bateaux) {
 		this.bateaux = bateaux;
+	}
+
+	public Jukebox getJukebox(){
+		return jukebox;
 	}
 
 }
