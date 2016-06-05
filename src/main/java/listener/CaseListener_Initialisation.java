@@ -130,7 +130,7 @@ public class CaseListener_Initialisation implements ActionListener
 	{
 		if (position_save[1][0] - bateauJButton.length + 1 == position_save[0][0])
 		{
-			for (int i = position_save[1][0] - bateauJButton.length + 1 , j = 0 ; i <= position_save[1][0] ; i++ , j++)
+			for (int i = position_save[0][0] , j = 0 ; i <= position_save[1][0] ; i++ , j++)
 			{
 				grille[i][position_save[1][1]] = new BateauJButton();
 				switch (bateauJButton[j].typeBateau)
@@ -154,9 +154,9 @@ public class CaseListener_Initialisation implements ActionListener
 			}
 		}
 		else if (position_save[1][0] + bateauJButton.length - 1 == position_save[0][0])
-			for (int i = position_save[0][0] , j = 0 ; i <= position_save[1][0] + bateauJButton.length - 1 ; i++ , j++)
+			for (int i = position_save[1][0] , j = 0 ; i <= position_save[0][0] ; i++ , j++)
 			{
-				grille[i][position_save[1][1]] = bateauJButton[j];
+				grille[i][position_save[1][1]] = new BateauJButton();
 				switch (bateauJButton[j].typeBateau)
 				{
 					case "Porte-avion":
@@ -177,9 +177,9 @@ public class CaseListener_Initialisation implements ActionListener
 				}
 			}
 		else if (position_save[1][1] - bateauJButton.length + 1 == position_save[0][1])
-			for (int i = position_save[1][1] - bateauJButton.length + 1 , j = 0 ; i < position_save[0][1] ; i++ , j++)
+			for (int i = position_save[0][1] , j = 0 ; i < position_save[1][1] ; i++ , j++)
 			{
-				grille[position_save[1][0]][i] = bateauJButton[j];
+				grille[position_save[1][0]][i] = new BateauJButton();
 				switch (bateauJButton[j].typeBateau)
 				{
 					case "Porte-avion":
@@ -200,9 +200,9 @@ public class CaseListener_Initialisation implements ActionListener
 				}
 			}
 		else if (position_save[1][1] + bateauJButton.length - 1 == position_save[0][1])
-			for (int i = position_save[1][1] , j = 0 ; i < position_save[1][1] + bateauJButton.length - 1 ; i++ , j++)
+			for (int i = position_save[1][1] , j = 0 ; i < position_save[0][1] ; i++ , j++)
 			{
-				grille[position_save[1][0]][i] = bateauJButton[j];
+				grille[position_save[1][0]][i] = new BateauJButton();
 				switch (bateauJButton[j].typeBateau)
 				{
 					case "Porte-avion":
