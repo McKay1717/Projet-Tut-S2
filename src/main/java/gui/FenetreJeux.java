@@ -1,8 +1,12 @@
 package gui;
 
-import engine.Equipe;
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
 
-import javax.swing.*;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+import engine.Equipe;
 
 public class FenetreJeux extends JFrame
 {
@@ -48,5 +52,16 @@ public class FenetreJeux extends JFrame
 		deJeuJPanel1 = new GrilleDeJeuJPanel(equipes[0].getGj());
 		deJeuJPanel2 = new GrilleDeJeuJPanel(equipes[1].getGj());
 		setContentPane(deJeuJPanel1);
+	}
+
+	public void setListener(ActionListener actionListener)
+	{
+		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
+			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
+				deJeuJPanel1.grille[i][j].addActionListener(actionListener);
+
+		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
+			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
+				deJeuJPanel2.grille[i][j].addActionListener(actionListener);
 	}
 }
