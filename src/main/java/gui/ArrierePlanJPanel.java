@@ -43,7 +43,7 @@ public class ArrierePlanJPanel extends JPanel
 		grilleDeJeuJPanel = new GrilleDeJeuJPanel(grille_jeux);
 		selectionBateauJPanel = new SelectionBateauJPanel(grille_jeux);
 
-		creerWidget();
+		creerWidget(); // Initialisation des attributs .
 
 		// End of user code
 	}

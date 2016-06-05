@@ -3,14 +3,11 @@
  *******************************************************************************/
 package gui;
 
-import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
 import engine.GrilleJeux;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 // Start of user code (user defined imports)
 
@@ -110,6 +107,8 @@ public class GrilleDeJeuJPanel extends JPanel
 	 */
 	public void creerWidget()
 	{
+
+
 		JPanel pGrille = new JPanel(new GridLayout(TAILLE_GRILLE + 1, TAILLE_GRILLE + 1));
 		for (int i = 0 ; i < TAILLE_GRILLE + 1 ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE + 1 ; j++)
