@@ -59,6 +59,7 @@ public class CaseListener_Initialisation implements ActionListener
 		{
 			if (position_save == null)
 			{
+				position_save = new int[2][2];
 				case_appelee(e, 0);
 				cases_possibles();
 			}
@@ -83,7 +84,6 @@ public class CaseListener_Initialisation implements ActionListener
 
 	private void case_appelee(ActionEvent e, int numero_case)
 	{
-		position_save = new int[2][2];
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
 				if (e.getSource().equals(grille[i][j]))
@@ -129,17 +129,99 @@ public class CaseListener_Initialisation implements ActionListener
 	private void place_bateau()
 	{
 		if (position_save[1][0] - bateauJButton.length + 1 == position_save[0][0])
-			for (int i = position_save[1][0] , j = 0 ; i <= position_save[1][0] - bateauJButton.length + 1 ; i++ , j++)
-				grille[i][position_save[1][1]] = bateauJButton[j];
+		{
+			for (int i = position_save[1][0] - bateauJButton.length + 1 , j = 0 ; i <= position_save[1][0] ; i++ , j++)
+			{
+				grille[i][position_save[1][1]] = new BateauJButton();
+				switch (bateauJButton[j].typeBateau)
+				{
+					case "Porte-avion":
+						((BateauJButton) grille[i][position_save[1][1]]).estPorteAvion();
+						break;
+					case "Croiseur":
+						((BateauJButton) grille[i][position_save[1][1]]).estCroiseur();
+						break;
+					case "Contre-Torpilleur":
+						((BateauJButton) grille[i][position_save[1][1]]).estContretTorpilleur();
+						break;
+					case "Torpilleur":
+						((BateauJButton) grille[i][position_save[1][1]]).estTorpilleur();
+						break;
+					case "Sous-marin":
+						((BateauJButton) grille[i][position_save[1][1]]).estSousMarin();
+						break;
+				}
+			}
+		}
 		else if (position_save[1][0] + bateauJButton.length - 1 == position_save[0][0])
-			for (int i = position_save[1][0] + bateauJButton.length - 1 , j = 0 ; i <= position_save[0][0] ; i++ , j++)
+			for (int i = position_save[0][0] , j = 0 ; i <= position_save[1][0] + bateauJButton.length - 1 ; i++ , j++)
+			{
 				grille[i][position_save[1][1]] = bateauJButton[j];
+				switch (bateauJButton[j].typeBateau)
+				{
+					case "Porte-avion":
+						((BateauJButton) grille[i][position_save[1][1]]).estPorteAvion();
+						break;
+					case "Croiseur":
+						((BateauJButton) grille[i][position_save[1][1]]).estCroiseur();
+						break;
+					case "Contre-Torpilleur":
+						((BateauJButton) grille[i][position_save[1][1]]).estContretTorpilleur();
+						break;
+					case "Torpilleur":
+						((BateauJButton) grille[i][position_save[1][1]]).estTorpilleur();
+						break;
+					case "Sous-marin":
+						((BateauJButton) grille[i][position_save[1][1]]).estSousMarin();
+						break;
+				}
+			}
 		else if (position_save[1][1] - bateauJButton.length + 1 == position_save[0][1])
 			for (int i = position_save[1][1] - bateauJButton.length + 1 , j = 0 ; i < position_save[0][1] ; i++ , j++)
+			{
 				grille[position_save[1][0]][i] = bateauJButton[j];
+				switch (bateauJButton[j].typeBateau)
+				{
+					case "Porte-avion":
+						((BateauJButton) grille[position_save[1][0]][i]).estPorteAvion();
+						break;
+					case "Croiseur":
+						((BateauJButton) grille[position_save[1][0]][i]).estCroiseur();
+						break;
+					case "Contre-Torpilleur":
+						((BateauJButton) grille[position_save[1][0]][i]).estContretTorpilleur();
+						break;
+					case "Torpilleur":
+						((BateauJButton) grille[position_save[1][0]][i]).estTorpilleur();
+						break;
+					case "Sous-marin":
+						((BateauJButton) grille[position_save[1][0]][i]).estSousMarin();
+						break;
+				}
+			}
 		else if (position_save[1][1] + bateauJButton.length - 1 == position_save[0][1])
 			for (int i = position_save[1][1] , j = 0 ; i < position_save[1][1] + bateauJButton.length - 1 ; i++ , j++)
+			{
 				grille[position_save[1][0]][i] = bateauJButton[j];
+				switch (bateauJButton[j].typeBateau)
+				{
+					case "Porte-avion":
+						((BateauJButton) grille[position_save[1][0]][i]).estPorteAvion();
+						break;
+					case "Croiseur":
+						((BateauJButton) grille[position_save[1][0]][i]).estCroiseur();
+						break;
+					case "Contre-Torpilleur":
+						((BateauJButton) grille[position_save[1][0]][i]).estContretTorpilleur();
+						break;
+					case "Torpilleur":
+						((BateauJButton) grille[position_save[1][0]][i]).estTorpilleur();
+						break;
+					case "Sous-marin":
+						((BateauJButton) grille[position_save[1][0]][i]).estSousMarin();
+						break;
+				}
+			}
 	}
 
 	private void reset_color(boolean bateau_place)
