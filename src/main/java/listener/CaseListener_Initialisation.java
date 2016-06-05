@@ -4,9 +4,11 @@
 package listener;
 
 import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.BLACK;
 import static java.awt.Color.BLUE;
+import static java.awt.Color.ORANGE;
+import static java.awt.Color.PINK;
 import static java.awt.Color.RED;
-import static java.lang.Math.min;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -60,13 +62,19 @@ public class CaseListener_Initialisation implements ActionListener
 				case_appelee(e, 0);
 				cases_possibles();
 			}
-			else
+			else if (((CaseJButton) e.getSource()).getBackground().equals(RED))
 			{
 				case_appelee(e, 1);
 				place_bateau();
+				reset_color(true);
 				position_save = null;
 				bateauJButton = null;
-				reset_color();
+			}
+			else
+			{
+				reset_color(false);
+				position_save = null;
+				bateauJButton = null;
 			}
 		}
 		else if (e.getSource() instanceof BateauJButton)
@@ -88,37 +96,70 @@ public class CaseListener_Initialisation implements ActionListener
 	private void cases_possibles()
 	{
 		if (position_save[0][0] - bateauJButton.length + 1 >= 0)
+		{
+			for (int i = position_save[0][0] - bateauJButton.length + 1 ; i <= position_save[0][0] ; i++)
+				grille[i][position_save[0][1]].setBackground(ORANGE);
 			grille[position_save[0][0] - bateauJButton.length + 1][position_save[0][1]].setBackground(RED);
+		}
 
 		if (position_save[0][0] + bateauJButton.length - 1 < TAILLE_GRILLE)
+		{
+			for (int i = position_save[0][0] ; i <= position_save[0][0] + bateauJButton.length - 1 ; i++)
+				grille[i][position_save[0][1]].setBackground(ORANGE);
 			grille[position_save[0][0] + bateauJButton.length - 1][position_save[0][1]].setBackground(RED);
+		}
 
 		if (position_save[0][1] - bateauJButton.length + 1 >= 0)
+		{
+			for (int i = position_save[0][1] - bateauJButton.length + 1 ; i <= position_save[0][1] ; i++)
+				grille[position_save[0][0]][i].setBackground(ORANGE);
 			grille[position_save[0][0]][position_save[0][1] - bateauJButton.length + 1].setBackground(RED);
+		}
 
-		if (position_save[0][1] + bateauJButton.length - 1 > TAILLE_GRILLE)
+		if (position_save[0][1] + bateauJButton.length - 1 < TAILLE_GRILLE)
+		{
+			for (int i = position_save[0][1] ; i <= position_save[0][1] + bateauJButton.length - 1 ; i++)
+				grille[position_save[0][0]][i].setBackground(ORANGE);
 			grille[position_save[0][0]][position_save[0][1] + bateauJButton.length - 1].setBackground(RED);
+		}
+
+		grille[position_save[0][0]][position_save[0][1]].setBackground(PINK);
 	}
 
 	private void place_bateau()
 	{
-		// if (equipe.setPlacement(position_save[0][0], position_save[0][1],
-		// position_save[1][0], position_save[1][1], bateauJButton.length))
-		if (grille[position_save[1][0]][position_save[1][1]].getBackground().equals(RED))
-			for (int i = min(position_save[0][0], position_save[1][0]) , j = min(position_save[0][1],
-					position_save[1][0]) , k = 0 ; i < min(position_save[0][0], position_save[1][0])
-							+ bateauJButton.length
-							&& j < min(position_save[0][1], position_save[1][0])
-									+ bateauJButton.length ; i++ , j++ , k++)
-				grille[i][j] = bateauJButton[k];
+		if (position_save[1][0] - bateauJButton.length + 1 == position_save[0][0])
+			for (int i = position_save[1][0] , j = 0 ; i <= position_save[1][0] - bateauJButton.length + 1 ; i++ , j++)
+				grille[i][position_save[1][1]] = bateauJButton[j];
+		else if (position_save[1][0] + bateauJButton.length - 1 == position_save[0][0])
+			for (int i = position_save[1][0] + bateauJButton.length - 1 , j = 0 ; i <= position_save[0][0] ; i++ , j++)
+				grille[i][position_save[1][1]] = bateauJButton[j];
+		else if (position_save[1][1] - bateauJButton.length + 1 == position_save[0][1])
+			for (int i = position_save[1][1] - bateauJButton.length + 1 , j = 0 ; i < position_save[0][1] ; i++ , j++)
+				grille[position_save[1][0]][i] = bateauJButton[j];
+		else if (position_save[1][1] + bateauJButton.length - 1 == position_save[0][1])
+			for (int i = position_save[1][1] , j = 0 ; i < position_save[1][1] + bateauJButton.length - 1 ; i++ , j++)
+				grille[position_save[1][0]][i] = bateauJButton[j];
 	}
 
-	private void reset_color()
+	private void reset_color(boolean bateau_place)
 	{
+		for (int i = 0 ; i < bateauJButton.length ; i++)
+		{
+			if (bateau_place)
+				bateauJButton[i].setBackground(RED);
+			else
+				bateauJButton[i].setBackground(BLACK);
+		}
+
 		for (int i = 0 ; i < grille.length ; i++)
 			for (int j = 0 ; j < grille.length ; j++)
+			{
 				if (grille[i][j] instanceof CaseJButton)
 					grille[i][j].setBackground(BLUE);
+				else if (grille[i][j] instanceof BateauJButton)
+					grille[i][j].setBackground(BLACK);
+			}
 	}
 
 	private void setBateau(ActionEvent e)
@@ -130,7 +171,10 @@ public class CaseListener_Initialisation implements ActionListener
 				{
 					bateauJButton = new BateauJButton[bateauJButtons.get(i).length];
 					for (int k = 0 ; k < bateauJButtons.get(i).length ; k++)
+					{
 						bateauJButton[k] = bateauJButtons.get(i)[k];
+						bateauJButton[k].setBackground(ORANGE);
+					}
 					stop = true;
 				}
 	}

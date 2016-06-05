@@ -24,7 +24,6 @@ public class App
 		{
 			public void run()
 			{
-
 				GrilleJeux gj1 = new GrilleJeux();
 
 				GrilleJeux gj2 = new GrilleJeux();
