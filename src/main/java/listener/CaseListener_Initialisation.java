@@ -17,7 +17,6 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 
-import engine.Bateaux;
 import engine.ContretTorpilleur;
 import engine.Croiseur;
 import engine.Equipe;
@@ -138,29 +137,27 @@ public class CaseListener_Initialisation implements ActionListener
 	{
 		try
 		{
-			Bateaux bateaux;
 			if (position_save[0][0] == position_save[1][0])
 				switch (bateauJButton[0].typeBateau)
 				{
 					case "Porte-avion":
-						bateaux = new PorteAvion(position_save[0][0], min(position_save[0][1], position_save[1][1]),
+						new PorteAvion(position_save[0][0], min(position_save[0][1], position_save[1][1]),
 								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
 						break;
 					case "Croiseur":
-						bateaux = new Croiseur(position_save[0][0], min(position_save[0][1], position_save[1][1]),
+						new Croiseur(position_save[0][0], min(position_save[0][1], position_save[1][1]),
 								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
 						break;
 					case "Contre-Torpilleur":
-						bateaux = new ContretTorpilleur(position_save[0][0],
-								min(position_save[0][1], position_save[1][1]), position_save[1][0],
-								min(position_save[0][1], position_save[1][1]), equipe);
+						new ContretTorpilleur(position_save[0][0], min(position_save[0][1], position_save[1][1]),
+								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
 						break;
 					case "Torpilleur":
-						bateaux = new Torpilleur(position_save[0][0], min(position_save[0][1], position_save[1][1]),
+						new Torpilleur(position_save[0][0], min(position_save[0][1], position_save[1][1]),
 								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
 						break;
 					case "Sous-marin":
-						bateaux = new SousMarin(position_save[0][0], min(position_save[0][1], position_save[1][1]),
+						new SousMarin(position_save[0][0], min(position_save[0][1], position_save[1][1]),
 								position_save[1][0], min(position_save[0][1], position_save[1][1]), equipe);
 						break;
 				}
@@ -168,24 +165,23 @@ public class CaseListener_Initialisation implements ActionListener
 				switch (bateauJButton[0].typeBateau)
 				{
 					case "Porte-avion":
-						bateaux = new PorteAvion(min(position_save[0][0], position_save[1][0]), position_save[0][1],
+						new PorteAvion(min(position_save[0][0], position_save[1][0]), position_save[0][1],
 								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 					case "Croiseur":
-						bateaux = new Croiseur(min(position_save[0][0], position_save[1][0]), position_save[0][1],
+						new Croiseur(min(position_save[0][0], position_save[1][0]), position_save[0][1],
 								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 					case "Contre-Torpilleur":
-						bateaux = new ContretTorpilleur(min(position_save[0][0], position_save[1][0]),
-								position_save[0][1], min(position_save[0][0], position_save[1][0]), position_save[1][1],
-								equipe);
+						new ContretTorpilleur(min(position_save[0][0], position_save[1][0]), position_save[0][1],
+								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 					case "Torpilleur":
-						bateaux = new Torpilleur(min(position_save[0][0], position_save[1][0]), position_save[0][1],
+						new Torpilleur(min(position_save[0][0], position_save[1][0]), position_save[0][1],
 								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 					case "Sous-marin":
-						bateaux = new SousMarin(min(position_save[0][0], position_save[1][0]), position_save[0][1],
+						new SousMarin(min(position_save[0][0], position_save[1][0]), position_save[0][1],
 								min(position_save[0][0], position_save[1][0]), position_save[1][1], equipe);
 						break;
 				}
