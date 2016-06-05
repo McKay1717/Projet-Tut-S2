@@ -3,6 +3,8 @@
  *******************************************************************************/
 package gui;
 
+import static java.awt.Color.BLACK;
+
 import javax.swing.JButton;
 
 public class BateauJButton extends JButton
@@ -20,6 +22,7 @@ public class BateauJButton extends JButton
 		// Start of user code constructor for BateauJButton)
 		super();
 		setText(typeBateau);
+		setBackground(BLACK);
 		// End of user code
 
 	}
