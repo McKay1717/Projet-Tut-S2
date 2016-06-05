@@ -78,6 +78,9 @@ public class GroupListener
 		e[1] = equipe2;
 		fenetreJeux = new FenetreJeux(e, arrierePlanJPanel1.getGrilleDeJeuJPanel(),
 				arrierePlanJPanel2.getGrilleDeJeuJPanel());
+
+		fenetreJeux.setSize(500,600);
+
 		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(fenetreJeux);
 		fenetreJeux.setJMenuBar(menuBar);
 

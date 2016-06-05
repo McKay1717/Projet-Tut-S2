@@ -8,6 +8,7 @@ import gui.CaseJButton;
 import gui.GrilleDeJeuJPanel;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -35,11 +36,20 @@ public class JeuListener implements ActionListener
 		if (grille[position[0]][position[1]] instanceof CaseJButton)
 		{
 			// Image d'une case vide touchée.
+
+			grille[position[0]][position[1]].setBackground(Color.GRAY);
+
 		}
 		else if (grille[position[0]][position[1]] instanceof BateauJButton)
 		{
-			// Si le bateau est touché, une image de feu ou autre.
-			// Si le bateau est coulé, apparition du bateau coulé à l'écran.
+			if (grille_model[position[0]][position[1]].getTouche() ) {
+				// Si le bateau est touché, une image de feu ou autre.
+				grille[position[0]][position[1]].setBackground(Color.ORANGE);
+
+			}else if (grille_model[position[0]][position[1]].getBateau().getEstCoule()) {
+				// Si le bateau est coulé, apparition du bateau coulé à l'écran.
+				grille[position[0]][position[1]].setBackground(Color.RED);
+			}
 		}
 
 		// Passage à la seconde grille.
