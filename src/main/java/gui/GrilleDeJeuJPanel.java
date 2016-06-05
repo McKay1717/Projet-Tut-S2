@@ -3,11 +3,14 @@
  *******************************************************************************/
 package gui;
 
-import engine.GrilleJeux;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import engine.GrilleJeux;
 
 // Start of user code (user defined imports)
 
@@ -21,34 +24,32 @@ public class GrilleDeJeuJPanel extends JPanel
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= -416871502500554822L;
-	public static final int				TAILLE_GRILLE		= 10;													// Taille
-																													// des
-																													// lignes
-																													// et
-																													// colonnes
-																													// de
-																													// la
-																													// grille.
-	public static final char[]			INTITULE_LIGNE		= { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };	// Intitulé
-																													// des
-																													// lignes.
+	private static final long	serialVersionUID	= -416871502500554822L;
+	public static final int		TAILLE_GRILLE		= 10;													// Taille
+																											// des
+																											// lignes
+																											// et
+																											// colonnes
+																											// de
+																											// la
+																											// grille.
+	public static final char[]	INTITULE_LIGNE		= { 'A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J' };	// Intitulé
+																											// des
+																											// lignes.
 
 	// Start of user code (user defined attributes for GrilleDeJeuJPanel)
-	public JButton[][]					grille;																		// Grille
-																													// de
-																													// JButton.
-	public JLabel[]						intitule_ligne		= new JLabel[TAILLE_GRILLE];							// Intitulé
-																													// des
-																													// lignes.
-	public JLabel[]						intitule_colonne	= new JLabel[TAILLE_GRILLE];; // Intitulé
-																							// des
-																							// colonnes.
-	private GrilleJeux					grille_jeu;
+	public JButton[][]			grille;																		// Grille
+																											// de
+																											// JButton.
+	public JLabel[]				intitule_ligne		= new JLabel[TAILLE_GRILLE];							// Intitulé
+																											// des
+																											// lignes.
+	public JLabel[]				intitule_colonne	= new JLabel[TAILLE_GRILLE];; // Intitulé
+																					// des
+																					// colonnes.
+	private GrilleJeux			grille_jeu;
 
-	//public ArrayList<BateauJButton[]>	bateauJButtons;
-
-
+	// public ArrayList<BateauJButton[]> bateauJButtons;
 
 	// End of user code
 
@@ -59,7 +60,7 @@ public class GrilleDeJeuJPanel extends JPanel
 	public GrilleDeJeuJPanel(GrilleJeux gj)
 	{
 		// Start of user code constructor for GrilleDeJeuJPanel)
-		super(); //new GridLayout(1, 2)
+		super(); // new GridLayout(1, 2)
 		this.grille_jeu = gj;
 		initAttribut(); // Initialisation des attributs.
 		creerWidget(); // Initialisation de la fenêtre.
@@ -94,60 +95,6 @@ public class GrilleDeJeuJPanel extends JPanel
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			// Erreur, c'est quoi le but de code ?
 			intitule_colonne[i] = new JLabel(Integer.toString(i + 1));
-
-
-/* //code commanter car ce code et en realiter ce que doit faire le SelecteBateauJPanel.java
-
-		bateauJButtons = new ArrayList<BateauJButton[]>();
-
-		BateauJButton[] bateau = new BateauJButton[5];
-		for (int j = 0 ; j < 5 ; j++)
-		{
-			bateau[j] = new BateauJButton();
-			bateau[j].estPorteAvion();
-			bateau[j].setBackground(BLACK);
-		}
-		bateauJButtons.add(bateau);
-
-		bateau = new BateauJButton[4];
-		for (int j = 0 ; j < 4 ; j++)
-		{
-			bateau[j] = new BateauJButton();
-			bateau[j].estCroiseur();
-			bateau[j].setBackground(BLACK);
-		}
-		bateauJButtons.add(bateau);
-
-		bateau = new BateauJButton[3];
-		for (int j = 0 ; j < 3 ; j++)
-		{
-			bateau[j] = new BateauJButton();
-			bateau[j].estContretTorpilleur();
-			bateau[j].setBackground(BLACK);
-		}
-		bateauJButtons.add(bateau);
-
-		bateau = new BateauJButton[3];
-		for (int j = 0 ; j < 3 ; j++)
-		{
-			bateau[j] = new BateauJButton();
-			bateau[j].estSousMarin();
-			bateau[j].setBackground(BLACK);
-		}
-		bateauJButtons.add(bateau);
-
-		bateau = new BateauJButton[2];
-		for (int j = 0 ; j < 2 ; j++)
-		{
-			bateau[j] = new BateauJButton();
-			bateau[j].estTorpilleur();
-			bateau[j].setBackground(BLACK);
-		}
-		bateauJButtons.add(bateau);
-
-*/
-
-
 	}
 
 	/**
@@ -168,35 +115,6 @@ public class GrilleDeJeuJPanel extends JPanel
 			}
 
 		add(pGrille);
-
-/*
-		JPanel pBateaux = new JPanel(new GridLayout(5, 5));
-		for (int i = 0 ; i < 5 ; i++)
-			pBateaux.add(bateauJButtons.get(0)[i]);
-		for (int i = 0 ; i < 4 ; i++)
-			pBateaux.add(bateauJButtons.get(1)[i]);
-		pBateaux.add(new JLabel());
-		for (int i = 0 ; i < 3 ; i++)
-			pBateaux.add(bateauJButtons.get(2)[i]);
-		pBateaux.add(new JLabel());
-		pBateaux.add(new JLabel());
-		for (int i = 0 ; i < 3 ; i++)
-			pBateaux.add(bateauJButtons.get(3)[i]);
-		pBateaux.add(new JLabel());
-		pBateaux.add(new JLabel());
-		for (int i = 0 ; i < 2 ; i++)
-			pBateaux.add(bateauJButtons.get(4)[i]);
-		pBateaux.add(new JLabel());
-		pBateaux.add(new JLabel());
-		pBateaux.add(new JLabel());
-
-		add(pBateaux);
-*/
-
-
-
-
-
 	}
 
 	/**
@@ -207,12 +125,6 @@ public class GrilleDeJeuJPanel extends JPanel
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
 				grille[i][j].addActionListener(actionListener);
-
-		/*
-		for (int i = 0 ; i < bateauJButtons.size() ; i++)
-			for (int j = 0 ; j < bateauJButtons.get(i).length ; j++)
-				bateauJButtons.get(i)[j].addActionListener(actionListener);
-				*/
 	}
 
 	public void setJeuListener(ActionListener actionListener)
@@ -222,10 +134,10 @@ public class GrilleDeJeuJPanel extends JPanel
 				grille[i][j].addActionListener(actionListener);
 	}
 
-	public GrilleJeux getGrille_jeu() {
+	public GrilleJeux getGrille_jeu()
+	{
 		return grille_jeu;
 	}
 
-
-// End of user code
+	// End of user code
 }

@@ -3,10 +3,12 @@
  *******************************************************************************/
 package gui;
 
-import engine.GrilleJeux;
+import java.awt.BorderLayout;
+import java.awt.GridLayout;
 
-import javax.swing.*;
-import java.awt.*;
+import javax.swing.JPanel;
+
+import engine.GrilleJeux;
 
 // Start of user code (user defined imports)
 
@@ -18,45 +20,46 @@ import java.awt.*;
  * @author nicolas
  */
 
-public class ArrierePlanJPanel extends JPanel {
+public class ArrierePlanJPanel extends JPanel
+{
 
-	private static final long serialVersionUID = -553855920680431324L;
+	private static final long		serialVersionUID	= -553855920680431324L;
 
+	private GrilleJeux				grille_jeux;
 
-	private GrilleJeux grille_jeux;
+	private GrilleDeJeuJPanel		grilleDeJeuJPanel;
+	private SelectionBateauJPanel	selectionBateauJPanel;
 
-
-	private GrilleDeJeuJPanel grilleDeJeuJPanel;
-	private SelectionBateauJPanel selectionBateauJPanel;
-
-	public ArrierePlanJPanel(GrilleJeux grille_jeux) {
+	public ArrierePlanJPanel(GrilleJeux grille_jeux)
+	{
 		// Start of user code constructor for ArrierePlanJPanel)
-		//super();
+		// super();
 		super(new GridLayout(1, 2));
 
-		this.grille_jeux= grille_jeux;
-
+		this.grille_jeux = grille_jeux;
 
 		creerWidget(grille_jeux); // Initialisation des attributs .
 
 		// End of user code
 	}
 
-
-	private void creerWidget(GrilleJeux grille_jeux) {
+	private void creerWidget(GrilleJeux grille_jeux)
+	{
 
 		grilleDeJeuJPanel = new GrilleDeJeuJPanel(grille_jeux);
 		selectionBateauJPanel = new SelectionBateauJPanel(grille_jeux);
 
-		add(grilleDeJeuJPanel );
+		add(grilleDeJeuJPanel);
 		add(selectionBateauJPanel, BorderLayout.EAST);
 	}
 
-	public SelectionBateauJPanel getSelectionBateauJPanel() {
+	public SelectionBateauJPanel getSelectionBateauJPanel()
+	{
 		return selectionBateauJPanel;
 	}
 
-	public GrilleDeJeuJPanel getGrilleDeJeuJPanel() {
+	public GrilleDeJeuJPanel getGrilleDeJeuJPanel()
+	{
 		return grilleDeJeuJPanel;
 	}
 }
