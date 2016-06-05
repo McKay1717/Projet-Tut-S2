@@ -292,6 +292,7 @@ public class CaseListener_Initialisation implements ActionListener
 		}
 		catch (Exception e)
 		{
+			reset_color(false);
 			fenetre.creerDialogError(e.getMessage());
 		}
 	}
