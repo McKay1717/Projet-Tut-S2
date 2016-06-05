@@ -80,10 +80,6 @@ public class GroupListener
 				arrierePlanJPanel2.getGrilleDeJeuJPanel());
 
 		fenetreJeux.setSize(500,600);
-
-		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(fenetreJeux);
-		fenetreJeux.setJMenuBar(menuBar);
-
 	}
 
 	public void resetGame()
