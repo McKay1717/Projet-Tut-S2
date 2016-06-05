@@ -10,7 +10,7 @@ public class FenetreJeux extends JFrame {
 	 * 
 	 */
 	private static final long serialVersionUID = 7002519433302593785L;
-	Equipe[] equipes;
+	Equipe[] equipes; // equipe => grille => case => si il y a un bateau
 	MenuSuperieurJMenuBar menuBar;
 	GrilleDeJeuJPanel deJeuJPanel1;
 	GrilleDeJeuJPanel deJeuJPanel2;

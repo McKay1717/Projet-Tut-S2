@@ -91,7 +91,7 @@ public class SelectionBateauJPanel extends JPanel
 
 	private void createPanel()
 	{
-		setLayout(new GridLayout(5, 1));
+		setLayout(new GridLayout(6, 1));
 
 		// creation des panel de bouton de selection
 		JPanel pPorteAvion = new JPanel(new GridLayout(2, 1));
@@ -115,6 +115,11 @@ public class SelectionBateauJPanel extends JPanel
 		JPanel pInContretTorpilleur = new JPanel(new GridLayout(1, 5));
 		JPanel pInSousMarin = new JPanel(new GridLayout(1, 5));
 		JPanel pInTorpilleur = new JPanel(new GridLayout(1, 5));
+
+		//creation du panel et du bouton pour valider l'initialisation des bateaux
+
+		JPanel pValider = new JPanel();
+		JButton bValider = new JButton("Valider les bateaux");
 
 		///////
 		// assamblage des attribut de selection
@@ -150,11 +155,16 @@ public class SelectionBateauJPanel extends JPanel
 		pTorpilleur.add(lTorpilleur);
 		pTorpilleur.add(pInTorpilleur);
 
+
+		pValider.add(bValider);
+
+
 		add(pPorteAvion);
 		add(pCroiseur);
 		add(pContretTorpilleur);
 		add(pSousMarin);
 		add(pTorpilleur);
+		add(pValider);
 	}
 
 	public void setCaseListener(ActionListener actionListener)
