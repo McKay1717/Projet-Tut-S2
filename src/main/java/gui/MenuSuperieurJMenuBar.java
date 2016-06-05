@@ -4,11 +4,12 @@ import listener.MenuListener;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 
 
 /**
  * Description of MenuSuperieurJMenuBar.
- * 
+ *
  * @author guillaume
  */
 public class MenuSuperieurJMenuBar extends JMenuBar{
@@ -37,7 +38,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	private final ImageIcon iconeSonOn = new ImageIcon(new ImageIcon(rep+"sonOn.jpg").getImage().getScaledInstance(30,30,0));
 	private final ImageIcon iconeSonOff = new ImageIcon(new ImageIcon(rep+"sonOff.jpg").getImage().getScaledInstance(30,30,0));
 	private final ImageIcon iconeStop = new ImageIcon(new ImageIcon(rep+"stop.png").getImage().getScaledInstance(30,30,0));
-	private final ImageIcon iconePause = new ImageIcon(new ImageIcon(rep+"pause.png").getImage().getScaledInstance(30,30,0));
 
 	//JMenu
 	private JMenu optionPlay;
@@ -57,17 +57,27 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 	//Listener du JMenuBar
 	private MenuListener menuListener;
+	private AccueilJFrame accueilJFrame;
+	private AccueilJPanel accueilJPanel;
+	private JPanel jPanel;
 
 	/**
 	 * The constructor.
 	 */
-	public MenuSuperieurJMenuBar() {
+	public MenuSuperieurJMenuBar(AccueilJFrame accueilJFrame) {
 		super();
-
+		this.accueilJFrame=accueilJFrame;
+		this.jPanel=accueilJFrame.getjPanel();
 		initAttribut();
-		creerJMenuBar();
+		if(this.jPanel==this.accueilJPanel){
+			creerJMenuBar2();
+		}else {
+			creerJMenuBar();
+		}
+
 
 	}
+
 
 	private void initAttribut(){
 		//JMenu
@@ -83,13 +93,14 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemAudio2 = new JMenuItem("OFF");
 
 		itemInfo1 = new JMenuItem("Createurs");
-		menuListener= new MenuListener(this);
+		menuListener= new MenuListener(this,this.accueilJFrame);
 		itemOptionPlay1.addActionListener(menuListener);
 		itemOptionPlay2.addActionListener(menuListener);
 		itemAudio1.addActionListener(menuListener);
 		itemAudio2.addActionListener(menuListener);
 		itemInfo1.addActionListener(menuListener);
 	}
+
 
 	private void creerJMenuBar(){
 
@@ -123,6 +134,28 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		this.add(audio);
 		this.add(info);
 	}
+	private void creerJMenuBar2(){
+
+		itemAudio1.setIcon(iconeSonOn);
+		itemAudio2.setIcon(iconeSonOff);
+
+		itemInfo1.setIcon(iconeInfo);
+
+		//Color
+		itemAudio1.setBackground(Color.white);
+		itemAudio2.setBackground(Color.white);
+		itemInfo1.setBackground(Color.white);
+
+
+		audio.add(itemAudio1);
+		audio.add(itemAudio2);
+
+		info.add(itemInfo1);
+
+		//Ajout dans le JMenuBar
+		this.add(audio);
+		this.add(info);
+	}
 
 	public JMenuItem getItemInfo1() {
 		return itemInfo1;
@@ -150,5 +183,13 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 	public String getSignature() {
 		return signature;
+	}
+
+	public AccueilJPanel getAccueilJPanel() {
+		return accueilJPanel;
+	}
+
+	public void setAccueilJPanel(AccueilJPanel accueilJPanel) {
+		this.accueilJPanel = accueilJPanel;
 	}
 }
