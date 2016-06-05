@@ -1,5 +1,7 @@
 package engine;
 
+import org.junit.Rule;
+import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
 import org.junit.Assert;
@@ -60,6 +62,21 @@ public class EquipeUnitTest {
         Case[] c = new Case[]{gj.getCases()[0][0], gj.getCases()[0][1], gj.getCases()[0][2], gj.getCases()[0][3], gj.getCases()[0][4]};
         Assert.assertArrayEquals(c, e1.setPlacement(b, 0,0,0,4));
     }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test(expected = Exception.class)
+    public void testCompareCombinaisonsNonComparables()         {
+        // la méthode compare retourne un objet Indice. On va tout d'abord tester la classe Indice.
+        Combinaison combinaison = new Combinaison(new Pion[]{pion(rouge), pion(jaune), pion(blanc), pion(vert)});
+        Combinaison combinaisonCachee = new Combinaison();
+        thrown.expect(RuntimeException.class);
+        thrown.expectMessage("Combinaisons non comparables");
+        combinaison.compare(combinaisonCachee);
+    }
+
+
 
 
 }
