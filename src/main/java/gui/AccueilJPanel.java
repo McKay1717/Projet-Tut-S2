@@ -3,18 +3,11 @@
  *******************************************************************************/
 package gui;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.WindowEvent;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
-
 import listener.FprincListener;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.WindowEvent;
 
 // Start of user code (user defined imports)
 
@@ -63,7 +56,7 @@ public class AccueilJPanel extends JPanel
 		JPanel pQuit = new JPanel();
 
 		JLabel lTitel = new JLabel("Battle-Nav");
-		lTitel.setFont(new Font("FreeMono", Font.PLAIN, 35));
+		lTitel.setFont(new Font("Bitstream Charter", Font.BOLD, 40));
 
 		bPLay = new JButton("Play");
 
