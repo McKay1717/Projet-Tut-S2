@@ -17,7 +17,7 @@ public class GrilleJeux {
 	 * Description of the property cases.
 	 */
 	private Case[][] cases = new Case[10][10];
-	Equipe[] equipes = new Equipe[2];
+	private Equipe[] equipes = new Equipe[2];
 	int currentEquipe;
 
 	// Start of user code (user defined attributes for GrilleJeux)

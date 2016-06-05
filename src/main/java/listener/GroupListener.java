@@ -7,6 +7,7 @@ import engine.Equipe;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.ArrierePlanJPanel;
+import gui.MenuSuperieurJMenuBar;
 
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
@@ -61,6 +62,8 @@ public class GroupListener
 		}
 		fenetre.setSize(700,550);
 		fenetre.setLocationRelativeTo(null);
+		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(fenetre);
+		fenetre.setJMenuBar(menuBar);
 		fenetre.getContentPane().repaint();
 		fenetre.setVisible(true);
 	}

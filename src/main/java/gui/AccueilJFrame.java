@@ -35,7 +35,7 @@ public class AccueilJFrame extends JFrame
 		super();
 
 		//affichage de la bare de menu
-		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar();
+		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(this);
 		setJMenuBar(menuBar);
 
 		this.groupListener = groupListener;

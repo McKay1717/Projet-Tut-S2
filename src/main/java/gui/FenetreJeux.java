@@ -1,8 +1,8 @@
 package gui;
 
-import javax.swing.JFrame;
-
 import engine.Equipe;
+
+import javax.swing.*;
 
 public class FenetreJeux extends JFrame {
 
@@ -27,7 +27,7 @@ public class FenetreJeux extends JFrame {
 	}
 
 	private void creerWidget() {
-		menuBar = new MenuSuperieurJMenuBar();
+		//menuBar = new MenuSuperieurJMenuBar();
 		setJMenuBar(menuBar);
 		deJeuJPanel1 = new GrilleDeJeuJPanel(equipes[0].getGj());
 		deJeuJPanel2 = new GrilleDeJeuJPanel(equipes[1].getGj());
