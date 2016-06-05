@@ -58,7 +58,7 @@ public class FenetreJeux extends JFrame
 		JPanel pLabel = new JPanel();
 
 		JLabel afficheNomEquipeCourant = new JLabel("C'est au tour de l'equipe "+equipes[1].getNomEquipe()+" de jouer");
-		afficheNomEquipeCourant.setFont(new Font("FreeMono",Font.PLAIN,25));
+		afficheNomEquipeCourant.setFont(new Font("Bitstream Charter",Font.BOLD,20));
 
 		pGrille.add(deJeuJPanel1);
 		pLabel.add(afficheNomEquipeCourant);
