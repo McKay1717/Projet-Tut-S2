@@ -97,4 +97,34 @@ public class GroupListener
 		grille_jeux1.setEquipes(equipes);
 		grille_jeux2.setEquipes(equipes);
 	}
+
+	public void reset_color(int numero_grille)
+	{
+		fenetre.setVisible(false);
+		fenetre.getContentPane().removeAll();
+		if (numero_grille == 1)
+		{
+			arrierePlanJPanel1.getGrilleDeJeuJPanel().grille = caseListener1.grille;
+			arrierePlanJPanel1.getGrilleDeJeuJPanel().creerWidget();
+			arrierePlanJPanel1.creerWidget();
+			fenetre.setjPanel(arrierePlanJPanel1);
+			arrierePlanJPanel1.getGrilleDeJeuJPanel().setCaseListener(caseListener1);
+			arrierePlanJPanel1.getSelectionBateauJPanel().setCaseListener(caseListener1);
+		}
+		else
+		{
+			arrierePlanJPanel2.getGrilleDeJeuJPanel().grille = caseListener2.grille;
+			arrierePlanJPanel2.getGrilleDeJeuJPanel().creerWidget();
+			arrierePlanJPanel2.creerWidget();
+			fenetre.setjPanel(arrierePlanJPanel2);
+			arrierePlanJPanel2.getGrilleDeJeuJPanel().setCaseListener(caseListener2);
+			arrierePlanJPanel2.getSelectionBateauJPanel().setCaseListener(caseListener2);
+		}
+		fenetre.setSize(700, 550);
+		fenetre.setLocationRelativeTo(null);
+		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(fenetre);
+		fenetre.setJMenuBar(menuBar);
+		fenetre.getContentPane().repaint();
+		fenetre.setVisible(true);
+	}
 }

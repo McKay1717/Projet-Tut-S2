@@ -311,6 +311,8 @@ public class CaseListener_Initialisation implements ActionListener
 			for (int j = 0 ; j < grille.length ; j++)
 				if (grille[i][j] instanceof CaseJButton)
 					grille[i][j].setBackground(BLUE);
+
+		groupListener.reset_color(numero_grille);
 	}
 
 	private void setBateau(ActionEvent e)
