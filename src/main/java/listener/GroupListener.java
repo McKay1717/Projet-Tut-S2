@@ -3,14 +3,14 @@
  *******************************************************************************/
 package listener;
 
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
+
 import engine.Equipe;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.ArrierePlanJPanel;
 import gui.MenuSuperieurJMenuBar;
-
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
 
 public class GroupListener
 {
@@ -46,7 +46,7 @@ public class GroupListener
 					INFORMATION_MESSAGE);
 			arrierePlanJPanel1 = new ArrierePlanJPanel(grille_jeux1);
 			fenetre.setjPanel(arrierePlanJPanel1);
-			caseListener1 = new CaseListener_Initialisation(grille_jeux1, fenetre);
+			caseListener1 = new CaseListener_Initialisation(grille_jeux1, fenetre, equipe1);
 			arrierePlanJPanel1.getGrilleDeJeuJPanel().setCaseListener(caseListener1);
 			arrierePlanJPanel1.getSelectionBateauJPanel().setCaseListener(caseListener1);
 		}
@@ -56,11 +56,11 @@ public class GroupListener
 					INFORMATION_MESSAGE);
 			arrierePlanJPanel2 = new ArrierePlanJPanel(grille_jeux2);
 			fenetre.setjPanel(arrierePlanJPanel2);
-			caseListener2 = new CaseListener_Initialisation(grille_jeux2, fenetre);
+			caseListener2 = new CaseListener_Initialisation(grille_jeux2, fenetre, equipe2);
 			arrierePlanJPanel2.getGrilleDeJeuJPanel().setCaseListener(caseListener2);
 			arrierePlanJPanel2.getGrilleDeJeuJPanel().setCaseListener(caseListener2);
 		}
-		fenetre.setSize(700,550);
+		fenetre.setSize(700, 550);
 		fenetre.setLocationRelativeTo(null);
 		MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(fenetre);
 		fenetre.setJMenuBar(menuBar);
