@@ -40,6 +40,9 @@ public class AccueilJFrame extends JFrame
 
 		this.groupListener = groupListener;
 		setjPanel(new AccueilJPanel(this));
+
+
+
 		setSize(400, 250); // Fixe la taille par défaut
 		setLocationRelativeTo(null); // position de la fenetre sur l'ordi
 		setVisible(true); // Affiche la fenetre

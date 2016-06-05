@@ -3,25 +3,25 @@
  *******************************************************************************/
 package listener;
 
-import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
-import static java.awt.Color.BLUE;
-import static java.awt.Color.RED;
-import static java.lang.Math.min;
-
-// Start of user code (user defined imports)
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-// End of user code
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-
 import engine.Equipe;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.BateauJButton;
 import gui.CaseJButton;
 import gui.GrilleDeJeuJPanel;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.BLUE;
+import static java.awt.Color.RED;
+import static java.lang.Math.min;
+
+// Start of user code (user defined imports)
+// End of user code
 
 public class CaseListener_Initialisation implements ActionListener
 {
@@ -43,7 +43,7 @@ public class CaseListener_Initialisation implements ActionListener
 		this.grille_jeu = grille_jeu;
 		this.fenetre = fenetre;
 		grille = ((GrilleDeJeuJPanel) fenetre.getjPanel()).grille;
-		this.bateauJButtons = ((GrilleDeJeuJPanel) fenetre.getjPanel()).bateauJButtons;
+		//this.bateauJButtons = ((GrilleDeJeuJPanel) fenetre.getjPanel()).bateauJButtons;
 		bateauJButton = null;
 		position_save = null;
 		// fenetre.grilleDeJeuJPanel.setControlBouton(this);

@@ -3,18 +3,13 @@
  *******************************************************************************/
 package gui;
 
-import static java.awt.Color.BLACK;
+import engine.GrilleJeux;
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
 
 // Start of user code (user defined imports)
-import java.awt.GridLayout;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import engine.GrilleJeux;
 
 /**
  * Description of GrilleDeJeuJPanel.
@@ -51,16 +46,20 @@ public class GrilleDeJeuJPanel extends JPanel
 																							// colonnes.
 	private GrilleJeux					grille_jeu;
 
-	public ArrayList<BateauJButton[]>	bateauJButtons;
+	//public ArrayList<BateauJButton[]>	bateauJButtons;
+
+
+
 	// End of user code
 
 	/**
 	 * The constructor.
 	 */
+
 	public GrilleDeJeuJPanel(GrilleJeux gj)
 	{
 		// Start of user code constructor for GrilleDeJeuJPanel)
-		super(new GridLayout(1, 2));
+		super(); //new GridLayout(1, 2)
 		this.grille_jeu = gj;
 		initAttribut(); // Initialisation des attributs.
 		creerWidget(); // Initialisation de la fenêtre.
@@ -95,6 +94,9 @@ public class GrilleDeJeuJPanel extends JPanel
 		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
 			// Erreur, c'est quoi le but de code ?
 			intitule_colonne[i] = new JLabel(Integer.toString(i + 1));
+
+
+/* //code commanter car ce code et en realiter ce que doit faire le SelecteBateauJPanel.java
 
 		bateauJButtons = new ArrayList<BateauJButton[]>();
 
@@ -142,6 +144,10 @@ public class GrilleDeJeuJPanel extends JPanel
 			bateau[j].setBackground(BLACK);
 		}
 		bateauJButtons.add(bateau);
+
+*/
+
+
 	}
 
 	/**
@@ -163,6 +169,7 @@ public class GrilleDeJeuJPanel extends JPanel
 
 		add(pGrille);
 
+/*
 		JPanel pBateaux = new JPanel(new GridLayout(5, 5));
 		for (int i = 0 ; i < 5 ; i++)
 			pBateaux.add(bateauJButtons.get(0)[i]);
@@ -184,6 +191,12 @@ public class GrilleDeJeuJPanel extends JPanel
 		pBateaux.add(new JLabel());
 
 		add(pBateaux);
+*/
+
+
+
+
+
 	}
 
 	/**
@@ -195,9 +208,11 @@ public class GrilleDeJeuJPanel extends JPanel
 			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
 				grille[i][j].addActionListener(actionListener);
 
+		/*
 		for (int i = 0 ; i < bateauJButtons.size() ; i++)
 			for (int j = 0 ; j < bateauJButtons.get(i).length ; j++)
 				bateauJButtons.get(i)[j].addActionListener(actionListener);
+				*/
 	}
 
 	public void setJeuListener(ActionListener actionListener)
@@ -207,5 +222,10 @@ public class GrilleDeJeuJPanel extends JPanel
 				grille[i][j].addActionListener(actionListener);
 	}
 
-	// End of user code
+	public GrilleJeux getGrille_jeu() {
+		return grille_jeu;
+	}
+
+
+// End of user code
 }

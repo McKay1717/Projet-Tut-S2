@@ -3,8 +3,13 @@
  *******************************************************************************/
 package gui;
 
+import engine.GrilleJeux;
+
 import javax.swing.*;
 import java.awt.*;
+import java.util.ArrayList;
+
+import static java.awt.Color.BLACK;
 
 /**
  * Description of SelectionBateauJPanel.
@@ -14,54 +19,91 @@ import java.awt.*;
 public class SelectionBateauJPanel extends JPanel {
 	// Start of user code (user defined attributes for SelectionBateauJPanel)
 
-	public BateauJButton[] PorteAvion
-			,Croiseur
-			,ContretTorpilleur
-			,Torpilleur
-			,SousMarin;
+
+	public ArrayList<BateauJButton[]> porteAvion
+			,croiseur
+			,contretTorpilleur
+			,torpilleur
+			,sousMarin;
+
+	private GrilleJeux grilleJeux;
+
 	// End of user code
 
 
 	private static final long serialVersionUID = 3937304672276095355L;
 
 
-	public SelectionBateauJPanel() {
+	public SelectionBateauJPanel(GrilleJeux grilleJeux) {
 		// Start of user code constructor for SelectionBateauJPanel)
 		super();
-
+		this.grilleJeux =grilleJeux;
 
 		initPanel();
 		createPanel();
 		// End of user code
 	}
 
+
 	// Start of user code (user defined methods for SelectionBateauJPanel)
 	private void initPanel() {
 
-		PorteAvion = new BateauJButton[5];
-		Croiseur = new BateauJButton[4];
-		ContretTorpilleur = new BateauJButton[3];
-		Torpilleur = new BateauJButton[2];
-		SousMarin = new BateauJButton[3];
+		porteAvion = new ArrayList<BateauJButton[]>();
+		croiseur = new ArrayList<BateauJButton[]>();
+		contretTorpilleur = new ArrayList<BateauJButton[]>();
+		torpilleur = new ArrayList<BateauJButton[]>();
+		sousMarin = new ArrayList<BateauJButton[]>();
 
-		for (int i=0;i<PorteAvion.length;i++)
-			PorteAvion[i].estPorteAvion();
+		BateauJButton[] bateau = new BateauJButton[5];
+		for (int j = 0 ; j < 5 ; j++)
+		{
+			bateau[j] = new BateauJButton();
+			bateau[j].estPorteAvion();
+			bateau[j].setBackground(BLACK);
+		}
+		porteAvion.add(bateau);
 
-		for (int i=0;i<Croiseur.length;i++)
-			Croiseur[i].estCroiseur();
+		bateau = new BateauJButton[4];
+		for (int j = 0 ; j < 4 ; j++)
+		{
+			bateau[j] = new BateauJButton();
+			bateau[j].estCroiseur();
+			bateau[j].setBackground(BLACK);
+		}
+		croiseur.add(bateau);
 
-		for (int i=0;i<ContretTorpilleur.length;i++)
-			ContretTorpilleur[i].estContretTorpilleur();
+		bateau = new BateauJButton[3];
+		for (int j = 0 ; j < 3 ; j++)
+		{
+			bateau[j] = new BateauJButton();
+			bateau[j].estContretTorpilleur();
+			bateau[j].setBackground(BLACK);
+		}
+		contretTorpilleur.add(bateau);
 
-		for (int i=0;i<Torpilleur.length;i++)
-			Torpilleur[i].estTorpilleur();
+		bateau = new BateauJButton[3];
+		for (int j = 0 ; j < 3 ; j++)
+		{
+			bateau[j] = new BateauJButton();
+			bateau[j].estSousMarin();
+			bateau[j].setBackground(BLACK);
+		}
+		sousMarin.add(bateau);
 
-		for (int i=0;i<SousMarin.length;i++)
-			SousMarin[i].estSousMarin();
-
+		bateau = new BateauJButton[2];
+		for (int j = 0 ; j < 2 ; j++)
+		{
+			bateau[j] = new BateauJButton();
+			bateau[j].estTorpilleur();
+			bateau[j].setBackground(BLACK);
+		}
+		torpilleur.add(bateau);
 	}
 
 	private void createPanel() {
+		setLayout(new GridLayout(5,1));
+
+
 		//creation des panel de bouton de selection
 		JPanel pPorteAvion = new JPanel(new GridLayout(2,1));
 		JPanel pCroiseur = new JPanel(new GridLayout(2,1));
@@ -88,20 +130,20 @@ public class SelectionBateauJPanel extends JPanel {
 		//assamblage des attribut de selection
 		//////
 
-		for (int i=0;i<PorteAvion.length;i++)
-			pInPorteAvion.add(PorteAvion[i]);
+		for (int i=0;i<5;i++)
+			pInPorteAvion.add(porteAvion.get(0)[i]);
 
-		for (int i=0;i<Croiseur.length;i++)
-			pInCroiseur.add(Croiseur[i]);
+		for (int i=0;i<4;i++)
+			pInCroiseur.add(croiseur.get(0)[i]);
 
-		for (int i=0;i<ContretTorpilleur.length;i++)
-			pInContretTorpilleur.add(ContretTorpilleur[i]);
+		for (int i=0;i<3;i++)
+			pInContretTorpilleur.add(contretTorpilleur.get(0)[i]);
 
-		for (int i=0;i<Torpilleur.length;i++)
-			pInTorpilleur.add(Torpilleur[i]);
+		for (int i=0;i<3;i++)
+			pInTorpilleur.add(torpilleur.get(0)[i]);
 
-		for (int i=0;i<SousMarin.length;i++)
-			pInSousMarin.add(SousMarin[i]);
+		for (int i=0;i<2;i++)
+			pInSousMarin.add(sousMarin.get(0)[i]);
 
 		pPorteAvion.add(lPorteAvion);
 		pPorteAvion.add(pInPorteAvion);
@@ -122,10 +164,11 @@ public class SelectionBateauJPanel extends JPanel {
 		add(pPorteAvion);
 		add(pCroiseur);
 		add(pContretTorpilleur);
-		add(pTorpilleur);
 		add(pSousMarin);
+		add(pTorpilleur);
 
-		setLayout(new GridLayout(5,1));
+
+
 
 	}
 

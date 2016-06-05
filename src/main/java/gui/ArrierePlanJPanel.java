@@ -3,7 +3,10 @@
  *******************************************************************************/
 package gui;
 
-import javax.swing.JPanel;
+import engine.GrilleJeux;
+
+import javax.swing.*;
+import java.awt.*;
 
 // Start of user code (user defined imports)
 
@@ -16,26 +19,40 @@ import javax.swing.JPanel;
  */
 
 public class ArrierePlanJPanel extends JPanel {
-	// Start of user code (user defined attributes for ArrierePlanJPanel)
 
-	// End of user code
-
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = -553855920680431324L;
 
-	/**
-	 * The constructor.
-	 */
-	public ArrierePlanJPanel() {
+
+	private GrilleJeux grille_jeux;
+
+
+	private GrilleDeJeuJPanel grilleDeJeuJPanel;
+	private SelectionBateauJPanel selectionBateauJPanel;
+
+	public ArrierePlanJPanel(GrilleJeux grille_jeux) {
 		// Start of user code constructor for ArrierePlanJPanel)
-		super();
+		//super();
+		super(new GridLayout(1, 2));
+
+		this.grille_jeux= grille_jeux;
+
+
+		creerWidget(grille_jeux); // Initialisation des attributs .
+
 		// End of user code
 	}
 
-	// Start of user code (user defined methods for ArrierePlanJPanel)
 
-	// End of user code
+	private void creerWidget(GrilleJeux grille_jeux) {
 
+		grilleDeJeuJPanel = new GrilleDeJeuJPanel(grille_jeux);
+		selectionBateauJPanel = new SelectionBateauJPanel(grille_jeux);
+
+		add(grilleDeJeuJPanel);
+		add(selectionBateauJPanel);
+	}
+
+	public SelectionBateauJPanel getSelectionBateauJPanel() {
+		return selectionBateauJPanel;
+	}
 }
