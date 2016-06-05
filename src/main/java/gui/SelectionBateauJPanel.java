@@ -3,18 +3,15 @@
  *******************************************************************************/
 package gui;
 
-import static java.awt.Color.BLACK;
+import engine.GrilleJeux;
+import listener.CaseListener_Initialisation;
 
-import java.awt.GridLayout;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import engine.GrilleJeux;
-import listener.CaseListener_Initialisation;
+import static java.awt.Color.BLACK;
 
 /**
  * Description of SelectionBateauJPanel.
