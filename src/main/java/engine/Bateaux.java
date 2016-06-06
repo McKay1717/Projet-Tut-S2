@@ -4,10 +4,7 @@
 package engine;
 
 import java.util.Arrays;
-import java.util.Scanner;
 import java.util.concurrent.ExecutionException;
-
-import engine.Equipe;
 // Start of user code (user defined imports)
 
 // End of user code
@@ -17,31 +14,32 @@ import engine.Equipe;
  * 
  * @author nicolas
  */
-public abstract class Bateaux {
+public abstract class Bateaux
+{
 	/**
 	 * Description of the property taille.
 	 */
-	private int taille = -1;
+	private int		taille		= -1;
 
 	/**
 	 * Description of the property cases.
 	 */
-	private Case[] cases;
+	private Case[]	cases;
 
 	/**
 	 * Description of the property equipe.
 	 */
-	private Equipe equipe;
+	private Equipe	equipe;
 
 	/**
 	 * Description of the property estCoule.
 	 */
-	private boolean estCoule = false;
+	private boolean	estCoule	= false;
 
 	/**
 	 * Description of the property equipes.
 	 */
-	private Equipe equipes = null;
+	private Equipe	equipes		= null;
 
 	// Start of user code (user defined attributes for Bateaux)
 
@@ -53,13 +51,17 @@ public abstract class Bateaux {
 	 * @throws Exception
 	 * @throws ExecutionException
 	 */
-	public Bateaux(int x1, int y1, int x2, int y2, Equipe e, int taille) throws Exception {
+	public Bateaux(int x1, int y1, int x2, int y2, Equipe e, int taille) throws Exception
+	{
 		// Start of user code constructor for Bateaux)
 		super();
 		this.equipe = e;
-		try {
+		try
+		{
 			setTaille(taille);
-		} catch (ExecutionException e1) {
+		}
+		catch (ExecutionException e1)
+		{
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
@@ -75,7 +77,8 @@ public abstract class Bateaux {
 	 * 
 	 * @return taille
 	 */
-	public int getTaille() {
+	public int getTaille()
+	{
 		return this.taille;
 	}
 
@@ -85,11 +88,14 @@ public abstract class Bateaux {
 	 * @param newTaille
 	 * @throws ExecutionException
 	 */
-	public void setTaille(int newTaille) throws ExecutionException {
-		if (newTaille >= 2 && newTaille <= 5) {
+	public void setTaille(int newTaille) throws ExecutionException
+	{
+		if (newTaille >= 2 && newTaille <= 5)
+		{
 			this.taille = newTaille;
-		} else
-			throw new ExecutionException("La taille doit etre compris entre 2 et 5", null);
+		}
+		else
+			throw new ExecutionException("La taille doit être comprise entre 2 et 5.", null);
 
 	}
 
@@ -98,7 +104,8 @@ public abstract class Bateaux {
 	 * 
 	 * @return cases
 	 */
-	public Case[] getCases() {
+	public Case[] getCases()
+	{
 		return this.cases;
 	}
 
@@ -107,7 +114,8 @@ public abstract class Bateaux {
 	 * 
 	 * @return equipe
 	 */
-	public Equipe getEquipe() {
+	public Equipe getEquipe()
+	{
 		return this.equipe;
 	}
 
@@ -116,7 +124,8 @@ public abstract class Bateaux {
 	 * 
 	 * @param newEquipe
 	 */
-	public void setEquipe(Equipe newEquipe) {
+	public void setEquipe(Equipe newEquipe)
+	{
 		this.equipe = newEquipe;
 	}
 
@@ -125,7 +134,8 @@ public abstract class Bateaux {
 	 * 
 	 * @return estCoule
 	 */
-	public boolean getEstCoule() {
+	public boolean getEstCoule()
+	{
 		return this.estCoule;
 	}
 
@@ -134,7 +144,8 @@ public abstract class Bateaux {
 	 * 
 	 * @param newEstCoule
 	 */
-	public void setEstCoule(boolean newEstCoule) {
+	public void setEstCoule(boolean newEstCoule)
+	{
 		this.estCoule = newEstCoule;
 	}
 
@@ -143,12 +154,14 @@ public abstract class Bateaux {
 	 * 
 	 * @return equipes
 	 */
-	public Equipe getEquipes() {
+	public Equipe getEquipes()
+	{
 		return this.equipes;
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Arrays.hashCode(cases);
@@ -159,8 +172,10 @@ public abstract class Bateaux {
 		return result;
 	}
 
-	public void touche() {
-		if (taille > 0) {
+	public void touche()
+	{
+		if (taille > 0)
+		{
 			taille--;
 		}
 		if (taille <= 0)
@@ -168,7 +183,8 @@ public abstract class Bateaux {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -178,15 +194,19 @@ public abstract class Bateaux {
 		Bateaux other = (Bateaux) obj;
 		if (!Arrays.equals(cases, other.cases))
 			return false;
-		if (equipe == null) {
+		if (equipe == null)
+		{
 			if (other.equipe != null)
 				return false;
-		} else if (!equipe.equals(other.equipe))
+		}
+		else if (!equipe.equals(other.equipe))
 			return false;
-		if (equipes == null) {
+		if (equipes == null)
+		{
 			if (other.equipes != null)
 				return false;
-		} else if (!equipes.equals(other.equipes))
+		}
+		else if (!equipes.equals(other.equipes))
 			return false;
 		if (estCoule != other.estCoule)
 			return false;
@@ -196,7 +216,8 @@ public abstract class Bateaux {
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "Bateaux [taille=" + taille + ", cases=" + Arrays.toString(cases) + ", equipe=" + equipe + ", estCoule="
 				+ estCoule + ", equipes=" + equipes + "]";
 	}

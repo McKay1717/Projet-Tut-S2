@@ -169,7 +169,7 @@ public class Jukebox {
     }
 
     private void displayExeption(Exception e){
-        System.out.println("Erreur de lecture du fichier, verfier que le nom est correct");
+        System.out.println("Erreur de lecture du fichier, vérifier que le nom est correct");
         System.out.println("Error :");
         System.out.println(e);
         System.out.println(this);

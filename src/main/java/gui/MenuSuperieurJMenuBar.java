@@ -115,17 +115,17 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		//JMenu
 		optionPlay = new JMenu("Game");
 		audio = new JMenu("Audio");
-		info = new JMenu("A propos");
+		info = new JMenu("À propos");
 
 		//JMenuItem
 		itemOptionPlay1 = new JMenuItem("Abandonner la partie");
 		itemOptionPlay2 = new JMenuItem("Recommencer la partie");
-		itemOptionPlay3 = new JMenuItem("Quiter");
+		itemOptionPlay3 = new JMenuItem("Quitter");
 
 		itemAudio1 = new JMenuItem("ON");
 		itemAudio2 = new JMenuItem("OFF");
 
-		itemInfo1 = new JMenuItem("Createurs");
+		itemInfo1 = new JMenuItem("Créateurs");
 
 		menuListener= new MenuListener(this,this.fenetreJeux);
 
@@ -140,14 +140,14 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 		//JMenu
 		optionPlay = new JMenu("Game");
-		info = new JMenu("A propos");
+		info = new JMenu("À propos");
 
 		//JMenuItem
 		itemOptionPlay4 = new JMenuItem("Abandonner la partie");
 		itemOptionPlay5 = new JMenuItem("Recommencer la partie");
-		itemOptionPlay3 = new JMenuItem("Quiter");
+		itemOptionPlay3 = new JMenuItem("Quitter");
 
-		itemInfo1 = new JMenuItem("Createurs");
+		itemInfo1 = new JMenuItem("Créateurs");
 
 		menuListener= new MenuListener(this,this.accueilJFrame);
 

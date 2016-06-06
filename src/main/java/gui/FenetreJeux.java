@@ -69,14 +69,14 @@ public class FenetreJeux extends JFrame
 		if (numero_grille == 1)
 		{
 			afficheNomEquipeCourant = new JLabel(
-					"C'est au tour de l'equipe " + equipes[0].getNomEquipe() + " de jouer");
+					"C'est au tour de l'équipe " + equipes[0].getNomEquipe() + " de jouer.");
 			afficheNomEquipeCourant.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
 			pGrille.add(deJeuJPanel1);
 		}
 		else if (numero_grille == 2)
 		{
 			afficheNomEquipeCourant = new JLabel(
-					"C'est au tour de l'equipe " + equipes[1].getNomEquipe() + " de jouer");
+					"C'est au tour de l'équipe " + equipes[1].getNomEquipe() + " de jouer.");
 			afficheNomEquipeCourant.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
 			pGrille.add(deJeuJPanel2);
 		}

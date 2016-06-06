@@ -32,8 +32,8 @@ public class FprincListener implements ActionListener
 					b=false;
 				}catch (Exception e){
 					if (e.getMessage()==null) {
-						accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe("<equipe n°1>");
-						accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe("<equipe n°2>");
+						accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe("<équipe n°1>");
+						accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe("<équipe n°2>");
 						b=false;
 					}else{
 						JOptionPane jop = new JOptionPane();
@@ -66,7 +66,7 @@ public class FprincListener implements ActionListener
 				throw new Exception("Votre nom est vide");
 			}
 			if (accueilJPanel.accueilJFrame.groupListener.equipe1.getNomEquipe().equals(equipe2)) {
-				throw new Exception("Votre nom est le meme que la premiere équipe");
+				throw new Exception("Votre nom est le même que la première équipe");
 			}
 			accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe(equipe2);
 		}

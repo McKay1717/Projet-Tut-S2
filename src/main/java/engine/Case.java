@@ -135,7 +135,7 @@ public class Case {
 			bateau.touche();
 		}catch(Exception e)
 		{
-			e.printStackTrace();
+			//e.printStackTrace();
 		}
 	}
 

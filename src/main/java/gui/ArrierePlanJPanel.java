@@ -73,13 +73,13 @@ public class ArrierePlanJPanel extends JPanel
 		JLabel jLabel = null;
 		if (numGrille==1){
 			jLabel = new JLabel(
-					"C'est au tour de l'equipe " + grille_jeux.getEquipes()[numGrille-1].getNomEquipe()
-							+ " de placer ces bateaux");
+					"C'est au tour de l'équipe " + grille_jeux.getEquipes()[numGrille-1].getNomEquipe()
+							+ " de placer ses bateaux.");
 			jLabel.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
 		}else if (numGrille==2){
 			jLabel = new JLabel(
-					"C'est au tour de l'equipe " + grille_jeux.getEquipes()[numGrille-1].getNomEquipe()
-							+ " de placer ces bateaux");
+					"C'est au tour de l'équipe " + grille_jeux.getEquipes()[numGrille-1].getNomEquipe()
+							+ " de placer ses bateaux.");
 			jLabel.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
 		}
 

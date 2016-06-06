@@ -3,10 +3,9 @@
  *******************************************************************************/
 package engine;
 
-import engine.Jukebox.Jukebox;
-
 import java.util.Arrays;
-import java.util.Scanner;
+
+import engine.Jukebox.Jukebox;
 
 // Start of user code (user defined imports)
 
@@ -17,29 +16,31 @@ import java.util.Scanner;
  *
  * @author nicolas
  */
-public class Equipe {
-	//Son de l equipe
-	private Jukebox jukebox = new Jukebox();
+public class Equipe
+{
+	// Son de l equipe
+	private Jukebox			jukebox			= new Jukebox();
 
 	// Grille de l'equipe
-	GrilleJeux gj;
+	GrilleJeux				gj;
 	// Si l'equipe a tirer dans le tour passage a true
-	static private boolean tirDisponible = false;
+	static private boolean	tirDisponible	= false;
 
 	/**
 	 * Description of the property nomEquipe.
 	 */
-	private String nomEquipe = "";
+	private String			nomEquipe		= "";
 
 	/**
 	 * Description of the property bateaux.
 	 */
-	private Bateaux[] bateaux = new Bateaux[5];
+	private Bateaux[]		bateaux			= new Bateaux[5];
 
 	/**
 	 * The constructor.
 	 */
-	public Equipe(GrilleJeux _gj, String nom_equipe) {
+	public Equipe(GrilleJeux _gj, String nom_equipe)
+	{
 		// Start of user code constructor for Equipe)
 		super();
 		this.gj = _gj;
@@ -51,7 +52,8 @@ public class Equipe {
 	 * Fonction de tire
 	 *
 	 */
-	public boolean tire(Equipe e, int x, int y) {
+	public boolean tire(Equipe e, int x, int y)
+	{
 		// Si la case contient un bateau
 		Case c = e.getGj().getCases()[x][y];
 		c.touche();
@@ -64,34 +66,49 @@ public class Equipe {
 	 * Placement du torpilleur
 	 *
 	 */
-	public Case[] setPlacement(Bateaux b, int x1, int y1, int x2, int y2) throws Exception {
+	public Case[] setPlacement(Bateaux b, int x1, int y1, int x2, int y2) throws Exception
+	{
 
 		Case[] cases = new Case[b.getTaille()];
-		for (int i = 0; i < b.getTaille(); i++) {
-			if (x2 - x1 	== b.getTaille() - 1 && y1 == y2) {
-				if (!this.getGj().getCases()[x1 + i][y1].getVide()) {
+		for (int i = 0 ; i < b.getTaille() ; i++)
+		{
+			if (x2 - x1 == b.getTaille() - 1 && y1 == y2)
+			{
+				if (!this.getGj().getCases()[x1 + i][y1].getVide())
+				{
 					throw new Exception("Case " + (x1 + i) + ',' + (y1) + " non vide");
 				}
 
-			} else if (y2 - y1 == b.getTaille() - 1 && x1 == x2) {
-				if (!this.getGj().getCases()[x1][y1 + i].getVide()) {
+			}
+			else if (y2 - y1 == b.getTaille() - 1 && x1 == x2)
+			{
+				if (!this.getGj().getCases()[x1][y1 + i].getVide())
+				{
 					throw new Exception("Case " + (x1) + ',' + (y1 + i) + " non vide");
 				}
 
-			} else {
-				throw new Exception("Case non alignée");
+			}
+			else
+			{
+				throw new Exception("Cases non alignées");
 			}
 		}
-		for (int i = 0; i < b.getTaille(); i++) {
-			if (x2 - x1 == b.getTaille() - 1) {
-				if (this.getGj().getCases()[x1 + i][y1].getVide()) {
+		for (int i = 0 ; i < b.getTaille() ; i++)
+		{
+			if (x2 - x1 == b.getTaille() - 1)
+			{
+				if (this.getGj().getCases()[x1 + i][y1].getVide())
+				{
 					this.getGj().getCases()[x1 + i][y1].setBateau(b);
 					this.getGj().getCases()[x1 + i][y1].setVide(false);
 					cases[i] = this.getGj().getCases()[x1 + i][y1];
 				}
 
-			} else {
-				if (this.getGj().getCases()[x1][y1 + i].getVide()) {
+			}
+			else
+			{
+				if (this.getGj().getCases()[x1][y1 + i].getVide())
+				{
 					this.getGj().getCases()[x1][y1 + i].setBateau(b);
 					this.getGj().getCases()[x1][y1 + i].setVide(false);
 					cases[i] = this.getGj().getCases()[x1][y1 + i];
@@ -104,58 +121,74 @@ public class Equipe {
 
 	}
 
-	protected boolean verification(Equipe e, int a, int b) {
-		if (a >= 0 && a <= 9 && b >= 0 && b <= 9) {
+	protected boolean verification(Equipe e, int a, int b)
+	{
+		if (a >= 0 && a <= 9 && b >= 0 && b <= 9)
+		{
 			if (!e.gj.getCases()[a][b].getTouche())
 				return true;
 		}
 		return false;
 	}
 
-	protected boolean verification_adjacent_case2(Equipe e, int x, int y, Case c[]) {
+	protected boolean verification_adjacent_case2(Equipe e, int x, int y, Case c[])
+	{
 		boolean bool = false;
 		if ((x == (c[0].getX() + 1) && y == (c[0].getY())) || (x == (c[0].getX() - 1) && y == (c[0].getY()))
-				|| (x == (c[0].getX()) && y == (c[0].getY() + 1)) || (x == (c[0].getX()) && y == (c[0].getY() - 1))) {
-			if (!e.gj.getCases()[x][y].getTouche()) {
+				|| (x == (c[0].getX()) && y == (c[0].getY() + 1)) || (x == (c[0].getX()) && y == (c[0].getY() - 1)))
+		{
+			if (!e.gj.getCases()[x][y].getTouche())
+			{
 				bool = true;
 			}
 		}
 		return bool;
 	}
 
-	protected boolean verification_adjacent_x(Equipe e, int x, int y, Case c[], int taille) {
+	protected boolean verification_adjacent_x(Equipe e, int x, int y, Case c[], int taille)
+	{
 		boolean bool = false;
 		int i;
 		int min = c[0].getX();
 		int max = c[0].getX();
-		for (i = 0; i < c.length - 1; i++) {
+		for (i = 0 ; i < c.length - 1 ; i++)
+		{
 			if (c[i].getX() > max)
 				max = c[i].getX();
 			else if (c[i].getX() < min)
 				min = c[i].getX();
 		}
-		if (x == (min + 1) || x == (min - 1) || x == (max + 1) || x == max - 1) {
-			if (!e.gj.getCases()[x][y].getTouche()) {
+		if (x == (min + 1) || x == (min - 1) || x == (max + 1) || x == max - 1)
+		{
+			if (!e.gj.getCases()[x][y].getTouche())
+			{
 				bool = true;
 			}
 		}
 		return bool;
 	}
 
-	protected boolean verification_adjacent_y(Equipe e, int x, int y, Case c[], int taille) {
+	protected boolean verification_adjacent_y(Equipe e, int x, int y, Case c[], int taille)
+	{
 		boolean bool = false;
 		int i;
 		int min = c[0].getY();
 		int max = c[0].getY();
-		for (i = 0; i < taille; i++) {
-			if (c[i].getY() > max) {
+		for (i = 0 ; i < taille ; i++)
+		{
+			if (c[i].getY() > max)
+			{
 				max = c[i].getY();
-			} else if (c[i].getY() < min) {
+			}
+			else if (c[i].getY() < min)
+			{
 				min = c[i].getY();
 			}
 		}
-		if (y == (min + 1) || y == (min - 1) || y == (max + 1) || y == (max - 1)) {
-			if (!e.gj.getCases()[x][y].getTouche()) {
+		if (y == (min + 1) || y == (min - 1) || y == (max + 1) || y == (max - 1))
+		{
+			if (!e.gj.getCases()[x][y].getTouche())
+			{
 				bool = true;
 			}
 		}
@@ -168,7 +201,8 @@ public class Equipe {
 	 * 
 	 * @return nomEquipe
 	 */
-	public String getNomEquipe() {
+	public String getNomEquipe()
+	{
 		return this.nomEquipe;
 	}
 
@@ -177,15 +211,18 @@ public class Equipe {
 	 * 
 	 * @param newNomEquipe
 	 */
-	public void setNomEquipe(String newNomEquipe) {
+	public void setNomEquipe(String newNomEquipe)
+	{
 		this.nomEquipe = newNomEquipe;
 	}
 
-	public boolean getPeuxTirer() {
+	public boolean getPeuxTirer()
+	{
 		return tirDisponible;
 	}
 
-	public void setPeuxTirer(boolean tirDisponible) {
+	public void setPeuxTirer(boolean tirDisponible)
+	{
 		this.tirDisponible = tirDisponible;
 	}
 
@@ -194,14 +231,18 @@ public class Equipe {
 	 * 
 	 * @return bateaux
 	 */
-	public Bateaux[] getBateaux() {
+	public Bateaux[] getBateaux()
+	{
 		return this.bateaux;
 	}
 
-	public boolean equipeEnVie() {
+	public boolean equipeEnVie()
+	{
 		int count = 0;
-		for (int i = 0; i < bateaux.length; i++) {
-			if (bateaux[i].getEstCoule()) {
+		for (int i = 0 ; i < bateaux.length ; i++)
+		{
+			if (bateaux[i].getEstCoule())
+			{
 				count++;
 			}
 		}
@@ -209,7 +250,8 @@ public class Equipe {
 	}
 
 	@Override
-	public int hashCode() {
+	public int hashCode()
+	{
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + Arrays.hashCode(bateaux);
@@ -218,7 +260,8 @@ public class Equipe {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
+	public boolean equals(Object obj)
+	{
 		if (this == obj)
 			return true;
 		if (obj == null)
@@ -228,32 +271,39 @@ public class Equipe {
 		Equipe other = (Equipe) obj;
 		if (!Arrays.equals(bateaux, other.bateaux))
 			return false;
-		if (nomEquipe == null) {
+		if (nomEquipe == null)
+		{
 			if (other.nomEquipe != null)
 				return false;
-		} else if (!nomEquipe.equals(other.nomEquipe))
+		}
+		else if (!nomEquipe.equals(other.nomEquipe))
 			return false;
 		return true;
 	}
 
 	@Override
-	public String toString() {
+	public String toString()
+	{
 		return "Equipe [nomEquipe=" + nomEquipe + ", bateaux=" + Arrays.toString(bateaux) + "]";
 	}
 
-	public GrilleJeux getGj() {
+	public GrilleJeux getGj()
+	{
 		return gj;
 	}
 
-	public void setGj(GrilleJeux gj) {
+	public void setGj(GrilleJeux gj)
+	{
 		this.gj = gj;
 	}
 
-	public void setBateaux(Bateaux[] bateaux) {
+	public void setBateaux(Bateaux[] bateaux)
+	{
 		this.bateaux = bateaux;
 	}
 
-	public Jukebox getJukebox(){
+	public Jukebox getJukebox()
+	{
 		return jukebox;
 	}
 
