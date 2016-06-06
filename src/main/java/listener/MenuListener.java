@@ -128,6 +128,7 @@ public class MenuListener implements ActionListener
 		// Recommencer la partie Accueil
 		if (e.getSource() == menuSuperieurJMenuBar.getItemOptionPlay5())
 		{
+			accueilJFrame.groupListener.resetGame(accueilJFrame.groupListener.equipe1.getNomEquipe(),accueilJFrame.groupListener.equipe2.getNomEquipe());
 			accueilJPanel = new AccueilJPanel(this.accueilJFrame);
 			accueilJFrame.setSize(400, 250);
 			accueilJFrame.setjPanel(accueilJPanel);
