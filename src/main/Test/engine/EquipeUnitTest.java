@@ -7,6 +7,9 @@ import org.mockito.Mockito;
 import org.junit.Assert;
 import org.junit.Test;
 
+import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
+
 /**
  * Created by valenza on 04/06/16.
  */
