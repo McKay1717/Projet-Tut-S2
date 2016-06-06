@@ -310,12 +310,17 @@ public class CaseListener_Initialisation implements ActionListener
 
 		for (int i = 0 ; i < grille.length ; i++)
 			for (int j = 0 ; j < grille.length ; j++)
+			{
 				if (grille[i][j] instanceof CaseJButton)
 					grille[i][j].setBackground(BLUE);
+				else if (grille[i][j] instanceof BateauJButton)
+					grille[i][j].setBackground(BLACK);
+			}
 
 		groupListener.arrierePlanJPanel1 = new ArrierePlanJPanel(grille_jeu, grille,
 				groupListener.arrierePlanJPanel1.getSelectionBateauJPanel());
 		fenetre.setjPanel(groupListener.arrierePlanJPanel1);
+		fenetre.validate();
 		fenetre.repaint();
 	}
 
