@@ -78,22 +78,22 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		this.fenetreJeux=fenetreJeux;
 		//this.jPanel=accueilJFrame.getjPanel();
 		initAttribut1();
-		creerJMenuBar();
+		creerJMenuBar1();
 	}
 
 	public MenuSuperieurJMenuBar(AccueilJFrame accueilJFrame) {
 		super();
 		this.accueilJFrame=accueilJFrame;
 		this.jPanel=accueilJFrame.getjPanel();
-		initAttribut2();
+
 		if(this.jPanel==this.accueilJPanel){
+			initAttribut2();
 			creerJMenuBar2();
 		}else {
+			initAttribut2();
 			creerJMenuBar2();
 		}
 	}
-
-
 
 	private void initAttribut2(){
 		//JMenu
@@ -131,8 +131,7 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemInfo1.addActionListener(menuListener);
 	}
 
-
-	private void creerJMenuBar(){
+	private void creerJMenuBar1(){
 
 		//Ajout des icones
 		itemOptionPlay1.setIcon(iconeStop);
