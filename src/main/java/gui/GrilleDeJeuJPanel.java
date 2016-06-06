@@ -3,11 +3,14 @@
  *******************************************************************************/
 package gui;
 
-import engine.GrilleJeux;
-
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import engine.GrilleJeux;
 
 // Start of user code (user defined imports)
 
@@ -65,6 +68,29 @@ public class GrilleDeJeuJPanel extends JPanel
 		// End of user code
 	}
 
+	public GrilleDeJeuJPanel(GrilleJeux grilleJeux, JButton[][] grille)
+	{
+		super();
+
+		this.grille_jeu = grilleJeux;
+		this.grille = grille;
+
+		intitule_ligne = new JLabel[TAILLE_GRILLE + 1];
+		for (int i = 0 , j = -1 ; i < TAILLE_GRILLE + 1 ; i++ , j++)
+		{
+			if (i == 0)
+				intitule_ligne[i] = new JLabel();
+			else
+				intitule_ligne[i] = new JLabel(Character.toString(INTITULE_LIGNE[j]));
+		}
+
+		intitule_colonne = new JLabel[TAILLE_GRILLE];
+		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
+			intitule_colonne[i] = new JLabel(Integer.toString(i + 1));
+
+		creerWidget();
+	}
+
 	// Start of user code (user defined methods for GrilleDeJeuJPanel)
 
 	/**
@@ -107,7 +133,6 @@ public class GrilleDeJeuJPanel extends JPanel
 	 */
 	public void creerWidget()
 	{
-
 
 		JPanel pGrille = new JPanel(new GridLayout(TAILLE_GRILLE + 1, TAILLE_GRILLE + 1));
 		for (int i = 0 ; i < TAILLE_GRILLE + 1 ; i++)
