@@ -39,7 +39,7 @@ public class FprincListener implements ActionListener
 			String equipe1 = JOptionPane.showInputDialog(null, "nom du Joueur 1 ?", "", JOptionPane.QUESTION_MESSAGE);
 			JOptionPane jop1 = new JOptionPane();
 			while (equipe1.length() == 0) {
-				jop1.showMessageDialog(null, "Votre non et vide", "error", JOptionPane.INFORMATION_MESSAGE);
+				jop1.showMessageDialog(null, "Votre nom et vide", "error", JOptionPane.INFORMATION_MESSAGE);
 				equipe1 = JOptionPane.showInputDialog(null, "nom du Joueur 1 ?", "", JOptionPane.QUESTION_MESSAGE);
 			}
 			accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe(equipe1);
@@ -49,7 +49,7 @@ public class FprincListener implements ActionListener
 			String equipe2 = JOptionPane.showInputDialog(null, "nom du Joueur 2 ?", "", JOptionPane.QUESTION_MESSAGE);
 			JOptionPane jop2 = new JOptionPane();
 			while (equipe2.length() == 0) {
-				jop2.showMessageDialog(null, "Votre non et vide", "error", JOptionPane.INFORMATION_MESSAGE);
+				jop2.showMessageDialog(null, "Votre nom et vide", "error", JOptionPane.INFORMATION_MESSAGE);
 				equipe2 = JOptionPane.showInputDialog(null, "nom du Joueur 2 ?", "", JOptionPane.QUESTION_MESSAGE);
 			}
 			accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe(equipe2);
