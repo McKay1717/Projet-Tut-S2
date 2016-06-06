@@ -88,6 +88,7 @@ public class JeuListener implements ActionListener
 					message = equipe2.getNomEquipe() + " a gagné !";
 				JOptionPane.showMessageDialog(fenetreJeux, message, "Victoire", INFORMATION_MESSAGE);
 				fenetreJeux.setVisible(false);
+				groupListener.resetGame(equipe1.getNomEquipe(), equipe2.getNomEquipe());
 
 				groupListener.fenetre = new AccueilJFrame(groupListener);
 				groupListener.fenetre.setVisible(true);
