@@ -101,17 +101,13 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 	private void initAttribut2(){
 		//JMenu
-		optionPlay = new JMenu("Game");
 		info = new JMenu("A propos");
 
 		//JMenuItem
 		itemInfo1 = new JMenuItem("Createurs");
-		itemOptionPlay3 = new JMenuItem("Quiter");
-
 		menuListener= new MenuListener(this,this.accueilJFrame);
 
 		itemInfo1.addActionListener(menuListener);
-		itemOptionPlay3.addActionListener(menuListener);
 	}
 
 	private void initAttribut1(){
@@ -224,13 +220,10 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	private void creerJMenuBar2(){
 
 		itemInfo1.setIcon(iconeInfo);
-		itemOptionPlay3.setIcon(iconeQuiter);
 		//Color
 		itemInfo1.setBackground(Color.white);
-		itemOptionPlay3.setBackground(Color.white);
 		optionPlay.add(itemOptionPlay3);
 		info.add(itemInfo1);
-		this.add(optionPlay);
 		this.add(info);
 	}
 
