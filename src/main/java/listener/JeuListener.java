@@ -60,14 +60,13 @@ public class JeuListener implements ActionListener
 			{
 				// Image d'une case vide touchée.
 				grille_courante[position[0]][position[1]].setBackground(GRAY);
+				if (numero_grille == 1)
+					equipe1.getJukebox().playSon("EAU");
+				else
+					equipe2.getJukebox().playSon("EAU");
 			}
 			else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
 			{
-				if (grille_model_courante[position[0]][position[1]].getTouche())
-				{
-					// Si le bateau est touché, une image de feu ou autre.
-					grille_courante[position[0]][position[1]].setBackground(ORANGE);
-				}
 				if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
 				{
 					Case[] cases = grille_model_courante[position[0]][position[1]].getBateau().getCases();
@@ -76,6 +75,19 @@ public class JeuListener implements ActionListener
 							for (int k = 0 ; k < cases.length ; k++)
 								if (grille_model_courante[i][j].equals(cases[k]))
 									grille_courante[i][j].setBackground(RED);
+					if (numero_grille == 1)
+						equipe1.getJukebox().playSon("COULER");
+					else
+						equipe2.getJukebox().playSon("COULER");
+				}
+				else if (grille_model_courante[position[0]][position[1]].getTouche())
+				{
+					// Si le bateau est touché, une image de feu ou autre.
+					grille_courante[position[0]][position[1]].setBackground(ORANGE);
+					if (numero_grille == 1)
+						equipe1.getJukebox().playSon("TOUCHER");
+					else
+						equipe2.getJukebox().playSon("TOUCHER");
 				}
 			}
 
