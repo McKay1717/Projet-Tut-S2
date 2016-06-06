@@ -1,64 +1,91 @@
 package listener;
 
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.GRAY;
+import static java.awt.Color.ORANGE;
+import static java.awt.Color.RED;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JButton;
+
 import engine.Case;
 import engine.GrilleJeux;
 import gui.BateauJButton;
 import gui.CaseJButton;
 import gui.FenetreJeux;
 
-import javax.swing.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
-import static java.awt.Color.*;
-
 public class JeuListener implements ActionListener
 {
+	public FenetreJeux	fenetreJeux;
 	public JButton[][]	grille1, grille2;
 	public Case[][]		grille_model1, grille_model2;
+	private Case[][]	grille_model_courante;
+	private JButton[][]	grille_courante;
+	private int			numero_grille;
 
 	public JeuListener(FenetreJeux fenetre, GrilleJeux grilleJeux1, GrilleJeux grilleJeux2)
 	{
+		this.fenetreJeux = fenetre;
 		this.grille1 = fenetre.deJeuJPanel1.grille;
 		this.grille2 = fenetre.deJeuJPanel2.grille;
 		grille_model1 = grilleJeux1.getCases();
 		grille_model2 = grilleJeux2.getCases();
+		grille_courante = grille1;
+		grille_model_courante = grille_model1;
+		numero_grille = 1;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
-		Case[][] grille_model_courante = grille_model_courante();
-		JButton[][] grille_courante = grille_courante();
-
 		int[] position = case_appelee(e, grille_courante);
 
 		if (!grille_model_courante[position[0]][position[1]].getTouche())
+		{
 			grille_model_courante[position[0]][position[1]].setTouche(true);
 
-		if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
-		{
-			// Image d'une case vide touchée.
-
-			grille_courante[position[0]][position[1]].setBackground(GRAY);
-
-		}
-		else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
-		{
-			if (grille_model_courante[position[0]][position[1]].getTouche())
+			if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
 			{
-				// Si le bateau est touché, une image de feu ou autre.
-				grille_courante[position[0]][position[1]].setBackground(ORANGE);
-
+				// Image d'une case vide touchée.
+				grille_courante[position[0]][position[1]].setBackground(GRAY);
 			}
-			else if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
+			else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
 			{
-				// Si le bateau est coulé, apparition du bateau coulé à l'écran.
-				grille_courante[position[0]][position[1]].setBackground(RED);
+				if (grille_model_courante[position[0]][position[1]].getTouche())
+				{
+					// Si le bateau est touché, une image de feu ou autre.
+					grille_courante[position[0]][position[1]].setBackground(ORANGE);
+
+				}
+				else if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
+				{
+					// Si le bateau est coulé, apparition du bateau coulé à
+					// l'écran.
+					grille_courante[position[0]][position[1]].setBackground(RED);
+				}
 			}
 		}
 
+		if (numero_grille == 1)
+		{
+			fenetreJeux.deJeuJPanel1.grille = grille_courante;
+			set_grille_courante();
+			set_grille_model_courante();
+			numero_grille++;
+			fenetreJeux.creerWidget(2);
+		}
+		else if (numero_grille == 2)
+		{
+			fenetreJeux.deJeuJPanel2.grille = grille_courante;
+			set_grille_courante();
+			set_grille_model_courante();
+			numero_grille--;
+			fenetreJeux.creerWidget(1);
+		}
+		fenetreJeux.validate();
+		fenetreJeux.repaint();
 		// Passage à la seconde grille.
 	}
 
@@ -77,13 +104,19 @@ public class JeuListener implements ActionListener
 		return position;
 	}
 
-	private Case[][] grille_model_courante()
+	public void set_grille_model_courante()
 	{
-		return grille_model1;
+		if (grille_model_courante.equals(grille_model1))
+			grille_model_courante = grille_model2;
+		else if (grille_model_courante.equals(grille_model2))
+			grille_model_courante = grille_model1;
 	}
 
-	private JButton[][] grille_courante()
+	public void set_grille_courante()
 	{
-		return grille1;
+		if (grille_courante.equals(grille1))
+			grille_courante = grille2;
+		else if (grille_courante.equals(grille2))
+			grille_courante = grille1;
 	}
 }

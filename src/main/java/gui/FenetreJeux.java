@@ -47,7 +47,7 @@ public class FenetreJeux extends JFrame
 			}
 
 		equipes = e;
-		creerWidget();
+		creerWidget(1);
 		setTitle("Jeux");
 		setSize(400, 400);
 		setLocationRelativeTo(null);
@@ -56,7 +56,7 @@ public class FenetreJeux extends JFrame
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
 
-	private void creerWidget()
+	public void creerWidget(int numero_grille)
 	{
 		menuBar = new MenuSuperieurJMenuBar(this);
 		setJMenuBar(menuBar);
@@ -65,11 +65,21 @@ public class FenetreJeux extends JFrame
 		JPanel pGrille = new JPanel();
 		JPanel pLabel = new JPanel();
 
-		JLabel afficheNomEquipeCourant = new JLabel(
-				"C'est au tour de l'equipe " + equipes[0].getNomEquipe() + " de jouer");
-		afficheNomEquipeCourant.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
-
-		pGrille.add(deJeuJPanel2);
+		JLabel afficheNomEquipeCourant = new JLabel();
+		if (numero_grille == 1)
+		{
+			afficheNomEquipeCourant = new JLabel(
+					"C'est au tour de l'equipe " + equipes[0].getNomEquipe() + " de jouer");
+			afficheNomEquipeCourant.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
+			pGrille.add(deJeuJPanel1);
+		}
+		else if (numero_grille == 2)
+		{
+			afficheNomEquipeCourant = new JLabel(
+					"C'est au tour de l'equipe " + equipes[1].getNomEquipe() + " de jouer");
+			afficheNomEquipeCourant.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
+			pGrille.add(deJeuJPanel2);
+		}
 		pLabel.add(afficheNomEquipeCourant);
 
 		pPrinc.add(pLabel, BorderLayout.NORTH);
