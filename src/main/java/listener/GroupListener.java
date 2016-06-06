@@ -3,15 +3,15 @@
  *******************************************************************************/
 package listener;
 
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.showMessageDialog;
-
 import engine.Equipe;
 import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.ArrierePlanJPanel;
 import gui.FenetreJeux;
 import gui.MenuSuperieurJMenuBar;
+
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.showMessageDialog;
 
 public class GroupListener
 {
@@ -47,7 +47,7 @@ public class GroupListener
 		{
 			showMessageDialog(null, equipe1.getNomEquipe() + ", veuillez placer vos bateaux", "Initialisation",
 					INFORMATION_MESSAGE);
-			arrierePlanJPanel1 = new ArrierePlanJPanel(grille_jeux1);
+			arrierePlanJPanel1 = new ArrierePlanJPanel(grille_jeux1, 1);
 			fenetre.setjPanel(arrierePlanJPanel1);
 			caseListener1 = new CaseListener_Initialisation(grille_jeux1, fenetre, equipe1, 1, this);
 			arrierePlanJPanel1.getGrilleDeJeuJPanel().setCaseListener(caseListener1);
@@ -57,7 +57,7 @@ public class GroupListener
 		{
 			showMessageDialog(null, equipe2.getNomEquipe() + ", veuillez placer vos bateaux", "Initialisation",
 					INFORMATION_MESSAGE);
-			arrierePlanJPanel2 = new ArrierePlanJPanel(grille_jeux2);
+			arrierePlanJPanel2 = new ArrierePlanJPanel(grille_jeux2,2);
 			fenetre.setjPanel(arrierePlanJPanel2);
 			caseListener2 = new CaseListener_Initialisation(grille_jeux2, fenetre, equipe2, 2, this);
 			arrierePlanJPanel2.getGrilleDeJeuJPanel().setCaseListener(caseListener2);

@@ -3,32 +3,21 @@
  *******************************************************************************/
 package listener;
 
-import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
-import static java.awt.Color.BLACK;
-import static java.awt.Color.BLUE;
-import static java.awt.Color.ORANGE;
-import static java.awt.Color.PINK;
-import static java.awt.Color.RED;
-import static java.lang.Math.max;
-import static java.lang.Math.min;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.util.ArrayList;
-
-import javax.swing.JButton;
-
-import engine.ContretTorpilleur;
-import engine.Croiseur;
-import engine.Equipe;
-import engine.GrilleJeux;
-import engine.PorteAvion;
-import engine.SousMarin;
-import engine.Torpilleur;
+import engine.*;
 import gui.AccueilJFrame;
 import gui.ArrierePlanJPanel;
 import gui.BateauJButton;
 import gui.CaseJButton;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.*;
+import static java.lang.Math.max;
+import static java.lang.Math.min;
 
 // Start of user code (user defined imports)
 // End of user code
@@ -320,13 +309,13 @@ public class CaseListener_Initialisation implements ActionListener
 		if (numero_grille == 1)
 		{
 			groupListener.arrierePlanJPanel1 = new ArrierePlanJPanel(grille_jeu, grille,
-					groupListener.arrierePlanJPanel1.getSelectionBateauJPanel());
+					groupListener.arrierePlanJPanel1.getSelectionBateauJPanel(), numero_grille);
 			fenetre.setjPanel(groupListener.arrierePlanJPanel1);
 		}
 		else
 		{
 			groupListener.arrierePlanJPanel2 = new ArrierePlanJPanel(grille_jeu, grille,
-					groupListener.arrierePlanJPanel2.getSelectionBateauJPanel());
+					groupListener.arrierePlanJPanel2.getSelectionBateauJPanel(), numero_grille);
 			fenetre.setjPanel(groupListener.arrierePlanJPanel2);
 		}
 		fenetre.validate();
