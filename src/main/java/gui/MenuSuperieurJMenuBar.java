@@ -37,7 +37,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	private final ImageIcon iconeSonOn = new ImageIcon(new ImageIcon(rep+"sonOn.jpg").getImage().getScaledInstance(30,30,0));
 	private final ImageIcon iconeSonOff = new ImageIcon(new ImageIcon(rep+"sonOff.jpg").getImage().getScaledInstance(30,30,0));
 	private final ImageIcon iconeStop = new ImageIcon(new ImageIcon(rep+"stop.png").getImage().getScaledInstance(30,30,0));
-	private final ImageIcon iconeQuiter = new ImageIcon(new ImageIcon(rep+"quiter.jpg").getImage().getScaledInstance(30,30,0));
 
 	//JMenu
 	private JMenu optionPlay;
@@ -47,8 +46,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	//JMenuItem optionPlay
 	private JMenuItem itemOptionPlay1;
 	private JMenuItem itemOptionPlay2;
-	private JMenuItem itemOptionPlay3;
-
 
 	//JMenuItem audio
 	private JMenuItem itemAudio1;
@@ -81,36 +78,33 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		this.fenetreJeux=fenetreJeux;
 		//this.jPanel=accueilJFrame.getjPanel();
 		initAttribut1();
-		creerJMenuBar1();
+		creerJMenuBar();
 	}
 
 	public MenuSuperieurJMenuBar(AccueilJFrame accueilJFrame) {
 		super();
 		this.accueilJFrame=accueilJFrame;
 		this.jPanel=accueilJFrame.getjPanel();
-
+		initAttribut2();
 		if(this.jPanel==this.accueilJPanel){
-			initAttribut2();
 			creerJMenuBar2();
 		}else {
-			initAttribut2();
 			creerJMenuBar2();
 		}
 	}
 
+
+
 	private void initAttribut2(){
 		//JMenu
-		optionPlay = new JMenu("Game");
 		info = new JMenu("A propos");
 
 		//JMenuItem
 		itemInfo1 = new JMenuItem("Createurs");
-		itemOptionPlay3 = new JMenuItem("Quiter");
 
 		menuListener= new MenuListener(this,this.accueilJFrame);
 
 		itemInfo1.addActionListener(menuListener);
-		itemOptionPlay3.addActionListener(menuListener);
 	}
 
 	private void initAttribut1(){
@@ -122,7 +116,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		//JMenuItem
 		itemOptionPlay1 = new JMenuItem("Abandonner la partie");
 		itemOptionPlay2 = new JMenuItem("Recommencer la partie");
-		itemOptionPlay3 = new JMenuItem("Quiter");
 
 		itemAudio1 = new JMenuItem("ON");
 		itemAudio2 = new JMenuItem("OFF");
@@ -133,18 +126,17 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 		itemOptionPlay1.addActionListener(menuListener);
 		itemOptionPlay2.addActionListener(menuListener);
-		itemOptionPlay3.addActionListener(menuListener);
 		itemAudio1.addActionListener(menuListener);
 		itemAudio2.addActionListener(menuListener);
 		itemInfo1.addActionListener(menuListener);
 	}
 
-	private void creerJMenuBar1(){
+
+	private void creerJMenuBar(){
 
 		//Ajout des icones
 		itemOptionPlay1.setIcon(iconeStop);
 		itemOptionPlay2.setIcon(iconeRestart);
-		itemOptionPlay3.setIcon(iconeQuiter);
 
 		itemAudio1.setIcon(iconeSonOn);
 		itemAudio2.setIcon(iconeSonOff);
@@ -157,12 +149,10 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemInfo1.setBackground(Color.white);
 		itemOptionPlay1.setBackground(Color.white);
 		itemOptionPlay2.setBackground(Color.white);
-		itemOptionPlay3.setBackground(Color.white);
 
 		//Mise en plan du JMenu
 		optionPlay.add(itemOptionPlay1);
 		optionPlay.add(itemOptionPlay2);
-		optionPlay.add(itemOptionPlay3);
 
 		audio.add(itemAudio1);
 		audio.add(itemAudio2);
@@ -177,13 +167,11 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	private void creerJMenuBar2(){
 
 		itemInfo1.setIcon(iconeInfo);
-		itemOptionPlay3.setIcon(iconeQuiter);
+
 		//Color
 		itemInfo1.setBackground(Color.white);
-		itemOptionPlay3.setBackground(Color.white);
-		optionPlay.add(itemOptionPlay3);
+
 		info.add(itemInfo1);
-		this.add(optionPlay);
 		this.add(info);
 	}
 
@@ -205,10 +193,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 	public JMenuItem getItemOptionPlay2() {
 		return itemOptionPlay2;
-	}
-
-	public JMenuItem getItemOptionPlay3() {
-		return itemOptionPlay3;
 	}
 
 	public static JOptionPane getMessage() {
