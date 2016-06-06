@@ -113,6 +113,7 @@ public abstract class Bateaux {
 	public void setEquipe(Equipe newEquipe) {
 		this.equipe = newEquipe;
 	}
+	
 
 	/**
 	 * Returns estCoule.
@@ -154,6 +155,7 @@ public abstract class Bateaux {
 	public void touche()
 	{
 		taille--;
+		if (taille <=0 ) setEstCoule(true);
 	}
 
 

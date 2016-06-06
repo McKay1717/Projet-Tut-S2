@@ -126,6 +126,17 @@ public class Case {
 	 */
 	public void setTouche(boolean newTouche) {
 		this.touche = newTouche;
+
+	}
+	public void touche()
+	{
+		setTouche(true);
+		try{
+			bateau.touche();
+		}catch(Exception e)
+		{
+			
+		}
 	}
 
 	/**
@@ -204,9 +215,5 @@ public class Case {
 		return true;
 	}
 
-	public void touche() {
-		setTouche(true);
-
-	}
 
 }
