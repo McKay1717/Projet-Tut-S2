@@ -44,7 +44,7 @@ public class JeuListener implements ActionListener
 
 		if (!grille_model_courante[position[0]][position[1]].getTouche())
 		{
-			grille_model_courante[position[0]][position[1]].setTouche(true);
+			grille_model_courante[position[0]][position[1]].touche();
 
 			if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
 			{
@@ -57,36 +57,38 @@ public class JeuListener implements ActionListener
 				{
 					// Si le bateau est touché, une image de feu ou autre.
 					grille_courante[position[0]][position[1]].setBackground(ORANGE);
-
 				}
 				else if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
 				{
-					// Si le bateau est coulé, apparition du bateau coulé à
-					// l'écran.
-					grille_courante[position[0]][position[1]].setBackground(RED);
+					System.out.println("Coulé");
+					Case[] cases = grille_model_courante[position[0]][position[1]].getBateau().getCases();
+					for (int i = 0 ; i < grille_courante.length ; i++)
+						for (int j = 0 ; j < grille_courante.length ; j++)
+							for (int k = 0 ; k < cases.length ; k++)
+								if (grille_model_courante[i][j].equals(cases[k]))
+									grille_courante[i][j].setBackground(RED);
 				}
 			}
-		}
 
-		if (numero_grille == 1)
-		{
-			fenetreJeux.deJeuJPanel1.grille = grille_courante;
-			set_grille_courante();
-			set_grille_model_courante();
-			numero_grille++;
-			fenetreJeux.creerWidget(2);
+			if (numero_grille == 1)
+			{
+				fenetreJeux.deJeuJPanel1.grille = grille_courante;
+				set_grille_courante();
+				set_grille_model_courante();
+				numero_grille++;
+				fenetreJeux.creerWidget(2);
+			}
+			else if (numero_grille == 2)
+			{
+				fenetreJeux.deJeuJPanel2.grille = grille_courante;
+				set_grille_courante();
+				set_grille_model_courante();
+				numero_grille--;
+				fenetreJeux.creerWidget(1);
+			}
+			fenetreJeux.validate();
+			fenetreJeux.repaint();
 		}
-		else if (numero_grille == 2)
-		{
-			fenetreJeux.deJeuJPanel2.grille = grille_courante;
-			set_grille_courante();
-			set_grille_model_courante();
-			numero_grille--;
-			fenetreJeux.creerWidget(1);
-		}
-		fenetreJeux.validate();
-		fenetreJeux.repaint();
-		// Passage à la seconde grille.
 	}
 
 	private int[] case_appelee(ActionEvent e, JButton[][] grille_courante)
