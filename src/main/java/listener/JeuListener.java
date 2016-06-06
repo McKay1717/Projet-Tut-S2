@@ -57,14 +57,8 @@ public class JeuListener implements ActionListener
 			grille_model_courante[position[0]][position[1]].touche();
 
 			if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
-			{
 				// Image d'une case vide touchée.
 				grille_courante[position[0]][position[1]].setBackground(GRAY);
-				if (numero_grille == 1)
-					equipe1.getJukebox().playSon("EAU");
-				else
-					equipe2.getJukebox().playSon("EAU");
-			}
 			else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
 			{
 				if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
@@ -75,20 +69,10 @@ public class JeuListener implements ActionListener
 							for (int k = 0 ; k < cases.length ; k++)
 								if (grille_model_courante[i][j].equals(cases[k]))
 									grille_courante[i][j].setBackground(RED);
-					if (numero_grille == 1)
-						equipe1.getJukebox().playSon("COULER");
-					else
-						equipe2.getJukebox().playSon("COULER");
 				}
 				else if (grille_model_courante[position[0]][position[1]].getTouche())
-				{
 					// Si le bateau est touché, une image de feu ou autre.
 					grille_courante[position[0]][position[1]].setBackground(ORANGE);
-					if (numero_grille == 1)
-						equipe1.getJukebox().playSon("TOUCHER");
-					else
-						equipe2.getJukebox().playSon("TOUCHER");
-				}
 			}
 
 			if (verifGagnant())
@@ -110,6 +94,38 @@ public class JeuListener implements ActionListener
 				if (numero_grille == 1)
 				{
 					fenetreJeux.deJeuJPanel1.grille = grille_courante;
+					fenetreJeux.creerWidget(1);
+					fenetreJeux.validate();
+					fenetreJeux.repaint();
+
+					if (grille_model_courante[position[0]][position[1]].getTouche())
+					{
+						if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
+						{
+							if (numero_grille == 1)
+								equipe1.getJukebox().playSon("EAU");
+							else
+								equipe2.getJukebox().playSon("EAU");
+						}
+						else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
+						{
+							if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
+							{
+								if (numero_grille == 1)
+									equipe1.getJukebox().playSon("COULER");
+								else
+									equipe2.getJukebox().playSon("COULER");
+							}
+							else if (grille_model_courante[position[0]][position[1]].getTouche())
+							{
+								if (numero_grille == 1)
+									equipe1.getJukebox().playSon("TOUCHER");
+								else
+									equipe2.getJukebox().playSon("TOUCHER");
+							}
+						}
+					}
+
 					set_grille_courante();
 					set_grille_model_courante();
 					numero_grille++;
@@ -118,6 +134,38 @@ public class JeuListener implements ActionListener
 				else if (numero_grille == 2)
 				{
 					fenetreJeux.deJeuJPanel2.grille = grille_courante;
+					fenetreJeux.creerWidget(2);
+					fenetreJeux.validate();
+					fenetreJeux.repaint();
+
+					if (grille_model_courante[position[0]][position[1]].getTouche())
+					{
+						if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
+						{
+							if (numero_grille == 1)
+								equipe1.getJukebox().playSon("EAU");
+							else
+								equipe2.getJukebox().playSon("EAU");
+						}
+						else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
+						{
+							if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
+							{
+								if (numero_grille == 1)
+									equipe1.getJukebox().playSon("COULER");
+								else
+									equipe2.getJukebox().playSon("COULER");
+							}
+							else if (grille_model_courante[position[0]][position[1]].getTouche())
+							{
+								if (numero_grille == 1)
+									equipe1.getJukebox().playSon("TOUCHER");
+								else
+									equipe2.getJukebox().playSon("TOUCHER");
+							}
+						}
+					}
+
 					set_grille_courante();
 					set_grille_model_courante();
 					numero_grille--;

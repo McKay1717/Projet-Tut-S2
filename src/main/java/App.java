@@ -41,7 +41,7 @@ public class App
 				//Gestion audio uniquement pour le demarage
 				Jukebox jukebox = new Jukebox();
 				//activer || desactiver
-				jukebox.activeSon(false);
+				jukebox.activeSon(true);
 				jukebox.playSon("Ouverture");
 			}
 		});
