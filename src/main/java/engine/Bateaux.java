@@ -162,9 +162,9 @@ public abstract class Bateaux {
 	public void touche() {
 		if (taille > 0) {
 			taille--;
-		} else {
-			setEstCoule(true);
 		}
+		if (taille <= 0)
+			setEstCoule(true);
 	}
 
 	@Override
