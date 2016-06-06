@@ -26,7 +26,7 @@ public abstract class Bateaux {
 	/**
 	 * Description of the property cases.
 	 */
-	private Case[] cases ;
+	private Case[] cases;
 
 	/**
 	 * Description of the property equipe.
@@ -49,8 +49,9 @@ public abstract class Bateaux {
 
 	/**
 	 * The constructor.
-	 * @throws Exception 
-	 * @throws ExecutionException 
+	 * 
+	 * @throws Exception
+	 * @throws ExecutionException
 	 */
 	public Bateaux(int x1, int y1, int x2, int y2, Equipe e, int taille) throws Exception {
 		// Start of user code constructor for Bateaux)
@@ -71,28 +72,31 @@ public abstract class Bateaux {
 	// End of user code
 	/**
 	 * Returns taille.
-	 * @return taille 
+	 * 
+	 * @return taille
 	 */
 	public int getTaille() {
 		return this.taille;
 	}
 
 	/**
-	 * Sets a value to attribute taille. 
-	 * @param newTaille 
-	 * @throws ExecutionException 
+	 * Sets a value to attribute taille.
+	 * 
+	 * @param newTaille
+	 * @throws ExecutionException
 	 */
 	public void setTaille(int newTaille) throws ExecutionException {
-		if(newTaille >= 2 && newTaille <=5)
-		{
-		this.taille = newTaille;
-		}else throw new ExecutionException("La taille doit etre compris entre 2 et 5", null);
-		
+		if (newTaille >= 2 && newTaille <= 5) {
+			this.taille = newTaille;
+		} else
+			throw new ExecutionException("La taille doit etre compris entre 2 et 5", null);
+
 	}
 
 	/**
 	 * Returns cases.
-	 * @return cases 
+	 * 
+	 * @return cases
 	 */
 	public Case[] getCases() {
 		return this.cases;
@@ -100,32 +104,35 @@ public abstract class Bateaux {
 
 	/**
 	 * Returns equipe.
-	 * @return equipe 
+	 * 
+	 * @return equipe
 	 */
 	public Equipe getEquipe() {
 		return this.equipe;
 	}
 
 	/**
-	 * Sets a value to attribute equipe. 
-	 * @param newEquipe 
+	 * Sets a value to attribute equipe.
+	 * 
+	 * @param newEquipe
 	 */
 	public void setEquipe(Equipe newEquipe) {
 		this.equipe = newEquipe;
 	}
-	
 
 	/**
 	 * Returns estCoule.
-	 * @return estCoule 
+	 * 
+	 * @return estCoule
 	 */
 	public boolean getEstCoule() {
 		return this.estCoule;
 	}
 
 	/**
-	 * Sets a value to attribute estCoule. 
-	 * @param newEstCoule 
+	 * Sets a value to attribute estCoule.
+	 * 
+	 * @param newEstCoule
 	 */
 	public void setEstCoule(boolean newEstCoule) {
 		this.estCoule = newEstCoule;
@@ -133,12 +140,12 @@ public abstract class Bateaux {
 
 	/**
 	 * Returns equipes.
-	 * @return equipes 
+	 * 
+	 * @return equipes
 	 */
 	public Equipe getEquipes() {
 		return this.equipes;
 	}
-
 
 	@Override
 	public int hashCode() {
@@ -152,12 +159,13 @@ public abstract class Bateaux {
 		return result;
 	}
 
-	public void touche()
-	{
-		taille--;
-		if (taille <=0 ) setEstCoule(true);
+	public void touche() {
+		if (taille > 0) {
+			taille--;
+		} else {
+			setEstCoule(true);
+		}
 	}
-
 
 	@Override
 	public boolean equals(Object obj) {
