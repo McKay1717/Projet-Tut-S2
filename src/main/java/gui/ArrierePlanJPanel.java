@@ -3,15 +3,10 @@
  *******************************************************************************/
 package gui;
 
-import java.awt.Container;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JPanel;
-
 import engine.GrilleJeux;
+
+import javax.swing.*;
+import java.awt.*;
 
 // Start of user code (user defined imports)
 
@@ -71,12 +66,25 @@ public class ArrierePlanJPanel extends JPanel
 		contp.add(grilleDeJeuJPanel, gbd);
 		contp.add(selectionBateauJPanel, gbd);
 
-		add(contp);
+		JLabel jLabel = new JLabel(
+				"C'est au tour de l'equipe " + grille_jeux.getEquipes()[grille_jeux.getCurrentEquipe()].getNomEquipe()
+						+ " de placer ces bateaux");
+		jLabel.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
 
-		/*
-		 * add(grilleDeJeuJPanel); add(selectionBateauJPanel,
-		 * BorderLayout.EAST);
-		 */
+		JPanel pPrinc = new JPanel();
+
+
+		JPanel pLabel = new JPanel();
+		JPanel pInitial = new JPanel();
+
+		pLabel.add(jLabel);
+		pInitial.add(contp);
+
+		pPrinc.add(pLabel, BorderLayout.NORTH);
+		pPrinc.add(pInitial, BorderLayout.SOUTH);
+
+		add(pPrinc);
+
 	}
 
 	public SelectionBateauJPanel getSelectionBateauJPanel()
