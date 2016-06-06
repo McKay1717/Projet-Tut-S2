@@ -1,7 +1,5 @@
 package engine;
 
-import org.junit.Rule;
-import org.junit.rules.ExpectedException;
 import org.mockito.Mockito;
 
 import org.junit.Assert;
@@ -63,48 +61,5 @@ public class EquipeUnitTest {
         Assert.assertArrayEquals(c, e1.setPlacement(b, 0,0,0,4));
     }
 
-    @Rule
-    public ExpectedException thrown = ExpectedException.none();
 
-    @Test(expected = Exception.class)
-    public void testSetPlacementNonAligner() throws Exception {
-        GrilleJeux gj = new GrilleJeux();
-        Equipe e1 = new Equipe(gj, "e1");
-        PorteAvion b = new PorteAvion(0, 0, 1, 4, e1);
-
-        thrown.expect(Exception.class);
-        thrown.expectMessage("Case non alignÃ©e");
-    }
-
-    @Test(expected = Exception.class)
-    public void testSetPlacementXNonVide() throws Exception {
-        GrilleJeux gj = new GrilleJeux();
-        Equipe e1 = new Equipe(gj, "e1");
-        PorteAvion b = new PorteAvion(0, 0, 4, 0, e1);
-
-        e1.gj.getCases()[0][0].setVide(true);
-        e1.gj.getCases()[1][0].setVide(true);
-        e1.gj.getCases()[3][0].setVide(true);
-        e1.gj.getCases()[4][0].setVide(true);
-
-        e1.setPlacement(b, 0,0,4,0);
-        thrown.expect(Exception.class);
-        thrown.expectMessage("Case 2,0 non vide");
-    }
-
-    @Test(expected = Exception.class)
-    public void testSetPlacementYNonVide() throws Exception {
-        GrilleJeux gj = new GrilleJeux();
-        Equipe e1 = new Equipe(gj, "e1");
-        PorteAvion b = new PorteAvion(0,0,0,4,e1);
-
-        e1.gj.getCases()[0][0].setVide(true);
-        e1.gj.getCases()[0][1].setVide(true);
-        e1.gj.getCases()[0][3].setVide(true);
-        e1.gj.getCases()[0][4].setVide(true);
-
-        e1.setPlacement(b, 0,0,0,4);
-        thrown.expect(Exception.class);
-        thrown.expectMessage("Case 0,2 non vide");
-    }
 }
