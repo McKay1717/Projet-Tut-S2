@@ -105,6 +105,7 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 		//JMenuItem
 		itemInfo1 = new JMenuItem("Createurs");
+
 		menuListener= new MenuListener(this,this.accueilJFrame);
 
 		itemInfo1.addActionListener(menuListener);

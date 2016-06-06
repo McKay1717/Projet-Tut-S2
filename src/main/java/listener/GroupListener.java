@@ -84,14 +84,14 @@ public class GroupListener
 		fenetreJeux.setSize(500, 550);
 	}
 
-	public void resetGame()
+	public void resetGame(String nom1, String nom2)
 	{
 		grille_jeux1 = new GrilleJeux();
 
 		grille_jeux2 = new GrilleJeux();
 
-		equipe1 = new Equipe(grille_jeux1, "");
-		equipe2 = new Equipe(grille_jeux2, "");
+		equipe1 = new Equipe(grille_jeux1, nom1);
+		equipe2 = new Equipe(grille_jeux2, nom2);
 
 		Equipe[] equipes = new Equipe[] { equipe1, equipe2 };
 		grille_jeux1.setEquipes(equipes);
