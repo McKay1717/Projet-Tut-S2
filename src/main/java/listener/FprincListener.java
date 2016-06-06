@@ -29,7 +29,7 @@ public class FprincListener implements ActionListener
 			while (b){
 				try {
 					initGame();
-
+					b=false;
 				}catch (Exception e){
 					if (e.getMessage()==null) {
 						accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe("equipe n°1");
@@ -68,9 +68,7 @@ public class FprincListener implements ActionListener
 			if (accueilJPanel.accueilJFrame.groupListener.equipe1.getNomEquipe().equals(equipe2)) {
 				throw new Exception("Votre nom est le meme que la premiere équipe");
 			}
-
 			accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe(equipe2);
-
 		}
 
 	}
