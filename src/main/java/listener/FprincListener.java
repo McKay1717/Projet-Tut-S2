@@ -32,8 +32,8 @@ public class FprincListener implements ActionListener
 					b=false;
 				}catch (Exception e){
 					if (e.getMessage()==null) {
-						accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe("equipe n°1");
-						accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe("equipe n°2");
+						accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe("<equipe n°1>");
+						accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe("<equipe n°2>");
 						b=false;
 					}else{
 						JOptionPane jop = new JOptionPane();
