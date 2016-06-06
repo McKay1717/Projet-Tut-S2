@@ -5,10 +5,15 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JOptionPane;
 
+import engine.Equipe;
+import engine.GrilleJeux;
 import gui.AccueilJFrame;
 import gui.AccueilJPanel;
 import gui.FenetreJeux;
 import gui.MenuSuperieurJMenuBar;
+
+
+import static javax.swing.SwingUtilities.invokeLater;
 
 /**
  * Created by Tanguy on 04/06/2016.
@@ -31,6 +36,48 @@ public class MenuListener implements ActionListener
 		this.menuSuperieurJMenuBar = menuSuperieurJMenuBar;
 	}
 
+	public void newGame(){
+		invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				GrilleJeux grilleJeux2 = new GrilleJeux();
+				GrilleJeux grilleJeux1 = new GrilleJeux();
+
+				Equipe equipes1 = new Equipe(grilleJeux1, "");
+				Equipe equipes2 = new Equipe(grilleJeux2, "");
+
+				Equipe[] equipes = new Equipe[] { equipes1, equipes2 };
+
+				grilleJeux1.setEquipes(equipes);
+				grilleJeux2.setEquipes(equipes);
+
+				new GroupListener(grilleJeux1, grilleJeux2, equipes1, equipes2);
+			}
+		});
+	}
+
+	public void newGame(String nom1, String nom2){
+		invokeLater(new Runnable()
+		{
+			public void run()
+			{
+				GrilleJeux grilleJeux2 = new GrilleJeux();
+				GrilleJeux grilleJeux1 = new GrilleJeux();
+
+				Equipe equipes1 = new Equipe(grilleJeux1, nom1);
+				Equipe equipes2 = new Equipe(grilleJeux2, nom2);
+
+				Equipe[] equipes = new Equipe[] { equipes1, equipes2 };
+
+				grilleJeux1.setEquipes(equipes);
+				grilleJeux2.setEquipes(equipes);
+
+				new GroupListener(grilleJeux1, grilleJeux2, equipes1, equipes2);
+			}
+		});
+	}
+
 	@Override
 	public void actionPerformed(ActionEvent e)
 	{
@@ -39,20 +86,25 @@ public class MenuListener implements ActionListener
 			menuSuperieurJMenuBar.getMessage().showMessageDialog(menuSuperieurJMenuBar.getMessage(),
 					menuSuperieurJMenuBar.getSignature(), "Information", JOptionPane.INFORMATION_MESSAGE);
 		}
+		//Arret total du jeu
+		if (e.getSource() == menuSuperieurJMenuBar.getItemOptionPlay3())
+		{
+			System.exit(0);
+		}
+
+		//Anuler la partie
 		if (e.getSource() == menuSuperieurJMenuBar.getItemOptionPlay1())
 		{
-			accueilJFrame.groupListener.resetGame();
-			accueilJPanel = new AccueilJPanel(this.accueilJFrame);
-			accueilJFrame.setSize(400, 250);
-			accueilJFrame.setjPanel(accueilJPanel);
-			menuSuperieurJMenuBar.setAccueilJPanel(accueilJPanel);
-			accueilJFrame.setLocationRelativeTo(null);
+				fenetreJeux.setVisible(false);
+				newGame();
+		}
+		//Recommencer la partie
+		if (e.getSource() == menuSuperieurJMenuBar.getItemOptionPlay2()) {
+			String nom1 = fenetreJeux.getEquipes()[0].getNomEquipe();
+			String nom2 = fenetreJeux.getEquipes()[1].getNomEquipe();
 
-			accueilJFrame.getContentPane().repaint();
-			MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(this.accueilJFrame, accueilJPanel);
-			accueilJFrame.setJMenuBar(menuBar);
-			accueilJFrame.setVisible(true);
-
+			fenetreJeux.setVisible(false);
+			newGame(nom1,nom2);
 		}
 
 		//Son ON

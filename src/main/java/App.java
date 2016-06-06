@@ -2,6 +2,7 @@ import static javax.swing.SwingUtilities.invokeLater;
 
 import engine.Equipe;
 import engine.GrilleJeux;
+import engine.Jukebox.Jukebox;
 import listener.GroupListener;
 
 /**
@@ -36,6 +37,12 @@ public class App
 				gj2.setEquipes(equipes);
 
 				new GroupListener(gj1, gj2, equipes1, equipes2);
+
+				//Gestion audio uniquement pour le demarage
+				Jukebox jukebox = new Jukebox();
+				//activer || desactiver
+				jukebox.activeSon(false);
+				jukebox.playSon("Ouverture");
 			}
 		});
 	}
