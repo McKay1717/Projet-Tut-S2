@@ -3,15 +3,18 @@
  *******************************************************************************/
 package gui;
 
-import engine.GrilleJeux;
-import listener.CaseListener_Initialisation;
+import static java.awt.Color.BLACK;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.GridLayout;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-import static java.awt.Color.BLACK;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+import engine.GrilleJeux;
+import listener.CaseListener_Initialisation;
 
 /**
  * Description of SelectionBateauJPanel.
@@ -105,10 +108,10 @@ public class SelectionBateauJPanel extends JPanel
 
 		// creation des label pour indiquer le type de bateaux A ajouter aux
 		// panel de bouton de selection
-		JLabel lPorteAvion = new JLabel("Porte Avion");
+		JLabel lPorteAvion = new JLabel("Porte-Avion");
 		JLabel lCroiseur = new JLabel("Croiseur");
-		JLabel lContretTorpilleur = new JLabel("Contret Torpilleur");
-		JLabel lSousMarin = new JLabel("Sous Marin");
+		JLabel lContretTorpilleur = new JLabel("Contre-Torpilleur");
+		JLabel lSousMarin = new JLabel("Sous-Marin");
 		JLabel lTorpilleur = new JLabel("Torpilleur");
 
 		// creation des Panel de bouton de selection de bateau A ajouter aux
