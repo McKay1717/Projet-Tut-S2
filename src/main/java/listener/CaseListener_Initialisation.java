@@ -90,7 +90,8 @@ public class CaseListener_Initialisation implements ActionListener
 				bateauJButton = null;
 			}
 		}
-		else if (e.getSource() instanceof BateauJButton && !((JButton) e.getSource()).getBackground().equals(RED))
+		else if (e.getSource() instanceof BateauJButton && !((JButton) e.getSource()).getBackground().equals(RED)
+				&& bateauJButton == null)
 			setBateau(e);
 		else if (e.getSource().equals(((ArrierePlanJPanel) fenetre.getjPanel()).getSelectionBateauJPanel().bValider))
 			valider();
