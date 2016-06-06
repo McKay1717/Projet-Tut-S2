@@ -222,7 +222,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemInfo1.setIcon(iconeInfo);
 		//Color
 		itemInfo1.setBackground(Color.white);
-		optionPlay.add(itemOptionPlay3);
 		info.add(itemInfo1);
 		this.add(info);
 	}
