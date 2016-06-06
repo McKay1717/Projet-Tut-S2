@@ -317,9 +317,18 @@ public class CaseListener_Initialisation implements ActionListener
 					grille[i][j].setBackground(BLACK);
 			}
 
-		groupListener.arrierePlanJPanel1 = new ArrierePlanJPanel(grille_jeu, grille,
-				groupListener.arrierePlanJPanel1.getSelectionBateauJPanel());
-		fenetre.setjPanel(groupListener.arrierePlanJPanel1);
+		if (numero_grille == 1)
+		{
+			groupListener.arrierePlanJPanel1 = new ArrierePlanJPanel(grille_jeu, grille,
+					groupListener.arrierePlanJPanel1.getSelectionBateauJPanel());
+			fenetre.setjPanel(groupListener.arrierePlanJPanel1);
+		}
+		else
+		{
+			groupListener.arrierePlanJPanel2 = new ArrierePlanJPanel(grille_jeu, grille,
+					groupListener.arrierePlanJPanel2.getSelectionBateauJPanel());
+			fenetre.setjPanel(groupListener.arrierePlanJPanel2);
+		}
 		fenetre.validate();
 		fenetre.repaint();
 	}
