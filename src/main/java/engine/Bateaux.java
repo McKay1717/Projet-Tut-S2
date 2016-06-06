@@ -63,7 +63,7 @@ public abstract class Bateaux {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
-		e.setPlacement(this, x1, y1, x2, y2);
+		cases = e.setPlacement(this, x1, y1, x2, y2);
 		// End of user code
 	}
 
