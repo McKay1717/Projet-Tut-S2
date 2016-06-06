@@ -4,28 +4,35 @@ import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
 import static java.awt.Color.GRAY;
 import static java.awt.Color.ORANGE;
 import static java.awt.Color.RED;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
+import javax.swing.JOptionPane;
 
 import engine.Case;
+import engine.Equipe;
 import engine.GrilleJeux;
+import gui.AccueilJFrame;
 import gui.BateauJButton;
 import gui.CaseJButton;
 import gui.FenetreJeux;
 
 public class JeuListener implements ActionListener
 {
-	public FenetreJeux	fenetreJeux;
-	public JButton[][]	grille1, grille2;
-	public Case[][]		grille_model1, grille_model2;
-	private Case[][]	grille_model_courante;
-	private JButton[][]	grille_courante;
-	private int			numero_grille;
+	public FenetreJeux		fenetreJeux;
+	public JButton[][]		grille1, grille2;
+	public Case[][]			grille_model1, grille_model2;
+	private Case[][]		grille_model_courante;
+	private JButton[][]		grille_courante;
+	private int				numero_grille;
+	public Equipe			equipe1, equipe2;
+	public GroupListener	groupListener;
 
-	public JeuListener(FenetreJeux fenetre, GrilleJeux grilleJeux1, GrilleJeux grilleJeux2)
+	public JeuListener(FenetreJeux fenetre, GrilleJeux grilleJeux1, GrilleJeux grilleJeux2, Equipe equipe1,
+			Equipe equipe2, GroupListener groupListener)
 	{
 		this.fenetreJeux = fenetre;
 		this.grille1 = fenetre.deJeuJPanel1.grille;
@@ -35,6 +42,9 @@ public class JeuListener implements ActionListener
 		grille_courante = grille1;
 		grille_model_courante = grille_model1;
 		numero_grille = 1;
+		this.equipe1 = equipe1;
+		this.equipe2 = equipe2;
+		this.groupListener = groupListener;
 	}
 
 	@Override
@@ -58,9 +68,8 @@ public class JeuListener implements ActionListener
 					// Si le bateau est touché, une image de feu ou autre.
 					grille_courante[position[0]][position[1]].setBackground(ORANGE);
 				}
-				else if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
+				if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
 				{
-					System.out.println("Coulé");
 					Case[] cases = grille_model_courante[position[0]][position[1]].getBateau().getCases();
 					for (int i = 0 ; i < grille_courante.length ; i++)
 						for (int j = 0 ; j < grille_courante.length ; j++)
@@ -70,24 +79,40 @@ public class JeuListener implements ActionListener
 				}
 			}
 
-			if (numero_grille == 1)
+			if (verifGagnant())
 			{
-				fenetreJeux.deJeuJPanel1.grille = grille_courante;
-				set_grille_courante();
-				set_grille_model_courante();
-				numero_grille++;
-				fenetreJeux.creerWidget(2);
+				String message = "";
+				if (numero_grille == 1)
+					message = equipe1.getNomEquipe() + " a gagné !";
+				else if (numero_grille == 2)
+					message = equipe2.getNomEquipe() + " a gagné !";
+				JOptionPane.showMessageDialog(fenetreJeux, message, "Victoire", INFORMATION_MESSAGE);
+				fenetreJeux.setVisible(false);
+
+				groupListener.fenetre = new AccueilJFrame(groupListener);
+				groupListener.fenetre.setVisible(true);
 			}
-			else if (numero_grille == 2)
+			else
 			{
-				fenetreJeux.deJeuJPanel2.grille = grille_courante;
-				set_grille_courante();
-				set_grille_model_courante();
-				numero_grille--;
-				fenetreJeux.creerWidget(1);
+				if (numero_grille == 1)
+				{
+					fenetreJeux.deJeuJPanel1.grille = grille_courante;
+					set_grille_courante();
+					set_grille_model_courante();
+					numero_grille++;
+					fenetreJeux.creerWidget(2);
+				}
+				else if (numero_grille == 2)
+				{
+					fenetreJeux.deJeuJPanel2.grille = grille_courante;
+					set_grille_courante();
+					set_grille_model_courante();
+					numero_grille--;
+					fenetreJeux.creerWidget(1);
+				}
+				fenetreJeux.validate();
+				fenetreJeux.repaint();
 			}
-			fenetreJeux.validate();
-			fenetreJeux.repaint();
 		}
 	}
 
@@ -120,5 +145,18 @@ public class JeuListener implements ActionListener
 			grille_courante = grille2;
 		else if (grille_courante.equals(grille2))
 			grille_courante = grille1;
+	}
+
+	public boolean verifGagnant()
+	{
+		boolean retour = true;
+
+		for (int i = 0 ; i < TAILLE_GRILLE ; i++)
+			for (int j = 0 ; j < TAILLE_GRILLE ; j++)
+				if (grille_model_courante[i][j].getBateau() != null)
+					if (!grille_model_courante[i][j].getBateau().getEstCoule())
+						retour = false;
+
+		return retour;
 	}
 }

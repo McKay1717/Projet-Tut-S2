@@ -79,7 +79,7 @@ public class GroupListener
 		e[1] = equipe2;
 		fenetreJeux = new FenetreJeux(e, arrierePlanJPanel1.getGrilleDeJeuJPanel(),
 				arrierePlanJPanel2.getGrilleDeJeuJPanel());
-		jeuListener = new JeuListener(fenetreJeux, grille_jeux1, grille_jeux2);
+		jeuListener = new JeuListener(fenetreJeux, grille_jeux1, grille_jeux2, equipe1, equipe2, this);
 		fenetreJeux.setListener(jeuListener);
 		fenetreJeux.setSize(500, 550);
 	}
