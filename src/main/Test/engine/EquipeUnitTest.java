@@ -1,11 +1,8 @@
 package engine;
 
 import org.junit.Rule;
-import org.junit.rules.ExpectedException;
-import org.mockito.Mockito;
-
-import org.junit.Assert;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 import static org.junit.Assert.*;
 import static org.mockito.Mockito.*;
@@ -64,19 +61,19 @@ public class EquipeUnitTest {
     @Test
     public void testTireVide(){
         GrilleJeux gj = new GrilleJeux();
-        Equipe e2 = new Equipe(Mockito.mock(GrilleJeux.class), "e2");
+        Equipe e2 = new Equipe(mock(GrilleJeux.class), "e2");
         Equipe e1 = new Equipe(gj, "e1");
-        Assert.assertFalse(e2.tire(e1, 0, 0));
-        Assert.assertFalse(e2.tire(e1, 9, 9));
+        assertFalse(e2.tire(e1, 0, 0));
+        assertFalse(e2.tire(e1, 9, 9));
     }
 
     @Test
     public void testTirePasVide(){
         GrilleJeux gj = new GrilleJeux();
-        Equipe e2 = new Equipe(Mockito.mock(GrilleJeux.class), "e2");
+        Equipe e2 = new Equipe(mock(GrilleJeux.class), "e2");
         Equipe e1 = new Equipe(gj, "e1");
         e1.getGj().getCases()[5][5].setVide(false);
-        Assert.assertTrue(e2.tire(e1, 5, 5));
+        assertTrue(e2.tire(e1, 5, 5));
     }
 
     @Test
@@ -92,7 +89,7 @@ public class EquipeUnitTest {
         e1.gj.getCases()[4][0].setVide(true);
 
         Case[] c = new Case[]{gj.getCases()[0][0], gj.getCases()[1][0], gj.getCases()[2][0], gj.getCases()[3][0], gj.getCases()[4][0]};
-        Assert.assertArrayEquals(c, e1.setPlacement(b, 0,0,4,0));
+        assertArrayEquals(c, e1.setPlacement(b, 0,0,4,0));
 
     }
 
@@ -109,7 +106,7 @@ public class EquipeUnitTest {
         e1.gj.getCases()[0][4].setVide(true);
 
         Case[] c = new Case[]{gj.getCases()[0][0], gj.getCases()[0][1], gj.getCases()[0][2], gj.getCases()[0][3], gj.getCases()[0][4]};
-        Assert.assertArrayEquals(c, e1.setPlacement(b, 0,0,0,4));
+        assertArrayEquals(c, e1.setPlacement(b, 0,0,0,4));
     }
 
     @Rule
@@ -156,4 +153,18 @@ public class EquipeUnitTest {
         thrown.expect(Exception.class);
         thrown.expectMessage("Case 0,2 non vide");
     }
+
+    @Test
+    public void testConvertToLetter(){
+        GrilleJeux gj = mock(GrilleJeux.class);
+        Equipe e = new Equipe(gj, "e");
+        int x = 0;
+        assertEquals(65, e.convertToLettre(x));
+        assertNotEquals(66, e.convertToLettre(x));
+        x = 9;
+        assertEquals(74, e.convertToLettre(x));
+        assertNotEquals(73, e.convertToLettre(x));
+    }
+
+
 }
