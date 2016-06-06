@@ -124,5 +124,30 @@ public class MenuListener implements ActionListener
 			fenetreJeux.getEquipes()[1].getJukebox().activeSon(false);
 
 		}
+
+		// Recommencer la partie Accueil
+		if (e.getSource() == menuSuperieurJMenuBar.getItemOptionPlay5())
+		{
+			accueilJPanel = new AccueilJPanel(this.accueilJFrame);
+			accueilJFrame.setSize(400, 250);
+			accueilJFrame.setjPanel(accueilJPanel);
+			menuSuperieurJMenuBar.setAccueilJPanel(accueilJPanel);
+			accueilJFrame.setLocationRelativeTo(null);
+
+			accueilJFrame.getContentPane().repaint();
+			MenuSuperieurJMenuBar menuBar = new MenuSuperieurJMenuBar(this.accueilJFrame,accueilJPanel);
+			accueilJFrame.setJMenuBar(menuBar);
+			accueilJFrame.setVisible(true);
+
+		}
+		// Abandonner la partie
+		if (e.getSource() == menuSuperieurJMenuBar.getItemOptionPlay4())
+		{
+			accueilJFrame.setVisible(false);
+			newGame();
+
+		}
+
+
 	}
 }

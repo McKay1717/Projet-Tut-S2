@@ -48,6 +48,8 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	private JMenuItem itemOptionPlay1;
 	private JMenuItem itemOptionPlay2;
 	private JMenuItem itemOptionPlay3;
+	private JMenuItem itemOptionPlay4;
+	private JMenuItem itemOptionPlay5;
 
 
 	//JMenuItem audio
@@ -79,7 +81,6 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 	public MenuSuperieurJMenuBar(FenetreJeux fenetreJeux){
 		super();
 		this.fenetreJeux=fenetreJeux;
-		//this.jPanel=accueilJFrame.getjPanel();
 		initAttribut1();
 		creerJMenuBar1();
 	}
@@ -93,8 +94,8 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 			initAttribut2();
 			creerJMenuBar2();
 		}else {
-			initAttribut2();
-			creerJMenuBar2();
+			initAttribuAccueil();
+			creerJMenuBarAccueil();
 		}
 	}
 
@@ -138,7 +139,53 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 		itemAudio2.addActionListener(menuListener);
 		itemInfo1.addActionListener(menuListener);
 	}
+	private void initAttribuAccueil(){
 
+		//JMenu
+		optionPlay = new JMenu("Game");
+		info = new JMenu("A propos");
+
+		//JMenuItem
+		itemOptionPlay4 = new JMenuItem("Abandonner la partie");
+		itemOptionPlay5 = new JMenuItem("Recommencer la partie");
+		itemOptionPlay3 = new JMenuItem("Quiter");
+
+		itemInfo1 = new JMenuItem("Createurs");
+
+		menuListener= new MenuListener(this,this.accueilJFrame);
+
+		itemOptionPlay4.addActionListener(menuListener);
+		itemOptionPlay5.addActionListener(menuListener);
+		itemOptionPlay3.addActionListener(menuListener);
+		itemInfo1.addActionListener(menuListener);
+	}
+	private void creerJMenuBarAccueil(){
+
+		//Ajout des icones
+		itemOptionPlay4.setIcon(iconeStop);
+		itemOptionPlay5.setIcon(iconeRestart);
+		itemOptionPlay3.setIcon(iconeQuiter);
+
+
+		itemInfo1.setIcon(iconeInfo);
+
+		//Color
+		itemInfo1.setBackground(Color.white);
+		itemOptionPlay4.setBackground(Color.white);
+		itemOptionPlay5.setBackground(Color.white);
+		itemOptionPlay3.setBackground(Color.white);
+
+		//Mise en plan du JMenu
+		optionPlay.add(itemOptionPlay4);
+		optionPlay.add(itemOptionPlay5);
+		optionPlay.add(itemOptionPlay3);
+
+		info.add(itemInfo1);
+
+		//Ajout dans le JMenuBar
+		this.add(optionPlay);
+		this.add(info);
+	}
 	private void creerJMenuBar1(){
 
 		//Ajout des icones
@@ -225,5 +272,13 @@ public class MenuSuperieurJMenuBar extends JMenuBar{
 
 	public void setAccueilJPanel(AccueilJPanel accueilJPanel) {
 		this.accueilJPanel = accueilJPanel;
+	}
+
+	public JMenuItem getItemOptionPlay4() {
+		return itemOptionPlay4;
+	}
+
+	public JMenuItem getItemOptionPlay5() {
+		return itemOptionPlay5;
 	}
 }
