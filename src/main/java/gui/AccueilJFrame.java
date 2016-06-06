@@ -10,9 +10,7 @@ import javax.swing.*;
 import static javax.swing.JOptionPane.ERROR_MESSAGE;
 import static javax.swing.JOptionPane.showMessageDialog;
 
-// Start of user code (user defined imports)
-
-// End of user code
+// VICTOIRE
 
 /**
  * Description of AccueilJFrame.
