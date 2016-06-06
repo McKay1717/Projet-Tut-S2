@@ -25,7 +25,23 @@ public class FprincListener implements ActionListener
 		if (actionEvent.getSource().equals(AccueilJPanel.getbPLay()))
 		{
 			accueilJPanel.close();
-			initGame();
+			boolean b= true;
+			while (b){
+				try {
+					initGame();
+
+				}catch (Exception e){
+					if (e.getMessage()==null) {
+						accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe("equipe n°1");
+						accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe("equipe n°2");
+						b=false;
+					}else{
+						JOptionPane jop = new JOptionPane();
+						jop.showMessageDialog(null, e.getMessage(), "error", JOptionPane.INFORMATION_MESSAGE);
+					}
+				}
+			}
+
 			accueilJPanel.accueilJFrame.groupListener.createGrilleDeJeuJPanel(1);
 		}
 
@@ -33,26 +49,28 @@ public class FprincListener implements ActionListener
 			System.exit(0);
 	}
 
-	public void initGame()
+	public void initGame() throws Exception
 	{
+
 		if(accueilJPanel.accueilJFrame.groupListener.equipe1.getNomEquipe().length()==0){
 			String equipe1 = JOptionPane.showInputDialog(null, "nom du Joueur 1 ?", "", JOptionPane.QUESTION_MESSAGE);
-			JOptionPane jop1 = new JOptionPane();
-			while (equipe1.length() == 0) {
-				jop1.showMessageDialog(null, "Votre nom est vide", "error", JOptionPane.INFORMATION_MESSAGE);
-				equipe1 = JOptionPane.showInputDialog(null, "nom du Joueur 1 ?", "", JOptionPane.QUESTION_MESSAGE);
+			if (equipe1.length() == 0) {
+				throw new Exception("Votre nom est vide");
 			}
 			accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe(equipe1);
 		}
 
 		if(accueilJPanel.accueilJFrame.groupListener.equipe2.getNomEquipe().length()==0){
 			String equipe2 = JOptionPane.showInputDialog(null, "nom du Joueur 2 ?", "", JOptionPane.QUESTION_MESSAGE);
-			JOptionPane jop2 = new JOptionPane();
-			while (equipe2.length() == 0) {
-				jop2.showMessageDialog(null, "Votre nom est vide", "error", JOptionPane.INFORMATION_MESSAGE);
-				equipe2 = JOptionPane.showInputDialog(null, "nom du Joueur 2 ?", "", JOptionPane.QUESTION_MESSAGE);
+			if (equipe2.length() == 0) {
+				throw new Exception("Votre nom est vide");
 			}
-			accueilJPanel.accueilJFrame.groupListener.equipe2.setNomEquipe(equipe2);
+			if (accueilJPanel.accueilJFrame.groupListener.equipe1.getNomEquipe().equals(equipe2)) {
+				throw new Exception("Votre nom est le meme que la premiere équipe");
+			}
+
+			accueilJPanel.accueilJFrame.groupListener.equipe1.setNomEquipe(equipe2);
+
 		}
 
 	}
