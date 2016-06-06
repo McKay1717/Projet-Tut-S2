@@ -86,6 +86,11 @@ public class MenuListener implements ActionListener
 			menuSuperieurJMenuBar.getMessage().showMessageDialog(menuSuperieurJMenuBar.getMessage(),
 					menuSuperieurJMenuBar.getSignature(), "Information", JOptionPane.INFORMATION_MESSAGE);
 		}
+		//Arret total du jeu
+		if (e.getSource() == menuSuperieurJMenuBar.getItemOptionPlay3())
+		{
+			System.exit(0);
+		}
 
 		//Anuler la partie
 		if (e.getSource() == menuSuperieurJMenuBar.getItemOptionPlay1())
