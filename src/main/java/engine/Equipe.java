@@ -76,7 +76,7 @@ public class Equipe
 			{
 				if (!this.getGj().getCases()[x1 + i][y1].getVide())
 				{
-					throw new Exception("Case " + (x1 + i) + ',' + (y1) + " non vide");
+					throw new Exception("Case " + (convertToLettre(x1 + i)) + ',' + (y1+1) + " non vide");
 				}
 
 			}
@@ -84,7 +84,7 @@ public class Equipe
 			{
 				if (!this.getGj().getCases()[x1][y1 + i].getVide())
 				{
-					throw new Exception("Case " + (x1) + ',' + (y1 + i) + " non vide");
+					throw new Exception("Case " + (convertToLettre(x1)) + ',' + (y1 + i +1) + " non vide");
 				}
 
 			}
@@ -120,6 +120,14 @@ public class Equipe
 		return cases;
 
 	}
+	protected char convertToLettre(int x){
+		char resultat;
+		int res= 65+x;
+		resultat = ((char)res);
+		System.out.println(resultat+"		"+res);
+		return resultat;
+	}
+
 
 	protected boolean verification(Equipe e, int a, int b)
 	{
