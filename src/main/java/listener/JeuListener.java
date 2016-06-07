@@ -1,17 +1,5 @@
 package listener;
 
-import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
-import static java.awt.Color.GRAY;
-import static java.awt.Color.ORANGE;
-import static java.awt.Color.RED;
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-
 import engine.Case;
 import engine.Equipe;
 import engine.GrilleJeux;
@@ -19,6 +7,14 @@ import gui.AccueilJFrame;
 import gui.BateauJButton;
 import gui.CaseJButton;
 import gui.FenetreJeux;
+
+import javax.swing.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.*;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 
 public class JeuListener implements ActionListener
 {
@@ -150,9 +146,9 @@ public class JeuListener implements ActionListener
 
 				String message = "";
 				if (numero_grille == 1)
-					message = equipe1.getNomEquipe() + " a gagné !";
-				else if (numero_grille == 2)
 					message = equipe2.getNomEquipe() + " a gagné !";
+				else if (numero_grille == 2)
+					message = equipe1.getNomEquipe() + " a gagné !";
 				JOptionPane.showMessageDialog(fenetreJeux, message, "Victoire", INFORMATION_MESSAGE);
 				fenetreJeux.setVisible(false);
 				groupListener.resetGame(equipe1.getNomEquipe(), equipe2.getNomEquipe());

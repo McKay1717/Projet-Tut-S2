@@ -1,17 +1,13 @@
 package gui;
 
-import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
-import static java.awt.Color.BLUE;
+import engine.Equipe;
 
-import java.awt.BorderLayout;
-import java.awt.Font;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionListener;
 
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import engine.Equipe;
+import static gui.GrilleDeJeuJPanel.TAILLE_GRILLE;
+import static java.awt.Color.BLUE;
 
 public class FenetreJeux extends JFrame
 {
@@ -69,14 +65,14 @@ public class FenetreJeux extends JFrame
 		if (numero_grille == 1)
 		{
 			afficheNomEquipeCourant = new JLabel(
-					"C'est au tour de l'équipe " + equipes[0].getNomEquipe() + " de jouer.");
+					"C'est au tour de l'équipe " + equipes[1].getNomEquipe() + " de jouer.");
 			afficheNomEquipeCourant.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
 			pGrille.add(deJeuJPanel1);
 		}
 		else if (numero_grille == 2)
 		{
 			afficheNomEquipeCourant = new JLabel(
-					"C'est au tour de l'équipe " + equipes[1].getNomEquipe() + " de jouer.");
+					"C'est au tour de l'équipe " + equipes[0].getNomEquipe() + " de jouer.");
 			afficheNomEquipeCourant.setFont(new Font("Bitstream Charter", Font.BOLD, 20));
 			pGrille.add(deJeuJPanel2);
 		}
