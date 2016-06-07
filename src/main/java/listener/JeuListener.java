@@ -77,6 +77,77 @@ public class JeuListener implements ActionListener
 
 			if (verifGagnant())
 			{
+				if (numero_grille == 1)
+				{
+					fenetreJeux.deJeuJPanel1.grille = grille_courante;
+					fenetreJeux.creerWidget(1);
+					fenetreJeux.validate();
+					fenetreJeux.repaint();
+
+					if (grille_model_courante[position[0]][position[1]].getTouche())
+					{
+						if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
+						{
+							if (numero_grille == 1)
+								equipe1.getJukebox().playSon("EAU");
+							else
+								equipe2.getJukebox().playSon("EAU");
+						}
+						else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
+						{
+							if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
+							{
+								if (numero_grille == 1)
+									equipe1.getJukebox().playSon("COULER");
+								else
+									equipe2.getJukebox().playSon("COULER");
+							}
+							else if (grille_model_courante[position[0]][position[1]].getTouche())
+							{
+								if (numero_grille == 1)
+									equipe1.getJukebox().playSon("TOUCHER");
+								else
+									equipe2.getJukebox().playSon("TOUCHER");
+							}
+						}
+					}
+				}
+				else if (numero_grille == 2)
+				{
+					fenetreJeux.deJeuJPanel2.grille = grille_courante;
+					fenetreJeux.creerWidget(2);
+					fenetreJeux.validate();
+					fenetreJeux.repaint();
+
+					if (grille_model_courante[position[0]][position[1]].getTouche())
+					{
+						if (grille_courante[position[0]][position[1]] instanceof CaseJButton)
+						{
+							if (numero_grille == 1)
+								equipe1.getJukebox().playSon("EAU");
+							else
+								equipe2.getJukebox().playSon("EAU");
+						}
+						else if (grille_courante[position[0]][position[1]] instanceof BateauJButton)
+						{
+							if (grille_model_courante[position[0]][position[1]].getBateau().getEstCoule())
+							{
+								if (numero_grille == 1)
+									equipe1.getJukebox().playSon("COULER");
+								else
+									equipe2.getJukebox().playSon("COULER");
+							}
+							else if (grille_model_courante[position[0]][position[1]].getTouche())
+							{
+								if (numero_grille == 1)
+									equipe1.getJukebox().playSon("TOUCHER");
+								else
+									equipe2.getJukebox().playSon("TOUCHER");
+							}
+						}
+					}
+				}
+
 				String message = "";
 				if (numero_grille == 1)
 					message = equipe1.getNomEquipe() + " a gagné !";
